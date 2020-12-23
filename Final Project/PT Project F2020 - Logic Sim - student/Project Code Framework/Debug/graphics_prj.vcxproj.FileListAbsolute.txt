@@ -1,2 +1,0 @@
-C:\Users\kcs\Documents\GitHub\OOP-Final-Project\Final Project\PT Project F2020 - Logic Sim - student\Project Code Framework\Debug\graphics_prj.exe
-C:\Users\kcs\Documents\GitHub\OOP-Final-Project\Final Project\PT Project F2020 - Logic Sim - student\Project Code Framework\Debug\graphics_prj.pdb
