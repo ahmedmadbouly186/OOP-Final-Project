@@ -1,38 +1,78 @@
 //#include "Input.h"
 #include "Output.h"
-
+static bool b = true;
 Input::Input(window* pW)
 {
 	pWind = pW; //point to the passed window
 }
 
-void Input::GetPointClicked(int &x, int &y)
+void Input::GetPointClicked(int& x, int& y)
 {
 	pWind->WaitMouseClick(x, y);	//Wait for mouse click
 }
 
-string Input::GetSrting(Output *pOut)
+
+string Input::GetSrting(Output* pOut)
 {
+	char c[20];
+	pOut->ClearStatusBar();
+	char d[] = "Enter the name of label: ";
+	pOut->PrintMsg(d);
+	for (int i = 0; i < 19; i++)
+	{
+		pWind->WaitKeyPress(c[i]);
+		c[i + 1] = '\0';
+		if (c[i] == 27)
+		{
+			c[0] = '\0';
+			break;
+		}
+		else if (c[i] == 13)
+		{
+			c[i] = '\0';
+			break;
+			//i = 19;
+		}
+		else if (c[i] == 8)
+		{
+			if (i > 0)
+			{
+				i--;
+				c[i] = '\0';
+				i--;
+			}
+		}
+		pOut->PrintMsg(c);
+	}
+	pOut->ClearStatusBar();
+	int x, y;
+	pWind->WaitMouseClick(x, y);
+	int MsgX = x;
+	int MsgY = y;
+
+	// Print the Message
+	pWind->SetFont(20, BOLD | ITALICIZED, BY_NAME, "Arial");
+	pWind->SetPen(UI.MsgColor);
+	pWind->DrawString(MsgX, MsgY, c);
+	return c;
 	///TODO: Implement this Function
 	//Read a complete string from the user until the user presses "ENTER".
 	//If the user presses "ESCAPE". This function should return an empty string.
 	//"BACKSPACE" should be also supported
 	//User should see what he is typing at the status bar
 
-	return NULL;
 }
 
 //This function reads the position where the user clicks to determine the desired action
 ActionType Input::GetUserAction() const
-{	
-	int x,y;
+{
+	int x, y;
 	pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
-
-	if(UI.AppMode == DESIGN )	//application is in design mode
+	if (UI.AppMode == DESIGN)	//application is in design mode
 	{
 		//[1] If user clicks on the Toolbar
-		if ( y >= 0 && y < UI.ToolBarHeight)
-		{	
+		if (y >= 0 && y < UI.ToolBarHeight&& b)
+		{
 			//Check whick Menu item was clicked
 			//==> This assumes that menu items are lined up horizontally <==
 			int ClickedItemOrder = (x / UI.ToolItemWidth);
@@ -41,26 +81,86 @@ ActionType Input::GetUserAction() const
 
 			switch (ClickedItemOrder)
 			{
-			case ITM_AND2: return ADD_AND_GATE_2;
-			case ITM_OR2: return ADD_OR_GATE_2;
-			case ITM_EXIT: return EXIT;	
-			
+
+			case ITM_ADD: b = false; return ADD_Gate;
+			case ITM_Simulate: return SIM_MODE;
+			case ITM_UNDO: return UNDO;
+			case ITM_REDO: return REDO;
+			case ITM_LOAD: return LOAD;
+			case ITM_SAVE: return SAVE;
+			case ITM_Delet: return DEL;
+			case ITM_Connection: return ADD_CONNECTION;
+			case ITM_EXIT: return EXIT;
+
 			default: return DSN_TOOL;	//A click on empty place in desgin toolbar
 			}
 		}
-	
+
+		if (y >= 0 && y < UI.ToolBarHeight)
+		{
+			int ClickedItemOrder = (x / UI.ToolItemWidth) + 9;
+
+
+			switch (ClickedItemOrder)
+			{
+			case ITM_Buff: return ADD_Buff;
+			case ITM_INV: return ADD_INV;
+			case ITM_AND2: return ADD_AND_GATE_2;
+			case ITM_OR2: return ADD_OR_GATE_2;
+			case ITM_NAND2: return ADD_NAND_GATE_2;
+			case ITM_NOR2: return ADD_NOR_GATE_2;
+			case ITM_XOR2: return ADD_XOR_GATE_2;
+			case ITM_XNOR2: return ADD_XNOR_GATE_2;
+			case ITM_AND3: return ADD_AND_GATE_3;
+			case ITM_NOR3: return ADD_NOR_GATE_3;
+			case ITM_XOR3: return ADD_XOR_GATE_3;
+			case ITM_LED: return ADD_LED;
+			case ITM_Switch: return ADD_Switch;
+			case ITM_Close:  b = true; return close;
+
+			default: return DSN_TOOL;	//A click on empty place in desgin toolbar
+			}
+		}
+
 		//[2] User clicks on the drawing area
-		if ( y >= UI.ToolBarHeight && y < UI.height - UI.StatusBarHeight)
+		if (y >= UI.ToolBarHeight && y < UI.height - UI.StatusBarHeight)
 		{
 			return SELECT;	//user want to select/unselect a component
 		}
-		
+
 		//[3] User clicks on the status bar
 		return STATUS_BAR;
 	}
 	else	//Application is in Simulation mode
 	{
-		return SIM_MODE;	//This should be changed after creating the compelete simulation bar 
+		// copy paste 
+		//[1] If user clicks on the Toolbar
+		if (y >= 0 && y < UI.ToolBarHeight)
+		{
+			int ClickedItemOrder = (x / UI.ToolItemWidth);
+			switch (ClickedItemOrder)
+			{
+			case ITM_SIM: return SIM_MODE;
+			case ITM_TRUTH: return Create_TruthTable;
+			case ITM_SAVE_Simulate: return SAVE;
+			case ITM_LOAD_Simulate: return LOAD;
+			case ITM_SWITCH_DSN: return DSN_MODE;
+			case ITM_2EXIT: return EXIT;
+
+			default: return SIM_TOOL;	//A click on empty place in Simulation toolbar
+			}
+		}
+
+		//[2] User clicks on the drawing area
+		if (y >= UI.ToolBarHeight && y < UI.height - UI.StatusBarHeight)
+		{
+			return SELECT;	//user want to select/unselect a component
+		}
+
+		//[3] User clicks on the status bar
+		return STATUS_BAR;
+
+		//return SIM_MODE;	//This should be changed after creating the compelete simulation bar 
 	}
 
 }
