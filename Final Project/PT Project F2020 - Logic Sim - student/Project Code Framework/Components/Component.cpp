@@ -10,4 +10,7 @@ Component::Component()
 
 Component::~Component()
 {}
-
+void Component::setmym_Label(string s)
+{
+	m_Label = s;
+}
