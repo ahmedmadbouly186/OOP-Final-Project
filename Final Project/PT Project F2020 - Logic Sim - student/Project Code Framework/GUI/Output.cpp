@@ -242,8 +242,6 @@ void Output::DrawAND2(GraphicsInfo r_GfxInfo, bool selected) const
 }
 
 //TODO: Add similar functions to draw all components
-
-//TODO: Add similar functions to draw all components
 void Output::DrawNAND2(GraphicsInfo r_GfxInfo, bool selected) const
 {
 	string GateImage;
@@ -253,7 +251,7 @@ void Output::DrawNAND2(GraphicsInfo r_GfxInfo, bool selected) const
 		GateImage = "Images\\Gates\\2nand.jpg";
 
 	//Draw NAND2 Gate at Gfx_Info (1st corner)
-	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.NAND2_Width, UI.NAND2_Height);
 }
 void Output::DrawOR2(GraphicsInfo r_GfxInfo, bool selected) const
 {
@@ -264,7 +262,7 @@ void Output::DrawOR2(GraphicsInfo r_GfxInfo, bool selected) const
 		GateImage = "Images\\Gates\\2or.jpg";
 
 	//Draw OR2 Gate at Gfx_Info (1st corner)
-	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.OR2_Width, UI.OR2_Height);
 }
 void Output::DrawNOR2(GraphicsInfo r_GfxInfo, bool selected) const
 {
@@ -275,7 +273,7 @@ void Output::DrawNOR2(GraphicsInfo r_GfxInfo, bool selected) const
 		GateImage = "Images\\Gates\\2nor.jpg";
 
 	//Draw NOR2 Gate at Gfx_Info (1st corner)
-	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.NOR2_Width, UI.NOR2_Height);
 }
 void Output::DrawXOR2(GraphicsInfo r_GfxInfo, bool selected) const
 {
@@ -286,7 +284,7 @@ void Output::DrawXOR2(GraphicsInfo r_GfxInfo, bool selected) const
 		GateImage = "Images\\Gates\\2xor.jpg";
 
 	//Draw XOR2 Gate at Gfx_Info (1st corner)
-	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.XOR2_Width, UI.XOR2_Height);
 }
 void Output::DrawXNOR2(GraphicsInfo r_GfxInfo, bool selected) const
 {
@@ -297,7 +295,7 @@ void Output::DrawXNOR2(GraphicsInfo r_GfxInfo, bool selected) const
 		GateImage = "Images\\Gates\\2xnor.jpg";
 
 	//Draw XNOR2 Gate at Gfx_Info (1st corner)
-	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.XNOR2_Width, UI.XNOR2_Height);
 }
 void Output::DrawInverter(GraphicsInfo r_GfxInfo, bool selected) const
 {
@@ -308,7 +306,7 @@ void Output::DrawInverter(GraphicsInfo r_GfxInfo, bool selected) const
 		GateImage = "Images\\Gates\\not.jpg";
 
 	//Draw Inverter Gate at Gfx_Info (1st corner)
-	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.Inverter_Width, UI.Inverter_Height);
 }
 void Output::DrawBuffer(GraphicsInfo r_GfxInfo, bool selected) const
 {
@@ -319,7 +317,7 @@ void Output::DrawBuffer(GraphicsInfo r_GfxInfo, bool selected) const
 		GateImage = "Images\\Gates\\buffer.jpg";
 
 	//Draw Buffer Gate at Gfx_Info (1st corner)
-	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.Buffer_Width, UI.Buffer_Height);
 }
 void Output::DrawAND3(GraphicsInfo r_GfxInfo, bool selected) const
 {
@@ -330,7 +328,7 @@ void Output::DrawAND3(GraphicsInfo r_GfxInfo, bool selected) const
 		GateImage = "Images\\Gates\\3and.jpg";
 
 	//Draw AND3 Gate at Gfx_Info (1st corner)
-	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.AND3_Width, UI.AND3_Height);
 }
 void Output::DrawNOR3(GraphicsInfo r_GfxInfo, bool selected) const
 {
@@ -341,7 +339,7 @@ void Output::DrawNOR3(GraphicsInfo r_GfxInfo, bool selected) const
 		GateImage = "Images\\Gates\\3nor.jpg";
 
 	//Draw NOR3 Gate at Gfx_Info (1st corner)
-	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.NOR3_Width, UI.NOR3_Height);
 }
 void Output::DrawXOR3(GraphicsInfo r_GfxInfo, bool selected) const
 {
@@ -352,7 +350,7 @@ void Output::DrawXOR3(GraphicsInfo r_GfxInfo, bool selected) const
 		GateImage = "Images\\Gates\\3xor.jpg";
 
 	//Draw XOR3 Gate at Gfx_Info (1st corner)
-	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.XOR3_Width, UI.XOR3_Height);
 }
 void Output::DrawSWITCH0(GraphicsInfo r_GfxInfo, bool selected) const
 {
@@ -363,7 +361,7 @@ void Output::DrawSWITCH0(GraphicsInfo r_GfxInfo, bool selected) const
 		GateImage = "Images\\Gates\\switch0.jpg";
 
 	//Draw SWITCH at Gfx_Info (1st corner)
-	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.SWITCH0_Width, UI.SWITCH0_Height);
 }
 void Output::DrawLED0(GraphicsInfo r_GfxInfo, bool selected) const
 {
@@ -374,7 +372,7 @@ void Output::DrawLED0(GraphicsInfo r_GfxInfo, bool selected) const
 		GateImage = "Images\\Gates\\lamp0.jpg";
 
 	//Draw LED at Gfx_Info (1st corner)
-	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.LED0_Width, UI.LED0_Height);
 }
 void Output::DrawSWITCH1(GraphicsInfo r_GfxInfo, bool selected) const
 {
@@ -385,7 +383,7 @@ void Output::DrawSWITCH1(GraphicsInfo r_GfxInfo, bool selected) const
 		GateImage = "Images\\Gates\\switch1.jpg";
 
 	//Draw SWITCH at Gfx_Info (1st corner)
-	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.SWITCH1_Width, UI.SWITCH1_Height);
 }
 void Output::DrawLED1(GraphicsInfo r_GfxInfo, bool selected) const
 {
@@ -396,7 +394,7 @@ void Output::DrawLED1(GraphicsInfo r_GfxInfo, bool selected) const
 		GateImage = "Images\\Gates\\lamp1.jpg";
 
 	//Draw LED at Gfx_Info (1st corner)
-	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.LED1_Width, UI.LED1_Height);
 }
 
 
