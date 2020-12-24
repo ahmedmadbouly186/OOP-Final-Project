@@ -143,6 +143,8 @@
     <ClCompile Include="Components\NOR3.cpp" />
     <ClCompile Include="Components\Buff.cpp" />
     <ClCompile Include="Components\XOR3.cpp" />
+    <ClCompile Include="Components\XNOR2.cpp" />
+    <ClCompile Include="Components\XOR2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Defs.H" />
@@ -248,6 +250,8 @@
     <ClInclude Include="Components\NOR3.h" />
     <ClInclude Include="Components\Buff.h" />
     <ClInclude Include="Components\XOR3.h" />
+    <ClInclude Include="Components\XNOR2.h" />
+    <ClInclude Include="Components\XOR2.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
