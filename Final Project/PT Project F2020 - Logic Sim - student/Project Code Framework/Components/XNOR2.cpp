@@ -16,11 +16,11 @@ void XNOR2::Operate()
 	//Add you code here
 	if (GetInputPinStatus(1) == GetInputPinStatus(2))
 	{
-		m_OutputPin = HIGH;
+		m_OutputPin.setStatus(HIGH);
 	}
 	else
 	{
-		m_OutputPin = LOW;
+		m_OutputPin.setStatus(LOW);
 	}
 }
 
