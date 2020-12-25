@@ -15,11 +15,11 @@ void Buff::Operate()
 	//caclulate the output status as the ANDing of the three input pins
 	if (GetInputPinStatus(1) == LOW )
 	{
-		m_OutputPin = LOW;
+		m_OutputPin.setStatus( LOW);
 	}
 	else
 	{
-		m_OutputPin = LOW;
+		m_OutputPin.setStatus(LOW);
 	}
 
 	//Add you code here

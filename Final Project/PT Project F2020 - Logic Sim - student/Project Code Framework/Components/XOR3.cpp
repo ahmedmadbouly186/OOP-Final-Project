@@ -14,35 +14,35 @@ void XOR3::Operate()
 	//caclulate the output status as the ANDing of the three input pins
 	if (GetInputPinStatus(1) == LOW && GetInputPinStatus(2) == LOW && GetInputPinStatus(3) == LOW)
 	{
-		m_OutputPin = LOW;
+		m_OutputPin.setStatus(LOW);
 	}
 	else if(GetInputPinStatus(1) == LOW && GetInputPinStatus(2) == LOW && GetInputPinStatus(3) == HIGH)
 	{
-		m_OutputPin = HIGH;
+		m_OutputPin.setStatus(HIGH);
 	}
 	else if (GetInputPinStatus(1) == LOW && GetInputPinStatus(2) == HIGH && GetInputPinStatus(3) == LOW)
 	{
-		m_OutputPin = HIGH;
+		m_OutputPin.setStatus(HIGH);
 	}
 	else if (GetInputPinStatus(1) == LOW && GetInputPinStatus(2) == HIGH && GetInputPinStatus(3) == HIGH)
 	{
-		m_OutputPin = LOW;
+		m_OutputPin.setStatus(LOW);
 	}
 	else if (GetInputPinStatus(1) == HIGH && GetInputPinStatus(2) == LOW && GetInputPinStatus(3) == LOW)
 	{
-		m_OutputPin = HIGH;
+		m_OutputPin.setStatus(HIGH);
 	}
 	else if (GetInputPinStatus(1) == HIGH && GetInputPinStatus(2) == LOW && GetInputPinStatus(3) == HIGH)
 	{
-		m_OutputPin = LOW;
+		m_OutputPin.setStatus(LOW);
 	}
 	else if (GetInputPinStatus(1) == HIGH && GetInputPinStatus(2) == HIGH && GetInputPinStatus(3) == LOW)
 	{
-		m_OutputPin = LOW;
+		m_OutputPin.setStatus(LOW);
 	}
 	else if (GetInputPinStatus(1) == HIGH && GetInputPinStatus(2) == HIGH && GetInputPinStatus(3) == HIGH)
 	{
-		m_OutputPin = HIGH;
+		m_OutputPin.setStatus(HIGH);
 	}
 
 	//Add you code here
