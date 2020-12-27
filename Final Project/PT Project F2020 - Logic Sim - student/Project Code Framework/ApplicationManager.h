@@ -32,6 +32,7 @@ public:
 	
 	//Creates an action and executes it
 	void ExecuteAction(ActionType);
+	Component* ComponentRegion(int ,int );
 	
 	void UpdateInterface();	//Redraws all the drawing window
 

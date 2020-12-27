@@ -14,7 +14,8 @@ bool OutputPin::ConnectTo(Connection *r_Conn)
 {
 	if(m_Conn < m_FanOut)
 	{
-		m_Connections[m_Conn++] = r_Conn;	//add a new connection the the array of connections
+		m_Conn++;
+		m_Connections[m_Conn] = r_Conn;	//add a new connection the the array of connections
 		return true;
 	}
 	

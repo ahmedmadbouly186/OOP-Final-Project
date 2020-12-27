@@ -4,6 +4,7 @@
 #include "..\Defs.h"
 #include "..\GUI\Output.h"
 
+
 //Base class for classes Gate, Switch, and LED.
 class Component
 {
@@ -21,10 +22,15 @@ public:
 	virtual int GetInputPinStatus(int n)=0;	//returns status of Inputpin # n if SWITCH, return -1
 
 	virtual void setInputPinStatus(int n, STATUS s)=0;	//set status of Inputpin # n, to be used by connection class.
-	void setmym_Label(string s);
-	
+	//void setmym_Label(string s);
+	//virtual InputPin* getinputpin(int n) = 0;
+	//virtual OutputPin getoutputpin() = 0;
+	virtual GraphicsInfo info() 
+	{
+		return m_GfxInfo;
+	}
 	Component();	
-	
+	Component* ComponentRegion(int ,int );
 	//Destructor must be virtual
 	virtual ~Component();
 };
