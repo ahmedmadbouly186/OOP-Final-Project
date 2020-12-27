@@ -22,7 +22,8 @@ private:
 
 
 public:
-
+	int get_compcount();
+	Component**& get_CompList();
 
 public:	
 	ApplicationManager(); //constructor

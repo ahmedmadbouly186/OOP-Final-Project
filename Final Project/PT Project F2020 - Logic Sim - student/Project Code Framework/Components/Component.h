@@ -12,6 +12,7 @@ private:
 	string m_Label;
 protected:
 	GraphicsInfo m_GfxInfo;	//The parameters required to draw a component
+	bool selected;
 public:
 	Component(const GraphicsInfo &r_GfxInfo);
 	virtual void Operate() = 0;	//Calculates the output according to the inputs
@@ -29,8 +30,11 @@ public:
 	{
 		return m_GfxInfo;
 	}
+	GraphicsInfo get_GraphicsInfo();
 	Component();	
 	Component* ComponentRegion(int ,int );
+	bool get_selected();
+	void set_selected(bool x);
 	//Destructor must be virtual
 	virtual ~Component();
 };

@@ -1,7 +1,7 @@
 #include "switch_key.h"
 switch_key::switch_key(const GraphicsInfo& r_GfxInfo, int r_FanOut) :m_OutputPin(r_FanOut)
 {
-	//set_selected(false);
+	set_selected(false);
 	closed = false;
 	m_GfxInfo.x1 = r_GfxInfo.x1;
 	m_GfxInfo.y1 = r_GfxInfo.y1;
@@ -24,11 +24,11 @@ void switch_key::Draw(Output* pOut)
 	//Call output class and pass gate drawing info to it.
 	if (closed == true)
 	{
-		pOut->DrawSWITCH1(m_GfxInfo/*, selected*/);
+		pOut->DrawSWITCH1(m_GfxInfo, selected);
 	}
 	else
 	{
-		pOut->DrawSWITCH0(m_GfxInfo/*, selected*/);
+		pOut->DrawSWITCH0(m_GfxInfo, selected);
 	}
 }
 

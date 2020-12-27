@@ -6,8 +6,16 @@
 #include "Actions\AddConnection.h"
 #include "Actions\DSGMode.h"
 #include "Actions\AddGate.h"
-#include "Actions\Close.h"
 #include "Actions\Addswitch.h"
+#include "Actions\AddXNOR2.h"
+#include "Actions\AddXOR2.h"
+#include "Actions\change_switch.h"
+#include "Actions/select_c.h"
+#include "Actions/Close.h"
+#include"Actions/SIMMODE.h"
+#include "Actions/AddINVgate.h"
+#include "Actions/AddNANDgate2.h"
+#include "Actions/AddNORgate2.h"
 
 
 ApplicationManager::ApplicationManager()
@@ -54,8 +62,24 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 		case DSN_MODE:
 			pAct = new DSGMode(this);
+			break;
 		case ADD_XOR_GATE_3:
 			pAct = new ADDXORGATE3(this);
+			break;
+		case ADD_XNOR_GATE_2:
+			pAct = new AddXNOR2(this);
+			break;
+		case ADD_XOR_GATE_2:
+			pAct = new AddXOR2(this);
+			break;
+		case ADD_Switch:
+			pAct = new Addswitch(this);
+			break;
+		case Change_Switch:
+			pAct = new change_switch(this);
+			break;
+		case SELECT:
+			pAct = new select_c(this);
 			break;
 		case ADD_Gate:
 			pAct = new AddGate(this);
@@ -63,8 +87,19 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case close:
 			pAct = new Close(this);
 			break;
-		case ADD_Switch:
-			pAct = new Addswitch(this);
+		case ADD_NAND_GATE_2:
+			pAct = new AddNANDgate2(this);
+			break;
+
+		case ADD_NOR_GATE_2:
+			pAct = new AddNORgate2(this);
+			break;
+
+		case ADD_INV:
+			pAct = new AddINVgate(this);
+			break;
+		case SIM_MODE:
+			pAct = new SIMMODE(this);
 			break;
 		case EXIT:
 			///TODO: create ExitAction here
@@ -85,7 +120,15 @@ void ApplicationManager::UpdateInterface()
 			CompList[i]->Draw(OutputInterface);
 
 }
-
+int ApplicationManager::get_compcount()
+{
+	return CompCount;
+}
+Component**& ApplicationManager::get_CompList()
+{
+	Component** x = this->CompList;
+	return x;
+}
 ////////////////////////////////////////////////////////////////////
 Component* ApplicationManager::ComponentRegion(int x,int y) {
 	for (int i = 0; i < CompCount; i++) {

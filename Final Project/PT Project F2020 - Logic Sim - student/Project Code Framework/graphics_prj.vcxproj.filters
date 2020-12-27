@@ -154,6 +154,17 @@
     <ClCompile Include="Actions\DSGMode.cpp" />
     <ClCompile Include="Actions\Addswitch.cpp" />
     <ClCompile Include="Components\switch_key.cpp" />
+    <ClCompile Include="Actions\AddINVgate.cpp" />
+    <ClCompile Include="Actions\AddNANDgate2.cpp" />
+    <ClCompile Include="Actions\AddNORgate2.cpp" />
+    <ClCompile Include="Actions\AddXNOR2.cpp" />
+    <ClCompile Include="Actions\AddXOR2.cpp" />
+    <ClCompile Include="Actions\change_switch.cpp" />
+    <ClCompile Include="Actions\select_c.cpp" />
+    <ClCompile Include="Actions\SIMMODE.cpp" />
+    <ClCompile Include="Components\INV.cpp" />
+    <ClCompile Include="Components\NAND2.cpp" />
+    <ClCompile Include="Components\NOR2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Defs.H" />
@@ -270,6 +281,17 @@
     <ClInclude Include="Actions\Close.h" />
     <ClInclude Include="Actions\DSGMode.h" />
     <ClInclude Include="Components\switch_key.h" />
+    <ClInclude Include="Actions\AddINVgate.h" />
+    <ClInclude Include="Actions\AddNANDgate2.h" />
+    <ClInclude Include="Actions\AddNORgate2.h" />
+    <ClInclude Include="Actions\AddXNOR2.h" />
+    <ClInclude Include="Actions\AddXOR2.h" />
+    <ClInclude Include="Actions\change_switch.h" />
+    <ClInclude Include="Actions\select_c.h" />
+    <ClInclude Include="Actions\SIMMODE.h" />
+    <ClInclude Include="Components\INV.h" />
+    <ClInclude Include="Components\NAND2.h" />
+    <ClInclude Include="Components\NOR2.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
