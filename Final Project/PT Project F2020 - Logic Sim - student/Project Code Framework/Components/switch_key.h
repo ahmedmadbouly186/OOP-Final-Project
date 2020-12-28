@@ -17,4 +17,5 @@ public:
 	virtual void setInputPinStatus(int n, STATUS s);
 	bool get_close();
 	void set_close(bool x);
+	OutputPin getoutputpin();
 };

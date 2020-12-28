@@ -145,6 +145,7 @@ ActionType Input::GetUserAction() const
 			case ITM_SAVE_Simulate: return SAVE;
 			case ITM_LOAD_Simulate: return LOAD;
 			case ITM_SWITCH_DSN: return DSN_MODE;
+			case ITM_Change_Switch:  return Change_Switch;
 			case ITM_2EXIT: return EXIT;
 
 			default: return SIM_TOOL;	//A click on empty place in Simulation toolbar

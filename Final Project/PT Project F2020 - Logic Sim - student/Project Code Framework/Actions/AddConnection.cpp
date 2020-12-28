@@ -2,6 +2,8 @@
 #include "..\ApplicationManager.h"
 #include "Action.h"
 #include "..\Components\Gate.h"
+#include "..\Components\LED.h"
+#include "..\Components\switch_key.h"
 
 AddConnection::AddConnection(ApplicationManager* pApp) :Action(pApp)
 {
@@ -35,8 +37,169 @@ void AddConnection::Execute()
 {
 	//Get Center point of the Gate
 	ReadActionParameters();
+	GraphicsInfo M_GfxInfo;
+	OutputPin* outpin = NULL;
+	InputPin* inpin;
+	Component**x = pManager->get_CompList();
+	for (int i = 0; i < pManager->get_compcount(); i++) {
+
+		Component* p = x[i]->ComponentRegion(x1, y1);
+		if (p != NULL)
+		{
+			Gate* g = dynamic_cast<Gate*>(p);
+			if (g != NULL)
+			{
+				GraphicsInfo m_GfxInfo1 = g->get_GraphicsInfo();
+				if (x1 > m_GfxInfo1.x1 + UI.AND2_Width / 2) {
+					outpin = &g->getoutputpin();
+					M_GfxInfo.x1 = m_GfxInfo1.x2;
+					M_GfxInfo.y1 = m_GfxInfo1.y2 - UI.AND2_Width / 2;
+					break;
+				}
+				else
+				{
+					int m = g->no_inputs();
+					M_GfxInfo.x1 = m_GfxInfo1.x1;
+					if (m == 1) {
+						inpin = g->getinputpin(m - 1);
+						M_GfxInfo.y1 = m_GfxInfo1.y2 - UI.AND2_Width / 2;
+						break;
+					}
+					else if (m == 2) {
+						if (y1 < m_GfxInfo1.y1 + UI.AND2_Height / 2) {
+							inpin = g->getinputpin(m - 2);
+							M_GfxInfo.y1 =m_GfxInfo1.y2 - UI.AND2_Width / 3;
+							break;
+						}
+						else {
+							inpin = g->getinputpin(m - 1);
+							M_GfxInfo.y1 = m_GfxInfo1.y2 -2* UI.AND2_Width / 3;;
+							break;
+						}
+					}
+					else
+					{
+						if (y1 < m_GfxInfo1.y1 + UI.AND2_Height / 3) {
+							inpin = g->getinputpin(m - 3);
+							M_GfxInfo.y1 = m_GfxInfo1.y2 - 3*UI.AND2_Width / 4;
+							break;
+						}
+						else if (y1 > m_GfxInfo1.y1 + UI.AND2_Height / 3 && y1 < m_GfxInfo1.y1 + 2 * UI.AND2_Height / 3) {
+							inpin = g->getinputpin(m - 2);
+							M_GfxInfo.y1 = m_GfxInfo1.y2 - UI.AND2_Width / 2;
+							break;
+						}
+						else
+						{
+							inpin = g->getinputpin(m - 1);
+							M_GfxInfo.y1 = m_GfxInfo1.y2 - UI.AND2_Width / 4;
+							break;
+						}
+					}
+				}
+			}
+			switch_key * Switch= dynamic_cast<switch_key*>(p);
+			if (Switch != NULL)
+			{
+				GraphicsInfo m_GfxInfo1 = Switch->get_GraphicsInfo();
+				outpin = &Switch->getoutputpin();
+				M_GfxInfo.x1 = m_GfxInfo1.x2;
+				M_GfxInfo.y1 = m_GfxInfo1.y2 - UI.SWITCH0_Height / 2;
+				break;
+			}
+			LED* led = dynamic_cast<LED*>(p);
+			if (led != NULL)
+			{
+				GraphicsInfo m_GfxInfo1 = led->get_GraphicsInfo();
+				inpin = &led->getinputpin();
+				M_GfxInfo.x1 = m_GfxInfo1.x2;
+				M_GfxInfo.y1 = m_GfxInfo1.y2 - UI.LED0_Height / 2;
+				break;
+			}
+		}
+
+	}
+	for (int i = 0; i < pManager->get_compcount(); i++) {
+
+		Component* p = x[i]->ComponentRegion(x2, y2);
+		if (p != NULL)
+		{
+			Gate* g = dynamic_cast<Gate*>(p);
+			if (g != NULL)
+			{
+				GraphicsInfo m_GfxInfo1 = g->get_GraphicsInfo();
+				if (x1 > m_GfxInfo1.x1 + UI.AND2_Width / 2) {
+					outpin = &g->getoutputpin();
+					M_GfxInfo.x2 = m_GfxInfo1.x2;
+					M_GfxInfo.y2 = m_GfxInfo1.y2 - UI.AND2_Width / 2;
+					break;
+				}
+				else
+				{
+					int m = g->no_inputs();
+					M_GfxInfo.x2 = m_GfxInfo1.x1;
+					if (m == 1) {
+						inpin = g->getinputpin(m - 1);
+						M_GfxInfo.y2 = m_GfxInfo1.y2 - UI.AND2_Width / 2;
+						break;
+					}
+					else if (m == 2) {
+						if (y1 < m_GfxInfo1.y1 + UI.AND2_Height / 2) {
+							inpin = g->getinputpin(m - 2);
+							M_GfxInfo.y2 = m_GfxInfo1.y2 - UI.AND2_Width / 3;
+							break;
+						}
+						else {
+							inpin = g->getinputpin(m - 1);
+							M_GfxInfo.y2 = m_GfxInfo1.y2 - 2 * UI.AND2_Width / 3;;
+							break;
+						}
+					}
+					else
+					{
+						if (y1 < m_GfxInfo1.y1 + UI.AND2_Height / 3) {
+							inpin = g->getinputpin(m - 3);
+							M_GfxInfo.y2 = m_GfxInfo1.y2 - 3 * UI.AND2_Width / 4;
+							break;
+						}
+						else if (y1 > m_GfxInfo1.y1 + UI.AND2_Height / 3 && y1 < m_GfxInfo1.y1 + 2 * UI.AND2_Height / 3) {
+							inpin = g->getinputpin(m - 2);
+							M_GfxInfo.y2 = m_GfxInfo1.y2 - UI.AND2_Width / 2;
+							break;
+						}
+						else
+						{
+							inpin = g->getinputpin(m - 1);
+							M_GfxInfo.y2 = m_GfxInfo1.y2 - UI.AND2_Width / 4;
+							break;
+						}
+					}
+				}
+			}
+			switch_key* Switch = dynamic_cast<switch_key*>(p);
+			if (Switch != NULL)
+			{
+				GraphicsInfo m_GfxInfo1 = Switch->get_GraphicsInfo();
+				outpin = &Switch->getoutputpin();
+				M_GfxInfo.x2 = m_GfxInfo1.x2;
+				M_GfxInfo.y2 = m_GfxInfo1.y2 - UI.SWITCH0_Height / 2;
+				break;
+			}
+			LED* led = dynamic_cast<LED*>(p);
+			if (led != NULL)
+			{
+				GraphicsInfo m_GfxInfo1 = led->get_GraphicsInfo();
+				inpin = &led->getinputpin();
+				M_GfxInfo.x2 = m_GfxInfo1.x1;
+				M_GfxInfo.y2 = m_GfxInfo1.y1 + UI.LED0_Height / 2;
+				break;
+			}
+		}
+
+	}
 
 	// component list check region
+	/*
 	GraphicsInfo M_GfxInfo;
 	OutputPin* outpin=NULL;
 	InputPin* inpin;
@@ -90,8 +253,9 @@ void AddConnection::Execute()
 			}
 		}
 	}
+	*/
 
-
+	/*
 	Component* p2 = pManager->ComponentRegion(x2, y2);
 	if (p2 != NULL)
 	{
@@ -148,8 +312,8 @@ void AddConnection::Execute()
 	M_GfxInfo.x1 = x1;
 	M_GfxInfo.y1 = y1;
 	M_GfxInfo.x2 = x2;
-	M_GfxInfo.y2 = y2;
-	if (p1 != NULL && p2 != NULL&& outpin != NULL && inpin != NULL) {
+	M_GfxInfo.y2 = y2;*/
+	if (outpin != NULL && inpin != NULL) {
 		
 		Connection* pA = new Connection(M_GfxInfo,outpin,inpin);
 		outpin->ConnectTo(pA);

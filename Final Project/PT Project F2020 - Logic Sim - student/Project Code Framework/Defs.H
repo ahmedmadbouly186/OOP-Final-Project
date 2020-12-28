@@ -118,6 +118,7 @@ enum SimMenuItem //The items of the simulation menu (you should add more items)
 	ITM_SAVE_Simulate,
 	ITM_LOAD_Simulate,
 	ITM_SWITCH_DSN,
+	ITM_Change_Switch,
 	ITM_2EXIT,
 	//TODO:Add more items names here
 

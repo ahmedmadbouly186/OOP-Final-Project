@@ -165,6 +165,9 @@
     <ClCompile Include="Components\INV.cpp" />
     <ClCompile Include="Components\NAND2.cpp" />
     <ClCompile Include="Components\NOR2.cpp" />
+    <ClCompile Include="Components\LED.cpp" />
+    <ClCompile Include="Actions\AddLEDgate.cpp" />
+    <ClCompile Include="Actions\MOVE.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Defs.H" />
@@ -292,6 +295,9 @@
     <ClInclude Include="Components\INV.h" />
     <ClInclude Include="Components\NAND2.h" />
     <ClInclude Include="Components\NOR2.h" />
+    <ClInclude Include="Components\LED.h" />
+    <ClInclude Include="Actions\AddLEDgate.h" />
+    <ClInclude Include="Actions\MOVE.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

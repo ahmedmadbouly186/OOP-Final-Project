@@ -44,6 +44,10 @@ int switch_key::GetInputPinStatus(int n)
 void switch_key::setInputPinStatus(int n, STATUS s)
 {
 }
+OutputPin switch_key::getoutputpin()
+{
+	return m_OutputPin;
+}
 bool switch_key::get_close()
 {
 	return closed;

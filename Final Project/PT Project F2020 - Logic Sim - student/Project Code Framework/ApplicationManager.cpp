@@ -16,6 +16,8 @@
 #include "Actions/AddINVgate.h"
 #include "Actions/AddNANDgate2.h"
 #include "Actions/AddNORgate2.h"
+#include "Actions/AddLEDgate.h"
+#include "Actions/MOVE.h"
 
 
 ApplicationManager::ApplicationManager()
@@ -100,6 +102,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 		case SIM_MODE:
 			pAct = new SIMMODE(this);
+			break;
+		case ADD_LED:
+			pAct = new AddLEDgate(this);
+			break;
+		case MOVE:
+			pAct = new Move(this);
 			break;
 		case EXIT:
 			///TODO: create ExitAction here
