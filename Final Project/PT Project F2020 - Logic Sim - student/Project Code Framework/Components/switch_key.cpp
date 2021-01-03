@@ -45,9 +45,9 @@ int switch_key::GetInputPinStatus(int n)
 void switch_key::setInputPinStatus(int n, STATUS s)
 {
 }
-OutputPin switch_key::getoutputpin()
+OutputPin* switch_key::getoutputpin()
 {
-	return m_OutputPin;
+	return &m_OutputPin;
 }
 bool switch_key::get_close()
 {
@@ -59,5 +59,5 @@ void switch_key::set_close(bool x)
 }
 void switch_key::save(ofstream& outputfile)
 {
-	outputfile << "Switch" << "\t" << ID << "\t" << get_label() << "\t"<<m_GfxInfo.x1 << "\t" << m_GfxInfo.y1 << endl;
+	outputfile << Switch << "\t" << ID << "\t" << get_label() << "\t"<<m_GfxInfo.x1 << "\t" << m_GfxInfo.y1 << endl;
 }

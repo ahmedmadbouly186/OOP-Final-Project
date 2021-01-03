@@ -55,11 +55,11 @@ void LED::setInputPinStatus(int n, STATUS s)
 {
 	m_InputPins.setStatus(s);
 }
-InputPin LED::getinputpin()
+InputPin* LED::getinputpin()
 {
-	return m_InputPins;
+	return &m_InputPins;
 }
 void LED::save(ofstream&  outputfile)
 {
-	outputfile << "LED" << "\t" << ID << "\t" << get_label()<<"\t"<< m_GfxInfo.x1 << "\t" << m_GfxInfo.y1 << endl;
+	outputfile << Led << "\t" << ID << "\t" << get_label()<<"\t"<< m_GfxInfo.x1 << "\t" << m_GfxInfo.y1 << endl;
 }

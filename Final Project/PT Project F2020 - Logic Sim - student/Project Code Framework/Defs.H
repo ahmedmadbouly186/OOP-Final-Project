@@ -4,7 +4,7 @@
 //This header file contains some defenitions to be used all over the application
 
 //All possible actions
-/*enum ComponentType
+enum ComponentType
 {
 	And2,
 	Buffer,
@@ -22,7 +22,7 @@
 	connection
 
 };
-*/
+
 enum ActionType
 {
 	ADD_Gate,

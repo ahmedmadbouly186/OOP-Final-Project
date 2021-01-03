@@ -53,3 +53,7 @@ void Buff::setInputPinStatus(int n, STATUS s)
 	m_InputPins[n - 1].setStatus(s);
 }
 
+void Buff::save(ofstream& outputfile)
+{
+	outputfile << Buffer << "\t" << ID << "\t" << get_label() << "\t" << m_GfxInfo.x1 << "\t" << m_GfxInfo.y1 << endl;
+}

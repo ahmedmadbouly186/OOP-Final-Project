@@ -16,7 +16,8 @@ Gate::Gate(int r_Inputs, int r_FanOut,int id):m_OutputPin(r_FanOut)
 	for(int i=0; i<m_Inputs; i++)
 		m_InputPins[i].setComponent(this);
 }
+/*
 void Gate:: save(ofstream& outputfile)
 {
 	outputfile << "Gate" << "\t" << ID << "\t" <<get_label() <<"\t"<< m_GfxInfo.x1 << "\t" << m_GfxInfo.y1 << endl;
-}
+}*/

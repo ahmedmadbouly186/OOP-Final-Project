@@ -41,7 +41,7 @@ void ApplicationManager::AddComponent(Component* pComp)
 	CompList[CompCount++] = pComp;
 	for (int i = 0; i < CompCount; i++)
 	{
-		cout << CompList[i]->GetInputPinStatus(1) << endl;
+		cout << CompList[i]->GetOutPinStatus() << endl;
 	}
 	counter++;
 }
@@ -144,16 +144,14 @@ int ApplicationManager::get_compcount()
 {
 	return CompCount;
 }
+
 Component**& ApplicationManager::get_CompList()
 {
 	Component** x = this->CompList;
 	return x;
 }
 ////////////////////////////////////////////////////////////////////
-InputPin* ApplicationManager::getinputpin(int id)
-{
 
-}
 
 Component* ApplicationManager::ComponentRegion(int x,int y) {
 	for (int i = 0; i < CompCount; i++) {

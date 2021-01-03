@@ -21,8 +21,8 @@ protected:
 	int m_Inputs;		//No. of input pins of that Gate.
 public:
 	Gate(int r_Inputs, int r_FanOut,int id);
-	OutputPin getoutputpin() {
-		return m_OutputPin;
+	OutputPin* getoutputpin() {
+		return &m_OutputPin;
 	}
 	InputPin* getinputpin(int n) {
 		if (n < m_Inputs) {
@@ -33,7 +33,7 @@ public:
 	{
 		return m_Inputs;
 	}
-	virtual void save(ofstream&);
+	virtual void save(ofstream&)=0;
 
 };
 

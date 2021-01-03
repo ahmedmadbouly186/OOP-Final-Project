@@ -18,5 +18,5 @@ public:
 	bool get_close();
 	void set_close(bool x);
 	virtual void save(ofstream&);
-	OutputPin getoutputpin();
+	OutputPin* getoutputpin();
 };

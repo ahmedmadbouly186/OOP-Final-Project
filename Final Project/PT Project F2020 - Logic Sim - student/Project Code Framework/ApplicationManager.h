@@ -7,6 +7,7 @@
 #include "Actions\Action.h"
 #include "Components\Component.h"
 
+
 //Main class that manages everything in the application.
 class ApplicationManager
 {
@@ -48,7 +49,7 @@ public:
 		return counter;
 	}
 	void save(ofstream & outputfile);
-	InputPin* getinputpin(int id);
+	
 	//destructor
 	~ApplicationManager();
 };

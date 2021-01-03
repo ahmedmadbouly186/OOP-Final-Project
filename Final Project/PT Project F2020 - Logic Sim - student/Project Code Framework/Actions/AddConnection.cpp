@@ -49,7 +49,7 @@ void AddConnection::Execute()
 		{
 			GraphicsInfo m_GfxInfo1 = g->get_GraphicsInfo();
 			if (x1 > m_GfxInfo1.x1 + UI.AND2_Width / 2) {
-				outpin = &g->getoutputpin();
+				outpin = g->getoutputpin();
 				inpin = NULL;
 				M_GfxInfo.x1 = m_GfxInfo1.x2;
 				M_GfxInfo.y1 = m_GfxInfo1.y2 - UI.AND2_Width / 2;
@@ -103,7 +103,7 @@ void AddConnection::Execute()
 		{
 			id1 =  Switch->get_ID();
 			GraphicsInfo m_GfxInfo1 = Switch->get_GraphicsInfo();
-			outpin = &Switch->getoutputpin();
+			outpin = Switch->getoutputpin();
 
 			M_GfxInfo.x1 = m_GfxInfo1.x2;
 			M_GfxInfo.y1 = m_GfxInfo1.y2 - UI.SWITCH0_Height / 2;
@@ -115,7 +115,7 @@ void AddConnection::Execute()
 			id2 = led->get_ID();
 			GraphicsInfo m_GfxInfo1 = led->get_GraphicsInfo();
 			n = 1;
-			inpin = &led->getinputpin();
+			inpin = led->getinputpin();
 			M_GfxInfo.x1 = m_GfxInfo1.x2;
 			M_GfxInfo.y1 = m_GfxInfo1.y2 - UI.LED0_Height / 2;
 		}
@@ -128,7 +128,7 @@ void AddConnection::Execute()
 		{
 			GraphicsInfo m_GfxInfo1 = g->get_GraphicsInfo();
 			if (x1 > m_GfxInfo1.x1 + UI.AND2_Width / 2) {
-				outpin =& g->getoutputpin();
+				outpin = g->getoutputpin();
 				M_GfxInfo.x2 = m_GfxInfo1.x2;
 				M_GfxInfo.y2 = m_GfxInfo1.y2 - UI.AND2_Width / 2;
 				id1 = g->get_ID();
@@ -182,7 +182,7 @@ void AddConnection::Execute()
 		{
 			id1 = Switch->get_ID();
 			GraphicsInfo m_GfxInfo1 = Switch->get_GraphicsInfo();
-			outpin = &Switch->getoutputpin();
+			outpin = Switch->getoutputpin();
 			M_GfxInfo.x2 = m_GfxInfo1.x2;
 			M_GfxInfo.y2 = m_GfxInfo1.y2 - UI.SWITCH0_Height / 2;
 		}
@@ -192,7 +192,7 @@ void AddConnection::Execute()
 			id2 = led->get_ID();
 			GraphicsInfo m_GfxInfo1 = led->get_GraphicsInfo();
 			n = 1;
-			inpin = &led->getinputpin();
+			inpin = led->getinputpin();
 			//inpin = new InputPin(led->getinputpin());
 			M_GfxInfo.x2 = m_GfxInfo1.x1;
 			M_GfxInfo.y2 = m_GfxInfo1.y1 + UI.LED0_Height / 2;
