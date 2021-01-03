@@ -12,17 +12,21 @@
 #include "Actions\change_switch.h"
 #include "Actions/select_c.h"
 #include "Actions/Close.h"
-#include"Actions/SIMMODE.h"
+#include "Actions/SIMMODE.h"
 #include "Actions/AddINVgate.h"
 #include "Actions/AddNANDgate2.h"
 #include "Actions/AddNORgate2.h"
 #include "Actions/AddLEDgate.h"
 #include "Actions/MOVE.h"
+#include "Actions/Save.h"
+#include<iostream>
+using namespace std;
 
 
 ApplicationManager::ApplicationManager()
 {
 	CompCount = 0;
+	counter = 0;
 
 	for(int i=0; i<MaxCompCount; i++)
 		CompList[i] = NULL;
@@ -34,7 +38,12 @@ ApplicationManager::ApplicationManager()
 ////////////////////////////////////////////////////////////////////
 void ApplicationManager::AddComponent(Component* pComp)
 {
-	CompList[CompCount++] = pComp;		
+	CompList[CompCount++] = pComp;
+	for (int i = 0; i < CompCount; i++)
+	{
+		cout << CompList[i]->GetInputPinStatus(1) << endl;
+	}
+	counter++;
 }
 ////////////////////////////////////////////////////////////////////
 
@@ -109,6 +118,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case MOVE:
 			pAct = new Move(this);
 			break;
+		case SAVE:
+			pAct = new Save(this);
+			break;
 		case EXIT:
 			///TODO: create ExitAction here
 			break;
@@ -138,14 +150,16 @@ Component**& ApplicationManager::get_CompList()
 	return x;
 }
 ////////////////////////////////////////////////////////////////////
+InputPin* ApplicationManager::getinputpin(int id)
+{
+
+}
+
 Component* ApplicationManager::ComponentRegion(int x,int y) {
 	for (int i = 0; i < CompCount; i++) {
 		Component* p = CompList[i]->ComponentRegion(x, y);
 		if (p != NULL){
-			Gate* g = dynamic_cast<Gate*>(p);
-			if (g != NULL) {
-				return g;
-			}
+			return p;
 		}
 	}
 	return NULL;
@@ -173,4 +187,35 @@ ApplicationManager::~ApplicationManager()
 	delete OutputInterface;
 	delete InputInterface;
 	
+}
+void ApplicationManager::save(ofstream& outputfile)
+{
+	outputfile << CompCount << endl;
+	for (int i = 0; i < CompCount; i++)
+	{
+		Gate* gate = dynamic_cast<Gate*>(CompList[i]);
+		if (gate != NULL)
+		{
+			CompList[i]->save(outputfile);
+		}
+		switch_key* Switch = dynamic_cast<switch_key*>(CompList[i]);
+		if (Switch != NULL)
+		{
+			CompList[i]->save(outputfile);
+		}
+		LED* led = dynamic_cast<LED*>(CompList[i]);
+		if (led != NULL)
+		{
+			CompList[i]->save(outputfile);
+		}
+	}
+	outputfile << "connections" << endl;
+	for (int i = 0; i < CompCount; i++)
+	{
+		Connection* connection1 = dynamic_cast<Connection*>(CompList[i]);
+		if (connection1 != NULL)
+		{
+			CompList[i]->save(outputfile);
+		}
+	}
 }

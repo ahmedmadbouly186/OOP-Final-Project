@@ -42,7 +42,7 @@ void AddNORgate2::Execute()
 	GInfo.y2 = Cy + Wdth / 2;
 	if (GInfo.x1 > 0 && GInfo.x2<UI.width && GInfo.y1>UI.ToolBarHeight && GInfo.y2 < (UI.height - UI.StatusBarHeight))
 	{
-		NOR2* pA = new NOR2(GInfo,AND2_FANOUT);
+		NOR2* pA = new NOR2(GInfo,AND2_FANOUT, pManager->get_counter());
 		pManager->AddComponent(pA);
 	}
 }

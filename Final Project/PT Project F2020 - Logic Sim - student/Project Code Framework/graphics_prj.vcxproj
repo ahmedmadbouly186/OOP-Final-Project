@@ -144,6 +144,7 @@
     <ClCompile Include="Actions\Close.cpp" />
     <ClCompile Include="Actions\DSGMode.cpp" />
     <ClCompile Include="Actions\MOVE.cpp" />
+    <ClCompile Include="Actions\Save.cpp" />
     <ClCompile Include="Actions\select_c.cpp" />
     <ClCompile Include="Actions\SIMMODE.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
@@ -222,6 +223,7 @@
     <ClInclude Include="Actions\Close.h" />
     <ClInclude Include="Actions\DSGMode.h" />
     <ClInclude Include="Actions\MOVE.h" />
+    <ClInclude Include="Actions\Save.h" />
     <ClInclude Include="Actions\select_c.h" />
     <ClInclude Include="Actions\SIMMODE.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />

@@ -1,8 +1,12 @@
 #include "Connection.h"
 
-Connection::Connection(const GraphicsInfo &r_GfxInfo, OutputPin *pSrcPin,InputPin *pDstPin):Component(r_GfxInfo)	
+Connection::Connection(const GraphicsInfo &r_GfxInfo, OutputPin *pSrcPin,InputPin *pDstPin,int id1,int id2, int pin_no):Component(r_GfxInfo)
 	
 {
+	ID1 = id1;
+	ID2 = id2;
+	inputpin_no = pin_no;
+	set_selected(false);
 	SrcPin = pSrcPin;
 	DstPin = pDstPin;
 }
@@ -45,4 +49,8 @@ int Connection::GetInputPinStatus(int n)	//returns status of Inputpin # n if SWI
 void Connection::setInputPinStatus(int n, STATUS s)
 {
 	SrcPin->setStatus(s);
+}
+void Connection::save(ofstream& outputfile)
+{
+	outputfile << ID1 << "\t" << ID2 <<"\t"<<inputpin_no <<endl;
 }

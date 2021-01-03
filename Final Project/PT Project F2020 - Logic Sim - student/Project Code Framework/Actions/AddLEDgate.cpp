@@ -40,7 +40,7 @@ void AddLEDgate::Execute()
 	GInfo.x2 = Cx + Len / 2;
 	GInfo.y1 = Cy - Wdth / 2;
 	GInfo.y2 = Cy + Wdth / 2;
-	LED* pA = new LED(GInfo);
+	LED* pA = new LED(GInfo,pManager->get_counter());
 	pManager->AddComponent(pA);
 }
 

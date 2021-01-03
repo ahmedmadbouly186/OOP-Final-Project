@@ -43,7 +43,7 @@ void Addswitch::Execute()
 	GInfo.y2 = Cy + Wdth / 2;
 	if (GInfo.x1 > 0 && GInfo.x2<UI.width && GInfo.y1>UI.ToolBarHeight && GInfo.y2 < (UI.height - UI.StatusBarHeight))
 	{
-		switch_key* pA = new switch_key(GInfo, AND2_FANOUT);
+		switch_key* pA = new switch_key(GInfo, AND2_FANOUT,pManager->get_counter());
 		pManager->AddComponent(pA);
 	}
 	

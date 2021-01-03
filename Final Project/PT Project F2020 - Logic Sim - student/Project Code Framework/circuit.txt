@@ -1,0 +1,7 @@
+5
+Gate	0		195	286
+Gate	1		537	289
+connections
+0	1	2
+0	1	2
+0	1	2

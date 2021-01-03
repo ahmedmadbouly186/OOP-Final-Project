@@ -18,7 +18,17 @@ Component* Component::ComponentRegion(int x, int y)
 		return NULL;
 	}
 }
-
+Component* Component::get_component(int id)
+{
+	if (ID == id)
+	{
+		return this;
+	}
+	else
+	{
+		return NULL;
+	}
+}
 void Component::set_GraphicsInfo(GraphicsInfo r_GfxInfo) {
 	m_GfxInfo.x1 = r_GfxInfo.x1;
 	m_GfxInfo.x2 = r_GfxInfo.x2;

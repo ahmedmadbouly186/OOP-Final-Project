@@ -6,7 +6,7 @@ class Buff: public Gate
 {
 
 public:
-	Buff(const GraphicsInfo& r_GfxInfo, int r_FanOut);
+	Buff(const GraphicsInfo& r_GfxInfo, int r_FanOut,int id);
 	virtual void Operate();	//Calculates the output of the NOR gate
 	virtual void Draw(Output* pOut);	//Draws 3-input gate
 

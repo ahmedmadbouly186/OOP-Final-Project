@@ -45,7 +45,7 @@ void AddBuff::Execute()
 	GInfo.y2 = Cy + Wdth / 2;
 	if(GInfo.y1 > UI.ToolBarHeight && GInfo.y2 < UI.height - UI.StatusBarHeight && GInfo.x1 > 0 && GInfo.x2 < UI.width)
 	{
-		Buff* pA = new Buff(GInfo, AND2_FANOUT);
+		Buff* pA = new Buff(GInfo, AND2_FANOUT, pManager->get_counter());
 		pManager->AddComponent(pA);
 	}
 }

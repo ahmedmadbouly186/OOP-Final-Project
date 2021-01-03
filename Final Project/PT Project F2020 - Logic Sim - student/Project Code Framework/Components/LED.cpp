@@ -1,6 +1,7 @@
 #include "LED.h"
-LED::LED(const GraphicsInfo& r_GfxInfo) 
+LED::LED(const GraphicsInfo& r_GfxInfo,int id) 
 {
+	ID = id;
 	m_GfxInfo.x1 = r_GfxInfo.x1;
 	m_GfxInfo.y1 = r_GfxInfo.y1;
 	m_GfxInfo.x2 = r_GfxInfo.x2;
@@ -58,4 +59,7 @@ InputPin LED::getinputpin()
 {
 	return m_InputPins;
 }
-
+void LED::save(ofstream&  outputfile)
+{
+	outputfile << "LED" << "\t" << ID << "\t" << get_label()<<"\t"<< m_GfxInfo.x1 << "\t" << m_GfxInfo.y1 << endl;
+}

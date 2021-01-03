@@ -19,7 +19,7 @@ private:
 
 	Output* OutputInterface; //pointer to the Output Clase Interface
 	Input* InputInterface; //pointer to the Input Clase Interface
-
+	int counter;
 
 public:
 	int get_compcount();
@@ -43,7 +43,12 @@ public:
 
 	//Adds a new component to the list of components
 	void AddComponent(Component* pComp);
-
+	int get_counter()
+	{
+		return counter;
+	}
+	void save(ofstream & outputfile);
+	InputPin* getinputpin(int id);
 	//destructor
 	~ApplicationManager();
 };

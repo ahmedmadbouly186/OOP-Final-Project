@@ -44,7 +44,7 @@ void ADDXORGATE3::Execute()
 	if (GInfo.y1 > UI.ToolBarHeight && GInfo.y2 < UI.height - UI.StatusBarHeight && GInfo.x1 > 0 && GInfo.x2 < UI.width)
 	{
 
-		XOR3* pA = new XOR3(GInfo, AND2_FANOUT);
+		XOR3* pA = new XOR3(GInfo, AND2_FANOUT, pManager->get_counter());
 		pManager->AddComponent(pA);
 	}
 	//XOR3* pA = new XOR3(GInfo, AND2_FANOUT);

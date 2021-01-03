@@ -1,6 +1,6 @@
 #include "NOR2.h"
 
-NOR2::NOR2(const GraphicsInfo& r_GfxInfo, int r_FanOut) :Gate(2, r_FanOut)
+NOR2::NOR2(const GraphicsInfo& r_GfxInfo, int r_FanOut, int id) :Gate(2, r_FanOut,id)
 {
 	m_GfxInfo.x1 = r_GfxInfo.x1;
 	m_GfxInfo.y1 = r_GfxInfo.y1;

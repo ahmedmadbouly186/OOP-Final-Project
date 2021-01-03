@@ -1,6 +1,7 @@
 #include "switch_key.h"
-switch_key::switch_key(const GraphicsInfo& r_GfxInfo, int r_FanOut) :m_OutputPin(r_FanOut)
+switch_key::switch_key(const GraphicsInfo& r_GfxInfo, int r_FanOut,int id) :m_OutputPin(r_FanOut)
 {
+	ID = id;
 	set_selected(false);
 	closed = false;
 	m_GfxInfo.x1 = r_GfxInfo.x1;
@@ -55,4 +56,8 @@ bool switch_key::get_close()
 void switch_key::set_close(bool x)
 {
 	closed = x;
+}
+void switch_key::save(ofstream& outputfile)
+{
+	outputfile << "Switch" << "\t" << ID << "\t" << get_label() << "\t"<<m_GfxInfo.x1 << "\t" << m_GfxInfo.y1 << endl;
 }

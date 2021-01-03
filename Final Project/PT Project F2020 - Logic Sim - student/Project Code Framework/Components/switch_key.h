@@ -8,7 +8,7 @@ private:
 protected:
 	OutputPin m_OutputPin;
 public:
-	switch_key(const GraphicsInfo& r_GfxInfo, int r_FanOut);
+	switch_key(const GraphicsInfo& r_GfxInfo, int r_FanOut,int id);
 	virtual void Operate();	//Calculates the output of the AND gate
 	virtual void Draw(Output* pOut);	//Draws 2-input gate
 
@@ -17,5 +17,6 @@ public:
 	virtual void setInputPinStatus(int n, STATUS s);
 	bool get_close();
 	void set_close(bool x);
+	virtual void save(ofstream&);
 	OutputPin getoutputpin();
 };

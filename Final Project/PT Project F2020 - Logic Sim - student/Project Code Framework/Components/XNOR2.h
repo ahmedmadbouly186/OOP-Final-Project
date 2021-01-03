@@ -3,7 +3,7 @@
 class XNOR2:public Gate
 {
 public:
-	XNOR2(const GraphicsInfo& r_GfxInfo, int r_FanOut);
+	XNOR2(const GraphicsInfo& r_GfxInfo, int r_FanOut, int id);
 	virtual void Operate();	//Calculates the output of the XNOR2 gate
 	virtual void Draw(Output* pOut);	//Draws 2-input gate
 

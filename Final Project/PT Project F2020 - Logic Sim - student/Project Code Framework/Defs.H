@@ -4,6 +4,25 @@
 //This header file contains some defenitions to be used all over the application
 
 //All possible actions
+/*enum ComponentType
+{
+	And2,
+	Buffer,
+	Inverter,
+	Led,
+	Nand2,
+	Nor2,
+	Nor3,
+	Switch,
+	Xnor2,
+	Xor2,
+	Xor3,
+	And3,
+	Or2,
+	connection
+
+};
+*/
 enum ActionType
 {
 	ADD_Gate,

@@ -44,7 +44,7 @@ void AddNORgate3::Execute()
 	GInfo.y2 = Cy + Wdth / 2;
 	if (GInfo.y1 > UI.ToolBarHeight && GInfo.y2 < UI.height - UI.StatusBarHeight && GInfo.x1 > 0 && GInfo.x2 < UI.width)
 	{
-		NOR3* pA = new NOR3(GInfo, AND2_FANOUT);
+		NOR3* pA = new NOR3(GInfo, AND2_FANOUT,pManager->get_counter());
 		pManager->AddComponent(pA);
 	}
 }

@@ -8,7 +8,7 @@
 class NOR3 :public Gate
 {
 public:
-	NOR3(const GraphicsInfo& r_GfxInfo, int r_FanOut);
+	NOR3(const GraphicsInfo& r_GfxInfo, int r_FanOut,int id);
 	virtual void Operate();	//Calculates the output of the NOR gate
 	virtual void Draw(Output* pOut);	//Draws 3-input gate
 

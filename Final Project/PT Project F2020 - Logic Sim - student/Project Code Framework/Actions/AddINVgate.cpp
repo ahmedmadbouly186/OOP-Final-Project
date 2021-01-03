@@ -42,7 +42,7 @@ void AddINVgate::Execute()
 	GInfo.y2 = Cy + Wdth / 2;
 	if (GInfo.x1 > 0 && GInfo.x2<UI.width && GInfo.y1>UI.ToolBarHeight && GInfo.y2 < (UI.height - UI.StatusBarHeight))
 	{
-		INV* pA = new INV(GInfo, AND2_FANOUT);
+		INV* pA = new INV(GInfo, AND2_FANOUT, pManager->get_counter());
 		pManager->AddComponent(pA);
 	}
 }

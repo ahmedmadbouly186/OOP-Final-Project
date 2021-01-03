@@ -20,7 +20,7 @@ protected:
 	OutputPin m_OutputPin;	//The Gate output pin
 	int m_Inputs;		//No. of input pins of that Gate.
 public:
-	Gate(int r_Inputs, int r_FanOut);
+	Gate(int r_Inputs, int r_FanOut,int id);
 	OutputPin getoutputpin() {
 		return m_OutputPin;
 	}
@@ -33,6 +33,7 @@ public:
 	{
 		return m_Inputs;
 	}
+	virtual void save(ofstream&);
 
 };
 
