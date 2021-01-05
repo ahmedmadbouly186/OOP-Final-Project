@@ -18,6 +18,7 @@ class Gate:public Component
 protected:
 	InputPin* m_InputPins;	//Array of input pins of the Gate
 	OutputPin m_OutputPin;	//The Gate output pin
+	bool* isconnected;      // array of bool to check if bin is connected or not 
 	int m_Inputs;		//No. of input pins of that Gate.
 public:
 	Gate(int r_Inputs, int r_FanOut,int id);
@@ -33,6 +34,7 @@ public:
 	{
 		return m_Inputs;
 	}
+	bool Isconnectto(int);
 	virtual void save(ofstream&)=0;
 
 };
