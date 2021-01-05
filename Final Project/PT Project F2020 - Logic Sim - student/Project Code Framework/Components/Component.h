@@ -45,6 +45,14 @@ public:
 	{
 		return ID;
 	}
+	void set_label(string x)
+	{
+		m_Label = x;
+	}
+	/*void set_id(int x)
+	{
+		ID = x;
+	}*/
 	//Destructor must be virtual
 	virtual ~Component();
 };

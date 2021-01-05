@@ -25,7 +25,8 @@ private:
 public:
 	int get_compcount();
 	Component**& get_CompList();
-
+	Component* load_connection(int id1);
+	void Delete();
 public:	
 	ApplicationManager(); //constructor
 
