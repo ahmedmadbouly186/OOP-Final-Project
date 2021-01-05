@@ -55,5 +55,5 @@ void NOR2::setInputPinStatus(int n, STATUS s)
 
 void NOR2::save(ofstream& outputfile)
 {
-	outputfile << Nor2 << "\t" << ID << "\t" << get_label() << "\t" << m_GfxInfo.x1 << "\t" << m_GfxInfo.y1 << endl;
+	outputfile << Nor2 << " " << ID << " " << get_label() << " " << m_GfxInfo.x1 << " " << m_GfxInfo.y1 << endl;
 }

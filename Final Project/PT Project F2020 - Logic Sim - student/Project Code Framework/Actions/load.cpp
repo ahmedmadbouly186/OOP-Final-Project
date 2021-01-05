@@ -73,10 +73,10 @@ void load::Execute()
 				{
 				case And2:
 					inputfile >> id >> label >> x >> y;
-					GInfo.x1 = x - Len / 2;
-					GInfo.x2 = x + Len / 2;
-					GInfo.y1 = y - Wdth / 2;
-					GInfo.y2 = y + Wdth / 2;
+					GInfo.x1 = x;
+					GInfo.x2 = x + Len;
+					GInfo.y1 = y;
+					GInfo.y2 = y + Wdth;
 					AND2*and;
 					and ->set_label(label);
 					and = new AND2(GInfo, AND2_FANOUT, id);
@@ -84,10 +84,10 @@ void load::Execute()
 					break;
 				case Buffer:
 					inputfile >> id >> label >> x >> y;
-					GInfo.x1 = x - Len / 2;
-					GInfo.x2 = x + Len / 2;
-					GInfo.y1 = y - Wdth / 2;
-					GInfo.y2 = y + Wdth / 2;
+					GInfo.x1 = x;
+					GInfo.x2 = x + Len;
+					GInfo.y1 = y;
+					GInfo.y2 = y + Wdth;
 					Buff* buff;
 					buff = new Buff(GInfo, AND2_FANOUT, id);
 					buff->set_label(label);
@@ -95,10 +95,10 @@ void load::Execute()
 					break;
 				case Inverter:
 					inputfile >> id >> label >> x >> y;
-					GInfo.x1 = x - Len / 2;
-					GInfo.x2 = x + Len / 2;
-					GInfo.y1 = y - Wdth / 2;
-					GInfo.y2 = y + Wdth / 2;
+					GInfo.x1 = x;
+					GInfo.x2 = x + Len;
+					GInfo.y1 = y;
+					GInfo.y2 = y + Wdth;
 					INV* inv;
 					inv = new INV(GInfo, AND2_FANOUT, id);
 					inv->set_label(label);
@@ -106,10 +106,10 @@ void load::Execute()
 					break;
 				case Led:
 					inputfile >> id >> label >> x >> y;
-					GInfo.x1 = x - Len / 2;
-					GInfo.x2 = x + Len / 2;
-					GInfo.y1 = y - Wdth / 2;
-					GInfo.y2 = y + Wdth / 2;
+					GInfo.x1 = x;
+					GInfo.x2 = x + Len;
+					GInfo.y1 = y;
+					GInfo.y2 = y + Wdth;
 					LED* led;
 					led = new LED(GInfo, id);
 					led->set_label(label);
@@ -117,10 +117,10 @@ void load::Execute()
 					break;
 				case Nand2:
 					inputfile >> id >> label >> x >> y;
-					GInfo.x1 = x - Len / 2;
-					GInfo.x2 = x + Len / 2;
-					GInfo.y1 = y - Wdth / 2;
-					GInfo.y2 = y + Wdth / 2;
+					GInfo.x1 = x;
+					GInfo.x2 = x + Len;
+					GInfo.y1 = y;
+					GInfo.y2 = y + Wdth;
 					NAND2* nand2;
 					nand2 = new NAND2(GInfo, AND2_FANOUT, id);
 					nand2->set_label(label);
@@ -128,10 +128,10 @@ void load::Execute()
 					break;
 				case Nor2:
 					inputfile >> id >> label >> x >> y;
-					GInfo.x1 = x - Len / 2;
-					GInfo.x2 = x + Len / 2;
-					GInfo.y1 = y - Wdth / 2;
-					GInfo.y2 = y + Wdth / 2;
+					GInfo.x1 = x;
+					GInfo.x2 = x + Len;
+					GInfo.y1 = y;
+					GInfo.y2 = y + Wdth;
 					NOR2* nor2;
 					nor2 = new NOR2(GInfo, AND2_FANOUT, id);
 					nor2->set_label(label);
@@ -139,10 +139,10 @@ void load::Execute()
 					break;
 				case Nor3:
 					inputfile >> id >> label >> x >> y;
-					GInfo.x1 = x - Len / 2;
-					GInfo.x2 = x + Len / 2;
-					GInfo.y1 = y - Wdth / 2;
-					GInfo.y2 = y + Wdth / 2;
+					GInfo.x1 = x;
+					GInfo.x2 = x + Len;
+					GInfo.y1 = y;
+					GInfo.y2 = y + Wdth;
 					NOR3* nor3;
 					nor3 = new NOR3(GInfo, AND2_FANOUT, id);
 					nor3->set_label(label);
@@ -150,10 +150,10 @@ void load::Execute()
 					break;
 				case Switch:
 					inputfile >> id >> label >> x >> y;
-					GInfo.x1 = x - Len / 2;
-					GInfo.x2 = x + Len / 2;
-					GInfo.y1 = y - Wdth / 2;
-					GInfo.y2 = y + Wdth / 2;
+					GInfo.x1 = x;
+					GInfo.x2 = x + Len;
+					GInfo.y1 = y;
+					GInfo.y2 = y + Wdth;
 					switch_key* switch_k;
 					switch_k = new switch_key(GInfo, AND2_FANOUT, id);
 					switch_k->set_label(label);
@@ -161,10 +161,10 @@ void load::Execute()
 					break;
 				case Xnor2:
 					inputfile >> id >> label >> x >> y;
-					GInfo.x1 = x - Len / 2;
-					GInfo.x2 = x + Len / 2;
-					GInfo.y1 = y - Wdth / 2;
-					GInfo.y2 = y + Wdth / 2;
+					GInfo.x1 = x;
+					GInfo.x2 = x + Len;
+					GInfo.y1 = y;
+					GInfo.y2 = y + Wdth;
 					XNOR2* xnor2;
 					xnor2 = new XNOR2(GInfo, AND2_FANOUT, id);
 					xnor2->set_label(label);
@@ -172,10 +172,10 @@ void load::Execute()
 					break;
 				case Xor2:
 					inputfile >> id >> label >> x >> y;
-					GInfo.x1 = x - Len / 2;
-					GInfo.x2 = x + Len / 2;
-					GInfo.y1 = y - Wdth / 2;
-					GInfo.y2 = y + Wdth / 2;
+					GInfo.x1 = x;
+					GInfo.x2 = x + Len;
+					GInfo.y1 = y;
+					GInfo.y2 = y + Wdth;
 					XOR2* xor2;
 					xor2 = new XOR2(GInfo, AND2_FANOUT, id);
 					xor2->set_label(label);
@@ -183,10 +183,10 @@ void load::Execute()
 					break;
 				case Xor3:
 					inputfile >> id >> label >> x >> y;
-					GInfo.x1 = x - Len / 2;
-					GInfo.x2 = x + Len / 2;
-					GInfo.y1 = y - Wdth / 2;
-					GInfo.y2 = y + Wdth / 2;
+					GInfo.x1 = x;
+					GInfo.x2 = x + Len;
+					GInfo.y1 = y;
+					GInfo.y2 = y + Wdth;
 					XOR3* xor3;
 					xor3 = new XOR3(GInfo, AND2_FANOUT, id);
 					xor3->set_label(label);
@@ -194,10 +194,10 @@ void load::Execute()
 					break;
 					/*case And3:
 					inputfile >> id >> label >> x >> y;
-						GInfo.x1 = x - Len / 2;
-						GInfo.x2 = x + Len / 2;
-						GInfo.y1 = y - Wdth / 2;
-						GInfo.y2 = y + Wdth / 2;
+						GInfo.x1 = x;
+					GInfo.x2 = x + Len;
+					GInfo.y1 = y;
+					GInfo.y2 = y + Wdth;
 						AND3* and3;
 						and3 = new AND3(GInfo, AND2_FANOUT, id);
 						and3 ->set_label(label);
@@ -206,20 +206,16 @@ void load::Execute()
 						break;
 					case Or2:
 					inputfile >> id >> label >> x >> y;
-						GInfo.x1 = x - Len / 2;
-						GInfo.x2 = x + Len / 2;
-						GInfo.y1 = y - Wdth / 2;
-						GInfo.y2 = y + Wdth / 2;
+						GInfo.x1 = x;
+					GInfo.x2 = x + Len;
+					GInfo.y1 = y;
+					GInfo.y2 = y + Wdth;
 						OR2* or2;
 						or2 = new OR2(GInfo, AND2_FANOUT, id);
 						or2 ->set_label(label);
 					or2 ->set_id(id);
 						pManager->AddComponent(pa);
 						break;*/
-						/*case connection:
-
-							break;*/
-
 				}
 			}
 	}

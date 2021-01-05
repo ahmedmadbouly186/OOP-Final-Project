@@ -196,7 +196,18 @@ ApplicationManager::~ApplicationManager()
 }
 void ApplicationManager::save(ofstream& outputfile)
 {
-	outputfile << CompCount << endl;
+	int count = 0;
+	for (int i = 0; i < CompCount; i++)
+	{
+		Gate* gate = dynamic_cast<Gate*>(CompList[i]);
+		switch_key* Switch = dynamic_cast<switch_key*>(CompList[i]);
+		LED* led = dynamic_cast<LED*>(CompList[i]);
+		if (led != NULL|| gate!=NULL|| Switch!=NULL)
+		{
+			count++;
+		}
+	}
+	outputfile << count << endl;
 	for (int i = 0; i < CompCount; i++)
 	{
 		Gate* gate = dynamic_cast<Gate*>(CompList[i]);
@@ -215,7 +226,7 @@ void ApplicationManager::save(ofstream& outputfile)
 			CompList[i]->save(outputfile);
 		}
 	}
-	outputfile << "connections" << endl;
+	outputfile << connection << endl;
 	for (int i = 0; i < CompCount; i++)
 	{
 		Connection* connection1 = dynamic_cast<Connection*>(CompList[i]);
@@ -224,6 +235,7 @@ void ApplicationManager::save(ofstream& outputfile)
 			CompList[i]->save(outputfile);
 		}
 	}
+	outputfile << -1<<endl;
 }
 /////////////////////////////
 //Delete

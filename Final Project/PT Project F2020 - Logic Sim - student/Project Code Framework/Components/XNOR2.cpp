@@ -54,5 +54,5 @@ void XNOR2::setInputPinStatus(int n, STATUS s)
 
 void XNOR2::save(ofstream& outputfile)
 {
-	outputfile << Xnor2 << "\t" << ID << "\t" << get_label() << "\t" << m_GfxInfo.x1 << "\t" << m_GfxInfo.y1 << endl;
+	outputfile << Xnor2 << " " << ID << " " << get_label() << " " << m_GfxInfo.x1 << " " << m_GfxInfo.y1 << endl;
 }

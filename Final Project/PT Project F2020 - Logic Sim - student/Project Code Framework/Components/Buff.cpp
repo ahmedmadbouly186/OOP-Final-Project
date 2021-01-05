@@ -55,5 +55,5 @@ void Buff::setInputPinStatus(int n, STATUS s)
 
 void Buff::save(ofstream& outputfile)
 {
-	outputfile << Buffer << "\t" << ID << "\t" << get_label() << "\t" << m_GfxInfo.x1 << "\t" << m_GfxInfo.y1 << endl;
+	outputfile << Buffer << " " <<ID << " " << get_label() << " " << m_GfxInfo.x1 << " " << m_GfxInfo.y1 << endl;
 }

@@ -52,5 +52,5 @@ void Connection::setInputPinStatus(int n, STATUS s)
 }
 void Connection::save(ofstream& outputfile)
 {
-	outputfile << ID1 << "\t" << ID2 <<"\t"<<inputpin_no <<endl;
+	outputfile << ID1<< ID2<<inputpin_no <<endl;
 }

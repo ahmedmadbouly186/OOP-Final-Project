@@ -59,5 +59,5 @@ void switch_key::set_close(bool x)
 }
 void switch_key::save(ofstream& outputfile)
 {
-	outputfile << Switch << "\t" << ID << "\t" << get_label() << "\t"<<m_GfxInfo.x1 << "\t" << m_GfxInfo.y1 << endl;
+	outputfile << Switch << " " << ID << " " << get_label() << " " <<m_GfxInfo.x1 << " " << m_GfxInfo.y1 << endl;
 }

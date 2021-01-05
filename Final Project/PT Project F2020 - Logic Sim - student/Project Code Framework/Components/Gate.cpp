@@ -31,6 +31,10 @@ bool Gate::Isconnectto(int pin_number)
 		return false;
 	}
 }
+void Gate::set_connection(bool b,int pin_number)
+{
+	isconnected[pin_number] = b;
+}
 /*
 void Gate:: save(ofstream& outputfile)
 {

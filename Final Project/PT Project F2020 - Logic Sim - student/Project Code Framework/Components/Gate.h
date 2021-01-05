@@ -35,6 +35,7 @@ public:
 		return m_Inputs;
 	}
 	bool Isconnectto(int);
+	void set_connection(bool,int);
 	virtual void save(ofstream&)=0;
 
 };

@@ -60,43 +60,39 @@ void AddConnection::Execute()
 				int m = g->no_inputs();
 				M_GfxInfo.x1 = m_GfxInfo1.x1;
 				if (m == 1) {
-					if (g->Isconnectto(m)) {
+					
 						inpin = g->getinputpin(m - 1);
 						n = m;
 						M_GfxInfo.y1 = m_GfxInfo1.y2 - UI.AND2_Width / 2;
-					}
+					
 				}
 				else if (m == 2) {
 					if (y1 < m_GfxInfo1.y1 + UI.AND2_Height / 2) {
-						if (g->Isconnectto(m)) {
 							inpin = g->getinputpin(m - 2);
 							n = m - 1;
 							M_GfxInfo.y1 = m_GfxInfo1.y2 - UI.AND2_Width / 3;
-						}
+						
 					}
 					else {
-						if (g->Isconnectto(m)) {
 							inpin = g->getinputpin(m - 1);
 							n = m;
 							M_GfxInfo.y1 = m_GfxInfo1.y2 - 2 * UI.AND2_Width / 3;
-						}
+						
 					}
 				}
 				else
 				{
 					if (y1 < m_GfxInfo1.y1 + UI.AND2_Height / 3) {
-						if (g->Isconnectto(m)) {
 							inpin = g->getinputpin(m - 3);
 							n = m - 2;
 							M_GfxInfo.y1 = m_GfxInfo1.y2 - 3 * UI.AND2_Width / 4;
-						}
+						
 					}
 					else if (y1 > m_GfxInfo1.y1 + UI.AND2_Height / 3 && y1 < m_GfxInfo1.y1 + 2 * UI.AND2_Height / 3) {
-						if (g->Isconnectto(m)) {
 							inpin = g->getinputpin(m - 2);
 							n = m - 1;
 							M_GfxInfo.y1 = m_GfxInfo1.y2 - UI.AND2_Width / 2;
-						}
+						
 					}
 					else
 					{
@@ -149,51 +145,45 @@ void AddConnection::Execute()
 				int m = g->no_inputs();
 				M_GfxInfo.x2 = m_GfxInfo1.x1;
 				if (m == 1) {
-					if (g->Isconnectto(m)) {
 						inpin = g->getinputpin(m - 1);
 						n = m;
 						M_GfxInfo.y2 = m_GfxInfo1.y2 - UI.AND2_Width / 2;
-					}
+					
 				}
 				else if (m == 2) {
 					if (y1 < m_GfxInfo1.y1 + UI.AND2_Height / 2) {
-						if (g->Isconnectto(m)) {
 							inpin = g->getinputpin(m - 2);
 							n = m - 1;
 							M_GfxInfo.y2 = m_GfxInfo1.y2 - 2 * UI.AND2_Width / 3;
-						}
+						
 					}
 					else {
-						if (g->Isconnectto(m)) {
 							inpin = g->getinputpin(m - 1);
 							n = m;
 							M_GfxInfo.y2 = m_GfxInfo1.y2 - UI.AND2_Width / 3;
-						}
+						
 					}
 				}
 				else
 				{
 					if (y1 < m_GfxInfo1.y1 + UI.AND2_Height / 3) {
-						if (g->Isconnectto(m)) {
 							inpin = g->getinputpin(m - 3);
 							n = m - 2;
 							M_GfxInfo.y2 = m_GfxInfo1.y2 - 3 * UI.AND2_Width / 4;
-						}
+						
 					}
 					else if (y1 > m_GfxInfo1.y1 + UI.AND2_Height / 3 && y1 < m_GfxInfo1.y1 + 2 * UI.AND2_Height / 3) {
-						if (g->Isconnectto(m)) {
 							inpin = g->getinputpin(m - 2);
 							n = m - 1;
 							M_GfxInfo.y2 = m_GfxInfo1.y2 - UI.AND2_Width / 2;
-						}
+						
 					}
 					else
 					{
-						if (g->Isconnectto(m)) {
 							n = m;
 							inpin = g->getinputpin(m - 1);
 							M_GfxInfo.y2 = m_GfxInfo1.y2 - UI.AND2_Width / 4;
-						}
+						
 					}
 				}
 			}
@@ -220,20 +210,34 @@ void AddConnection::Execute()
 	}
 	Output* pOut = pManager->GetOutput();
 	if (outpin != NULL && inpin != NULL) {
-		
-		Connection* pA = new Connection(M_GfxInfo,outpin,inpin,id1,id2,n);
+		Gate* gate = dynamic_cast<Gate*>(pManager->load_connection(id2));
+		if (gate != NULL)
+		{
+			if (gate->Isconnectto(n)) {
+				Connection* pA = new Connection(M_GfxInfo, outpin, inpin, id1, id2, n);
+				if (outpin->ConnectTo(pA)) {
+					pManager->AddComponent(pA);
+					pOut->PrintMsg("Connection is added");
+					return;
+				}
+				else
+				{
+					pOut->PrintMsg("Falied to add connection, complete fanout for this gate");
+					delete pA;
+					return;
+				}
+				pOut->PrintMsg("falied to add connection: already connected");
+				return;
+			}
+		}
+		Connection* pA = new Connection(M_GfxInfo, outpin, inpin, id1, id2, n);
 		if (outpin->ConnectTo(pA)) {
 			pManager->AddComponent(pA);
 			pOut->PrintMsg("Connection is added");
-		}
-		else
-		{
-			pOut->PrintMsg("Falied to add connection, complete fanout for this gate");
-			delete pA;
+			return;
 		}
 	}
-
-
+	pOut->PrintMsg("falied to add connection");
 
 
 	/*
@@ -503,26 +507,7 @@ void AddConnection::Execute()
 			}
 		}
 	}
-	//ReadActionParameters();
-	M_GfxInfo.x1 = x1;
-	M_GfxInfo.y1 = y1;
-	M_GfxInfo.x2 = x2;
-	M_GfxInfo.y2 = y2;*/
-	/*
-	int Len = UI.Buffer_Width;
-	int Wdth = UI.Buffer_Height;
-
-	GraphicsInfo GInfo; //Gfx info to be used to construct the Buffer gate
-
-	GInfo.x1 = Cx - Len / 2;
-	GInfo.x2 = Cx + Len / 2;
-	GInfo.y1 = Cy - Wdth / 2;
-	GInfo.y2 = Cy + Wdth / 2;
-	if (GInfo.y1 > UI.ToolBarHeight && GInfo.y2 < UI.height - UI.StatusBarHeight && GInfo.x1 > 0 && GInfo.x2 < UI.width)
-	{
-		Connection* pA = new Connection(GInfo);
-		pManager->AddComponent(pA);
-	}*/
+	//ReadA*/
 }
 
 void AddConnection::Undo()
@@ -531,4 +516,179 @@ void AddConnection::Undo()
 void AddConnection::Redo()
 {}
 
+/*if (component != NULL)
+	{
+		Gate* g = dynamic_cast<Gate*>(component);
+		if (g != NULL)
+		{
+			GraphicsInfo m_GfxInfo1 = g->get_GraphicsInfo();
+			if (x1 > m_GfxInfo1.x1 + UI.AND2_Width / 2) {
+				outpin = g->getoutputpin();
+				M_GfxInfo.x1 = m_GfxInfo1.x2;
+				M_GfxInfo.y1 = m_GfxInfo1.y2 - UI.AND2_Width / 2;
+				id1 = g->get_ID();
+			}
+			else
+			{
+				id2 = g->get_ID();
+				int m = g->no_inputs();
+				M_GfxInfo.x1 = m_GfxInfo1.x1;
+				if (m == 1) {
+					if (g->Isconnectto(m)) {
+						inpin = g->getinputpin(m - 1);
+						n = m;
+						M_GfxInfo.y1 = m_GfxInfo1.y2 - UI.AND2_Width / 2;
+					}
+				}
+				else if (m == 2) {
+					if (y1 < m_GfxInfo1.y1 + UI.AND2_Height / 2) {
+						if (g->Isconnectto(m-1)) {
+							inpin = g->getinputpin(m - 2);
+							n = m - 1;
+							M_GfxInfo.y1 = m_GfxInfo1.y2 - UI.AND2_Width / 3;
+						}
+					}
+					else {
+						if (g->Isconnectto(m)) {
+							inpin = g->getinputpin(m - 1);
+							n = m;
+							M_GfxInfo.y1 = m_GfxInfo1.y2 - 2 * UI.AND2_Width / 3;
+						}
+					}
+				}
+				else
+				{
+					if (y1 < m_GfxInfo1.y1 + UI.AND2_Height / 3) {
+						if (g->Isconnectto(m-2)) {
+							inpin = g->getinputpin(m - 3);
+							n = m - 2;
+							M_GfxInfo.y1 = m_GfxInfo1.y2 - 3 * UI.AND2_Width / 4;
+						}
+					}
+					else if (y1 > m_GfxInfo1.y1 + UI.AND2_Height / 3 && y1 < m_GfxInfo1.y1 + 2 * UI.AND2_Height / 3) {
+						if (g->Isconnectto(m-1)) {
+							inpin = g->getinputpin(m - 2);
+							n = m - 1;
+							M_GfxInfo.y1 = m_GfxInfo1.y2 - UI.AND2_Width / 2;
+						}
+					}
+					else
+					{
+						if (g->Isconnectto(m)) {
+							n = m;
+							inpin = g->getinputpin(m - 1);
+							M_GfxInfo.y1 = m_GfxInfo1.y2 - UI.AND2_Width / 4;
+						}
+					}
+				}
+			}
+		}
+		switch_key* Switch = dynamic_cast<switch_key*>(component);
+		if (Switch != NULL)
+		{
+			id1 =  Switch->get_ID();
+			GraphicsInfo m_GfxInfo1 = Switch->get_GraphicsInfo();
+			outpin = Switch->getoutputpin();
+			M_GfxInfo.x1 = m_GfxInfo1.x2;
+			M_GfxInfo.y1 = m_GfxInfo1.y2 - UI.SWITCH0_Height / 2;
 
+		}
+		LED* led = dynamic_cast<LED*>(component);
+		if (led != NULL)
+		{
+			id2 = led->get_ID();
+			GraphicsInfo m_GfxInfo1 = led->get_GraphicsInfo();
+			n = 1;
+			inpin = led->getinputpin();
+			M_GfxInfo.x1 = m_GfxInfo1.x2;
+			M_GfxInfo.y1 = m_GfxInfo1.y2 - UI.LED0_Height / 2;
+		}
+	}
+	component = pManager->ComponentRegion(x2, y2);
+	if (component != NULL)
+	{
+		Gate* g = dynamic_cast<Gate*>(component);
+		if (g != NULL)
+		{
+			GraphicsInfo m_GfxInfo1 = g->get_GraphicsInfo();
+			if (x1 > m_GfxInfo1.x1 + UI.AND2_Width / 2) {
+				outpin = g->getoutputpin();
+				M_GfxInfo.x2 = m_GfxInfo1.x2;
+				M_GfxInfo.y2 = m_GfxInfo1.y2 - UI.AND2_Width / 2;
+				id1 = g->get_ID();
+			}
+			else
+			{
+				id2 = g->get_ID();
+				int m = g->no_inputs();
+				M_GfxInfo.x2 = m_GfxInfo1.x1;
+				if (m == 1) {
+					if (g->Isconnectto(m)) {
+						inpin = g->getinputpin(m - 1);
+						n = m;
+						M_GfxInfo.y2 = m_GfxInfo1.y2 - UI.AND2_Width / 2;
+					}
+				}
+				else if (m == 2) {
+					if (y1 < m_GfxInfo1.y1 + UI.AND2_Height / 2) {
+						if (g->Isconnectto(m-1)) {
+							inpin = g->getinputpin(m - 2);
+							n = m - 1;
+							M_GfxInfo.y2 = m_GfxInfo1.y2 - 2 * UI.AND2_Width / 3;
+						}
+					}
+					else {
+						if (g->Isconnectto(m)) {
+							inpin = g->getinputpin(m - 1);
+							n = m;
+							M_GfxInfo.y2 = m_GfxInfo1.y2 - UI.AND2_Width / 3;
+						}
+					}
+				}
+				else
+				{
+					if (y1 < m_GfxInfo1.y1 + UI.AND2_Height / 3) {
+						if (g->Isconnectto(m-2)) {
+							inpin = g->getinputpin(m - 3);
+							n = m - 2;
+							M_GfxInfo.y2 = m_GfxInfo1.y2 - 3 * UI.AND2_Width / 4;
+						}
+					}
+					else if (y1 > m_GfxInfo1.y1 + UI.AND2_Height / 3 && y1 < m_GfxInfo1.y1 + 2 * UI.AND2_Height / 3) {
+						if (g->Isconnectto(m-1)) {
+							inpin = g->getinputpin(m - 2);
+							n = m - 1;
+							M_GfxInfo.y2 = m_GfxInfo1.y2 - UI.AND2_Width / 2;
+						}
+					}
+					else
+					{
+						if (g->Isconnectto(m)) {
+							n = m;
+							inpin = g->getinputpin(m - 1);
+							M_GfxInfo.y2 = m_GfxInfo1.y2 - UI.AND2_Width / 4;
+						}
+					}
+				}
+			}
+		}
+		switch_key* Switch = dynamic_cast<switch_key*>(component);
+		if (Switch != NULL)
+		{
+			id1 = Switch->get_ID();
+			GraphicsInfo m_GfxInfo1 = Switch->get_GraphicsInfo();
+			outpin = Switch->getoutputpin();
+			M_GfxInfo.x2 = m_GfxInfo1.x2;
+			M_GfxInfo.y2 = m_GfxInfo1.y2 - UI.SWITCH0_Height / 2;
+		}
+		LED* led = dynamic_cast<LED*>(component);
+		if (led != NULL)
+		{
+			id2 = led->get_ID();
+			GraphicsInfo m_GfxInfo1 = led->get_GraphicsInfo();
+			n = 1;
+			inpin = led->getinputpin();
+			M_GfxInfo.x2 = m_GfxInfo1.x1;
+			M_GfxInfo.y2 = m_GfxInfo1.y1 + UI.LED0_Height / 2;
+		}
+	}*/

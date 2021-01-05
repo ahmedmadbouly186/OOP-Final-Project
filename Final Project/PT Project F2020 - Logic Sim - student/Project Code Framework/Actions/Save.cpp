@@ -29,8 +29,13 @@ void Save::ReadActionParameters()
 
 void Save::Execute()
 {	
+	Output* pOut = pManager->GetOutput();
+	Input* pIn = pManager->GetInput();
 	ofstream outputfile;
-	outputfile.open("circuit.txt");
+	string name;
+	pOut->PrintMsg("Enter the name of file : ");
+	name = pIn->GetSrting(pOut);
+	outputfile.open(name);
 	pManager->save(outputfile);
 	outputfile.close();
 	pManager->GetOutput()->PrintMsg("Circuit is saved :'circuit.txt'");
