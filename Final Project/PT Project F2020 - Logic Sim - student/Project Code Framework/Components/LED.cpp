@@ -1,6 +1,7 @@
 #include "LED.h"
 LED::LED(const GraphicsInfo& r_GfxInfo,int id) 
 {
+	set_selected(false);
 	ID = id;
 	m_GfxInfo.x1 = r_GfxInfo.x1;
 	m_GfxInfo.y1 = r_GfxInfo.y1;
@@ -29,11 +30,11 @@ void LED::Draw(Output* pOut)
 {
 	if (x == 1) {
 		//Call output class and pass gate drawing info to it.
-		pOut->DrawLED1(m_GfxInfo);
+		pOut->DrawLED1(m_GfxInfo, selected);
 	}
 	else
 	{
-		pOut->DrawLED0(m_GfxInfo);
+		pOut->DrawLED0(m_GfxInfo, selected);
 	}
 }
 

@@ -11,14 +11,14 @@ switch_key::switch_key(const GraphicsInfo& r_GfxInfo, int r_FanOut,int id) :m_Ou
 }
 void switch_key::Operate()
 {
-	/*if (closed == true)
+	if (closed == true)
 	{
-		m_outputpin.setstatus(HIGH);
+		m_OutputPin.setStatus(HIGH);
 	}
 	else
 	{
-		m_outputpin.setstatus(LOW);
-	}*/
+		m_OutputPin.setStatus(LOW);
+	}
 }
 void switch_key::Draw(Output* pOut)
 {

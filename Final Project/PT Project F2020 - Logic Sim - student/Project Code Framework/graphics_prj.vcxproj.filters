@@ -169,6 +169,8 @@
     <ClCompile Include="Actions\AddLEDgate.cpp" />
     <ClCompile Include="Actions\MOVE.cpp" />
     <ClCompile Include="Actions\Save.cpp" />
+    <ClCompile Include="Actions\Deletecomp.cpp" />
+    <ClCompile Include="Actions\load.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Defs.H" />
@@ -300,6 +302,8 @@
     <ClInclude Include="Actions\AddLEDgate.h" />
     <ClInclude Include="Actions\MOVE.h" />
     <ClInclude Include="Actions\Save.h" />
+    <ClInclude Include="Actions\Deletecomp.h" />
+    <ClInclude Include="Actions\load.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
