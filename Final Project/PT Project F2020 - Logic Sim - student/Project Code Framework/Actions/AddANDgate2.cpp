@@ -30,7 +30,9 @@ void AddANDgate2::Execute()
 {
 	//Get Center point of the Gate
 	ReadActionParameters();
-	
+	Output* pOut = pManager->GetOutput();
+	Input* pIn = pManager->GetInput();
+	string x;
 	//Calculate the rectangle Corners
 	int Len = UI.AND2_Width;
 	int Wdth = UI.AND2_Height;
@@ -43,6 +45,8 @@ void AddANDgate2::Execute()
 	GInfo.y2 = Cy + Wdth/2;
 	AND2 *pA=new AND2(GInfo, AND2_FANOUT, pManager->get_counter());
 	pManager->AddComponent(pA);
+	x = pIn->GetSrting(pOut, GInfo.x2, GInfo.y2);
+	pA->setlable(x);
 }
 
 void AddANDgate2::Undo()

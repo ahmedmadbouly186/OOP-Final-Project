@@ -12,7 +12,7 @@ void Input::GetPointClicked(int& x, int& y)
 }
 
 
-string Input::GetSrting(Output* pOut)
+string Input::GetSrting(Output* pOut, int x, int y)
 {
 	char c[20];
 	pOut->ClearStatusBar();
@@ -45,8 +45,6 @@ string Input::GetSrting(Output* pOut)
 		pOut->PrintMsg(c);
 	}
 	pOut->ClearStatusBar();
-	int x, y;
-	pWind->WaitMouseClick(x, y);
 	int MsgX = x;
 	int MsgY = y;
 

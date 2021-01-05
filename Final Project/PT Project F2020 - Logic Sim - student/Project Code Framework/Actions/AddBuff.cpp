@@ -32,7 +32,9 @@ void AddBuff::Execute()
 {
 	//Get Center point of the Gate
 	ReadActionParameters();
-
+	Output* pOut = pManager->GetOutput();
+	Input* pIn = pManager->GetInput();
+	string x;
 	//Calculate the rectangle Corners
 	int Len = UI.Buffer_Width;
 	int Wdth = UI.Buffer_Height;
@@ -47,6 +49,8 @@ void AddBuff::Execute()
 	{
 		Buff* pA = new Buff(GInfo, AND2_FANOUT, pManager->get_counter());
 		pManager->AddComponent(pA);
+		x = pIn->GetSrting(pOut, GInfo.x2, GInfo.y2);
+		pA->setlable(x);
 	}
 }
 

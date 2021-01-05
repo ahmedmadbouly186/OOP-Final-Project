@@ -30,7 +30,9 @@ void Addswitch::Execute()
 {
 	//Get Center point of the Gate
 	ReadActionParameters();
-
+	Output* pOut = pManager->GetOutput();
+	Input* pIn = pManager->GetInput();
+	string x;
 	//Calculate the rectangle Corners
 	int Len = UI.AND2_Width;
 	int Wdth = UI.AND2_Height;
@@ -45,6 +47,8 @@ void Addswitch::Execute()
 	{
 		switch_key* pA = new switch_key(GInfo, AND2_FANOUT,pManager->get_counter());
 		pManager->AddComponent(pA);
+		x = pIn->GetSrting(pOut, GInfo.x2, GInfo.y2);
+		pA->setlable(x);
 	}
 	
 }

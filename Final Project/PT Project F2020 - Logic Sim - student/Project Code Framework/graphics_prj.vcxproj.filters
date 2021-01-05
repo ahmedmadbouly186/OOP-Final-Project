@@ -171,6 +171,11 @@
     <ClCompile Include="Actions\Save.cpp" />
     <ClCompile Include="Actions\Deletecomp.cpp" />
     <ClCompile Include="Actions\load.cpp" />
+    <ClCompile Include="Components\OR2.cpp" />
+    <ClCompile Include="Components\AND3.cpp" />
+    <ClCompile Include="Actions\EDITLABLE.cpp" />
+    <ClCompile Include="Actions\AddANDgate3.cpp" />
+    <ClCompile Include="Actions\AddORgate2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Defs.H" />
@@ -304,6 +309,11 @@
     <ClInclude Include="Actions\Save.h" />
     <ClInclude Include="Actions\Deletecomp.h" />
     <ClInclude Include="Actions\load.h" />
+    <ClInclude Include="Components\OR2.h" />
+    <ClInclude Include="Components\AND3.h" />
+    <ClInclude Include="Actions\EDITLABLE.h" />
+    <ClInclude Include="Actions\AddANDgate3.h" />
+    <ClInclude Include="Actions\AddORgate2.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

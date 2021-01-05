@@ -31,7 +31,9 @@ void AddNORgate3::Execute()
 {
 	//Get Center point of the Gate
 	ReadActionParameters();
-
+	Output* pOut = pManager->GetOutput();
+	Input* pIn = pManager->GetInput();
+	string x;
 	//Calculate the rectangle Corners
 	int Len = UI.NOR3_Width;
 	int Wdth = UI.NOR3_Height;
@@ -46,6 +48,8 @@ void AddNORgate3::Execute()
 	{
 		NOR3* pA = new NOR3(GInfo, AND2_FANOUT,pManager->get_counter());
 		pManager->AddComponent(pA);
+		x = pIn->GetSrting(pOut, GInfo.x2, GInfo.y2);
+		pA->setlable(x);
 	}
 }
 
