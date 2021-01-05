@@ -85,6 +85,13 @@ void Output::ClearDrawingArea() const
 	pWind->DrawRectangle(UI.ToolItemWidth, UI.ToolBarHeight, UI.width, UI.height - UI.StatusBarHeight);
 
 }
+void Output::DeleteDrawingArea() const
+{
+	pWind->SetPen(WHITE, 0);
+	pWind->SetBrush(WHITE);
+	pWind->DrawRectangle(0, UI.ToolBarHeight + 2, UI.width, (UI.height - UI.StatusBarHeight) - 2);
+
+}
 
 // clears the Tool bar area
 void Output::CleartoolbarArea1()const

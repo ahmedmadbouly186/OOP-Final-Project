@@ -62,6 +62,56 @@ string Input::GetSrting(Output* pOut)
 	//User should see what he is typing at the status bar
 
 }
+string Input::Getfilename(Output* pOut)
+{
+	char c[100];
+	pOut->ClearStatusBar();
+	char d[] = "Enter the name of file: ";
+	pOut->PrintMsg(d);
+	for (int i = 0; i < 99; i++)
+	{
+		pWind->WaitKeyPress(c[i]);
+		c[i + 1] = '\0';
+		if (c[i] == 27)
+		{
+			c[0] = '\0';
+			break;
+		}
+		else if (c[i] == 13)
+		{
+			c[i] = '\0';
+			break;
+			//i = 19;
+		}
+		else if (c[i] == 8)
+		{
+			if (i > 0)
+			{
+				i--;
+				c[i] = '\0';
+				i--;
+			}
+		}
+		pOut->PrintMsg(c);
+	}
+	pOut->ClearStatusBar();
+	//int x, y;
+	//pWind->WaitMouseClick(x, y);
+	//int MsgX = x;
+	//int MsgY = y;
+
+	//// Print the Message
+	//pWind->SetFont(20, BOLD | ITALICIZED, BY_NAME, "Arial");
+	//pWind->SetPen(UI.MsgColor);
+	//pWind->DrawString(MsgX, MsgY, c);
+	return c;
+	///TODO: Implement this Function
+	//Read a complete string from the user until the user presses "ENTER".
+	//If the user presses "ESCAPE". This function should return an empty string.
+	//"BACKSPACE" should be also supported
+	//User should see what he is typing at the status bar
+
+}
 
 //This function reads the position where the user clicks to determine the desired action
 ActionType Input::GetUserAction() const

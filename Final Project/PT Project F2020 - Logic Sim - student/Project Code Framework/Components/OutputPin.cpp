@@ -14,10 +14,18 @@ bool OutputPin::ConnectTo(Connection *r_Conn)
 {
 	if(m_Conn < m_FanOut)
 	{
-		m_Conn++;
 		m_Connections[m_Conn] = r_Conn;	//add a new connection the the array of connections
+		m_Conn++;
 		return true;
 	}
 	
 	return false;	//can't connect to any more connections
+}
+int& OutputPin::get_m_Conn()
+{
+	return m_Conn;
+}
+Connection** OutputPin::get_m_Connections()
+{
+	return m_Connections;
 }

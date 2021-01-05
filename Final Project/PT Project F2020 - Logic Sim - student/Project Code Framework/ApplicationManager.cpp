@@ -19,6 +19,8 @@
 #include "Actions/AddLEDgate.h"
 #include "Actions/MOVE.h"
 #include "Actions/Save.h"
+#include "Actions/Deletecomp.h"
+#include "Actions/load.h"
 #include<iostream>
 using namespace std;
 
@@ -73,6 +75,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 		case DSN_MODE:
 			pAct = new DSGMode(this);
+			break;
+		case DEL:
+			pAct = new Deletecomp(this);
+			break;
+		case LOAD:
+			pAct = new load(this);
 			break;
 		case ADD_XOR_GATE_3:
 			pAct = new ADDXORGATE3(this);
@@ -216,4 +224,74 @@ void ApplicationManager::save(ofstream& outputfile)
 			CompList[i]->save(outputfile);
 		}
 	}
+}
+/////////////////////////////
+//Delete
+void ApplicationManager::Delete()
+{
+	for (int i = 0; i < CompCount; i++)
+	{
+		Component* p = CompList[i];
+		if (p->get_selected() == true)
+		{
+			CompList[i] = CompList[CompCount - 1];
+			CompList[CompCount - 1] = p;
+			CompList[CompCount - 1] = NULL;
+			Gate* gate = dynamic_cast<Gate*>(p);
+			switch_key* key = dynamic_cast<switch_key*>(p);
+			LED* led = dynamic_cast<LED*>(p);
+			if (gate != NULL)
+			{
+				OutputPin* out = gate->getoutputpin();
+				int num_conn = out->get_m_Conn();
+				Connection** m_Connections = out->get_m_Connections();
+				for (int i = 0; i < num_conn; i++)
+				{
+					m_Connections[i]->set_selected(true);
+				}
+				num_conn = 0;
+
+				
+			}
+			else if (key != NULL)
+			{
+				OutputPin* out = key->getoutputpin();
+				int num_conn =  out->get_m_Conn();
+				Connection** m_Connections = out->get_m_Connections();
+				for (int i = 0; i < num_conn; i++)
+				{
+					m_Connections[i]->set_selected(true);
+				}
+				num_conn = 0;
+
+			}
+			//else if (led != NULL)
+			//{
+			//	//InputPin* in = led->getinputpin();
+
+
+			//}
+			delete p;
+			i--;
+			CompCount--;
+		}
+	}
+	OutputInterface->DeleteDrawingArea();
+	UpdateInterface();
+}
+////////////////////////////////
+//load connection
+Component* ApplicationManager::load_connection(int id1)
+{
+	Component* p;
+	for (int i = 0; i < CompCount; i++)
+	{
+		p = CompList[i];
+		if (p->get_ID() == id1)
+		{
+			break;
+		}
+
+	}
+	return p;
 }

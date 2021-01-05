@@ -27,6 +27,15 @@ void select_c::Execute()
 	ReadActionParameters();
 	
 	int count = pManager->get_compcount();
+	Component* y = pManager->ComponentRegion(Cx, Cy);
+	if (y != NULL)
+	{
+		bool c = y->get_selected();
+		c = (c == false) ? true : false;
+		y->set_selected(c);
+
+	}
+	/*int count = pManager->get_compcount();
 	Component** x = pManager->get_CompList();
 	for (int i = 0; i < count; i++)
 	{
@@ -39,7 +48,7 @@ void select_c::Execute()
 			y->set_selected(c);
 			break;
 		}
-	}
+	}*/
 }
 
 void select_c::Undo()
