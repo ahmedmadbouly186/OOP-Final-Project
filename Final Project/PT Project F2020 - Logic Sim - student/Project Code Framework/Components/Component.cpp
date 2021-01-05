@@ -57,3 +57,7 @@ void Component::set_selected(bool x)
 {
 	selected = x;
 }
+void Component::setlable(string x)
+{
+	m_Label = x;
+}

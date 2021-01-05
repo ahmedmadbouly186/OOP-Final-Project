@@ -49,6 +49,8 @@ public:
 	{
 		m_Label = x;
 	}
+	void setlable(string x);
+
 	/*void set_id(int x)
 	{
 		ID = x;

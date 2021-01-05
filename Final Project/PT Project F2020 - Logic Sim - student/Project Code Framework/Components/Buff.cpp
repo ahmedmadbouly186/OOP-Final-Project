@@ -19,7 +19,7 @@ void Buff::Operate()
 	}
 	else
 	{
-		m_OutputPin.setStatus(LOW);
+		m_OutputPin.setStatus(HIGH);
 	}
 
 	//Add you code here

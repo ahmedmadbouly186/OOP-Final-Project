@@ -30,7 +30,9 @@ void ADDXORGATE3::Execute()
 {
 	//Get Center point of the Gate
 	ReadActionParameters();
-
+	Output* pOut = pManager->GetOutput();
+	Input* pIn = pManager->GetInput();
+	string x;
 	//Calculate the rectangle Corners
 	int Len = UI.XOR3_Width;
 	int Wdth = UI.XOR3_Height;
@@ -46,6 +48,8 @@ void ADDXORGATE3::Execute()
 
 		XOR3* pA = new XOR3(GInfo, AND2_FANOUT, pManager->get_counter());
 		pManager->AddComponent(pA);
+		x = pIn->GetSrting(pOut, GInfo.x2, GInfo.y2);
+		pA->setlable(x);
 	}
 	//XOR3* pA = new XOR3(GInfo, AND2_FANOUT);
 	//pManager->AddComponent(pA);

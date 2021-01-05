@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Actions\AddANDgate2.cpp" />
+    <ClCompile Include="Actions\AddANDgate3.cpp" />
     <ClCompile Include="Actions\AddBuff.cpp" />
     <ClCompile Include="Actions\AddConnection.cpp" />
     <ClCompile Include="Actions\AddGate.cpp" />
@@ -136,6 +137,7 @@
     <ClCompile Include="Actions\AddNANDgate2.cpp" />
     <ClCompile Include="Actions\AddNORgate2.cpp" />
     <ClCompile Include="Actions\AddNORgate3.cpp" />
+    <ClCompile Include="Actions\AddORgate2.cpp" />
     <ClCompile Include="Actions\Addswitch.cpp" />
     <ClCompile Include="Actions\AddXNOR2.cpp" />
     <ClCompile Include="Actions\AddXOR2.cpp" />
@@ -144,6 +146,7 @@
     <ClCompile Include="Actions\Close.cpp" />
     <ClCompile Include="Actions\Deletecomp.cpp" />
     <ClCompile Include="Actions\DSGMode.cpp" />
+    <ClCompile Include="Actions\EDITLABLE.cpp" />
     <ClCompile Include="Actions\load.cpp" />
     <ClCompile Include="Actions\MOVE.cpp" />
     <ClCompile Include="Actions\Save.cpp" />
@@ -185,6 +188,7 @@
     <ClCompile Include="CMUgraphicsLib\jpeg\jquant2.c" />
     <ClCompile Include="CMUgraphicsLib\jpeg\jutils.c" />
     <ClCompile Include="Components\AND2.cpp" />
+    <ClCompile Include="Components\AND3.cpp" />
     <ClCompile Include="Components\Buff.cpp" />
     <ClCompile Include="Components\Component.cpp" />
     <ClCompile Include="Components\Connection.cpp" />
@@ -195,6 +199,7 @@
     <ClCompile Include="Components\NAND2.cpp" />
     <ClCompile Include="Components\NOR2.cpp" />
     <ClCompile Include="Components\NOR3.cpp" />
+    <ClCompile Include="Components\OR2.cpp" />
     <ClCompile Include="Components\OutputPin.cpp" />
     <ClCompile Include="Components\Pin.cpp" />
     <ClCompile Include="ApplicationManager.cpp" />
@@ -209,6 +214,7 @@
   <ItemGroup>
     <ClInclude Include="Actions\Action.h" />
     <ClInclude Include="Actions\AddANDgate2.h" />
+    <ClInclude Include="Actions\AddANDgate3.h" />
     <ClInclude Include="Actions\AddBuff.h" />
     <ClInclude Include="Actions\AddConnection.h" />
     <ClInclude Include="Actions\AddGate.h" />
@@ -217,6 +223,7 @@
     <ClInclude Include="Actions\AddNANDgate2.h" />
     <ClInclude Include="Actions\AddNORgate2.h" />
     <ClInclude Include="Actions\AddNORgate3.h" />
+    <ClInclude Include="Actions\AddORgate2.h" />
     <ClInclude Include="Actions\Addswitch.h" />
     <ClInclude Include="Actions\AddXNOR2.h" />
     <ClInclude Include="Actions\AddXOR2.h" />
@@ -225,6 +232,7 @@
     <ClInclude Include="Actions\Close.h" />
     <ClInclude Include="Actions\Deletecomp.h" />
     <ClInclude Include="Actions\DSGMode.h" />
+    <ClInclude Include="Actions\EDITLABLE.h" />
     <ClInclude Include="Actions\load.h" />
     <ClInclude Include="Actions\MOVE.h" />
     <ClInclude Include="Actions\Save.h" />
@@ -251,6 +259,7 @@
     <ClInclude Include="CMUgraphicsLib\jpeg\jpeglib.h" />
     <ClInclude Include="CMUgraphicsLib\jpeg\jversion.h" />
     <ClInclude Include="Components\AND2.h" />
+    <ClInclude Include="Components\AND3.h" />
     <ClInclude Include="Components\Buff.h" />
     <ClInclude Include="Components\Component.h" />
     <ClInclude Include="Components\Connection.h" />
@@ -261,6 +270,7 @@
     <ClInclude Include="Components\NAND2.h" />
     <ClInclude Include="Components\NOR2.h" />
     <ClInclude Include="Components\NOR3.h" />
+    <ClInclude Include="Components\OR2.h" />
     <ClInclude Include="Components\OutputPin.h" />
     <ClInclude Include="Components\Pin.h" />
     <ClInclude Include="ApplicationManager.h" />
