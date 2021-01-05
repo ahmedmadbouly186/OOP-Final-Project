@@ -12,7 +12,7 @@ NAND2::NAND2(const GraphicsInfo& r_GfxInfo, int r_FanOut, int id) :Gate(2, r_Fan
 void NAND2::Operate()
 {
 	//caclulate the output status as the ANDing of the two input pins
-	if (GetInputPinStatus(1) == GetInputPinStatus(2) == 1)
+	if (GetInputPinStatus(1) == HIGH && GetInputPinStatus(2) == HIGH)
 	{
 		m_OutputPin.setStatus(LOW);
 

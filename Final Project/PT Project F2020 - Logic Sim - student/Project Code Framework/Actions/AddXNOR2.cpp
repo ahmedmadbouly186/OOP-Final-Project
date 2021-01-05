@@ -30,7 +30,9 @@ void AddXNOR2::Execute()
 {
 	//Get Center point of the Gate
 	ReadActionParameters();
-
+	Output* pOut = pManager->GetOutput();
+	Input* pIn = pManager->GetInput();
+	string x;
 	//Calculate the rectangle Corners
 	int Len = UI.XNOR2_Width;
 	int Wdth = UI.XNOR2_Height;
@@ -45,6 +47,8 @@ void AddXNOR2::Execute()
 	{
 		XNOR2* pA = new XNOR2(GInfo, AND2_FANOUT,pManager->get_counter());
 		pManager->AddComponent(pA);
+		x = pIn->GetSrting(pOut, GInfo.x2, GInfo.y2);
+		pA->setlable(x);
 	}
 	
 }

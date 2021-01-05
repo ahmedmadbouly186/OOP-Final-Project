@@ -2,7 +2,14 @@
 
 #include "action.h"
 #include "..\Components\Component.h"
-
+#include "..\ApplicationManager.h"
+#include "..\Components\Connection.h"
+#include "..\Components\Gate.h"
+#include "..\Components\LED.h"
+#include "..\Components\switch_key.h"
+#include "Action.h"
+#include "..\Components\InputPin.h"
+#include "..\Components\OutputPin.h"
 class SIMMODE : public Action
 {
 private:
@@ -10,6 +17,8 @@ private:
 	//to control clear the tool bar
 	//and return to  the menu bar
 	//Output* pout;
+	//int x1, x2, y1, y2;
+
 public:
 	SIMMODE(ApplicationManager* pApp);
 	virtual ~SIMMODE(void);

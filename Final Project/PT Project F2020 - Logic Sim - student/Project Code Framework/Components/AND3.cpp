@@ -1,6 +1,7 @@
-#include "NOR2.h"
 
-NOR2::NOR2(const GraphicsInfo& r_GfxInfo, int r_FanOut, int id) :Gate(2, r_FanOut,id)
+#include "AND3.h"
+
+AND3::AND3(const GraphicsInfo& r_GfxInfo, int r_FanOut,int id) :Gate(3, r_FanOut,id)
 {
 	m_GfxInfo.x1 = r_GfxInfo.x1;
 	m_GfxInfo.y1 = r_GfxInfo.y1;
@@ -9,51 +10,49 @@ NOR2::NOR2(const GraphicsInfo& r_GfxInfo, int r_FanOut, int id) :Gate(2, r_FanOu
 }
 
 
-void NOR2::Operate()
+void AND3::Operate()
 {
 	//caclulate the output status as the ANDing of the two input pins
-	if (GetInputPinStatus(1) == LOW && GetInputPinStatus(2) == LOW)
-	{
+	if (GetInputPinStatus(1) ==1&& GetInputPinStatus(2) ==1&& GetInputPinStatus(3)== 1) {
 		m_OutputPin.setStatus(HIGH);
-
 	}
 	else
 	{
 		m_OutputPin.setStatus(LOW);
-
 	}
 	//Add you code here
 }
 
 
 // Function Draw
-// Draws 2-input AND gate
-void NOR2::Draw(Output* pOut)
+// Draws 3-input AND gate
+void AND3::Draw(Output* pOut)
 {
 	//Call output class and pass gate drawing info to it.
-	pOut->DrawNOR2(m_GfxInfo, selected);
+	pOut->DrawAND3(m_GfxInfo);
 }
 
 //returns status of outputpin
-int NOR2::GetOutPinStatus()
+int AND3::GetOutPinStatus()
 {
 	return m_OutputPin.getStatus();
 }
 
 
 //returns status of Inputpin #n
-int NOR2::GetInputPinStatus(int n)
+int AND3::GetInputPinStatus(int n)
 {
 	return m_InputPins[n - 1].getStatus();	//n starts from 1 but array index starts from 0.
 }
 
 //Set status of an input pin ot HIGH or LOW
-void NOR2::setInputPinStatus(int n, STATUS s)
+void AND3::setInputPinStatus(int n, STATUS s)
 {
 	m_InputPins[n - 1].setStatus(s);
 }
 
-void NOR2::save(ofstream& outputfile)
+
+void AND3::save(ofstream& outputfile)
 {
-	outputfile << Nor2 << "\t" << ID << "\t" << get_label() << "\t" << m_GfxInfo.x1 << "\t" << m_GfxInfo.y1 << endl;
+	outputfile << And3 << "\t" << ID << "\t" << get_label() << "\t" << m_GfxInfo.x1 << "\t" << m_GfxInfo.y1 << endl;
 }

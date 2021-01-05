@@ -1,5 +1,8 @@
 #include "ApplicationManager.h"
 #include "Actions\AddANDgate2.h"
+#include "Actions\AddANDgate3.h"
+#include "Actions\AddORgate2.h"
+
 #include "Actions\ADD_XOR_GATE_3.h"
 #include "Actions\AddBuff.h"
 #include "Actions\AddNORgate3.h"
@@ -63,6 +66,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	{
 		case ADD_AND_GATE_2:
 			pAct= new AddANDgate2(this);
+			break;
+		case ADD_AND_GATE_3:
+			pAct = new AddANDgate3(this);
+			break;
+		case ADD_OR_GATE_2:
+			pAct = new AddORgate2(this);
 			break;
 		case ADD_Buff:
 			pAct = new AddBuff(this);
@@ -173,6 +182,11 @@ Component* ApplicationManager::ComponentRegion(int x,int y) {
 
 ////////////////////////////////////////////////////////////////////
 
+Component* ApplicationManager::componentreturin(int i) {
+	return 	CompList[i];
+
+}
+/////////////////////////
 Input* ApplicationManager::GetInput()
 {
 	return InputInterface;

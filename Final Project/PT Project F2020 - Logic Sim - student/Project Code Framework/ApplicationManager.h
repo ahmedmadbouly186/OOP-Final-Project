@@ -36,7 +36,8 @@ public:
 	//Creates an action and executes it
 	void ExecuteAction(ActionType);
 	Component* ComponentRegion(int ,int );
-	
+	Component* componentreturin(int);
+
 	void UpdateInterface();	//Redraws all the drawing window
 
 	//Gets a pointer to Input / Output Object
