@@ -252,11 +252,25 @@ void ApplicationManager::save(ofstream& outputfile)
 	outputfile << -1<<endl;
 }
 /////////////////////////////
+/////////////////////////////
 //Delete
 void ApplicationManager::Delete()
 {
+	int count = 0;
 	for (int i = 0; i < CompCount; i++)
 	{
+		Component* p = CompList[i];
+		if (p->get_selected() == true)
+		{
+			count++;
+		}
+	}
+	for (int i = 0; (i < CompCount || count != 0); i++)
+	{
+		if (i >= CompCount)
+		{
+			i = 0;
+		}
 		Component* p = CompList[i];
 		if (p->get_selected() == true)
 		{
@@ -268,38 +282,92 @@ void ApplicationManager::Delete()
 			LED* led = dynamic_cast<LED*>(p);
 			if (gate != NULL)
 			{
-				OutputPin* out = gate->getoutputpin();
+				OutputPin* outputpin_gate = gate->getoutputpin();
+				for (int i = 0; i < CompCount; i++)
+				{
+					Connection* conn = dynamic_cast<Connection*>(CompList[i]);
+					if (conn != NULL)
+					{
+						InputPin* inputpin_conn = conn->getDestPin();
+						OutputPin* outputpin_conn = conn->getSourcePin();
+						if (outputpin_gate == outputpin_conn)
+						{
+							conn->set_selected(true);
+							count++;
+
+						}
+						int num_in = gate->no_inputs();
+						for (int i = 0; i < num_in; i++)
+						{
+							InputPin* inputpin_gate = gate->getinputpin(i);
+							if (inputpin_conn == inputpin_gate)
+							{
+								conn->set_selected(true);
+								count++;
+							}
+
+						}
+					}
+				}
+				/*OutputPin* out = gate->getoutputpin();
 				int num_conn = out->get_m_Conn();
 				Connection** m_Connections = out->get_m_Connections();
 				for (int i = 0; i < num_conn; i++)
 				{
 					m_Connections[i]->set_selected(true);
 				}
-				num_conn = 0;
+				num_conn = 0;*/
 
-				
+
 			}
 			else if (key != NULL)
 			{
-				OutputPin* out = key->getoutputpin();
+				/*OutputPin* out = key->getoutputpin();
 				int num_conn =  out->get_m_Conn();
 				Connection** m_Connections = out->get_m_Connections();
 				for (int i = 0; i < num_conn; i++)
 				{
 					m_Connections[i]->set_selected(true);
 				}
-				num_conn = 0;
+				num_conn = 0;*/
+				OutputPin* outputpin_key = key->getoutputpin();
+				for (int i = 0; i < CompCount; i++)
+				{
+					Connection* conn = dynamic_cast<Connection*>(CompList[i]);
+					if (conn != NULL)
+					{
+						InputPin* inputpin_conn = conn->getDestPin();
+						OutputPin* outputpin_conn = conn->getSourcePin();
+						if (outputpin_key == outputpin_conn)
+						{
+							conn->set_selected(true);
+							count++;
+						}
+					}
+				}
 
 			}
-			//else if (led != NULL)
-			//{
-			//	//InputPin* in = led->getinputpin();
-
-
-			//}
+			else if (led != NULL)
+			{
+				InputPin* inputpin_led = led->getinputpin();
+				for (int i = 0; i < CompCount; i++)
+				{
+					Connection* conn = dynamic_cast<Connection*>(CompList[i]);
+					if (conn != NULL)
+					{
+						InputPin* inputpin_conn = conn->getDestPin();
+						if (inputpin_conn == inputpin_led)
+						{
+							conn->set_selected(true);
+							count++;
+						}
+					}
+				}
+			}
 			delete p;
 			i--;
 			CompCount--;
+			count--;
 		}
 	}
 	OutputInterface->DeleteDrawingArea();

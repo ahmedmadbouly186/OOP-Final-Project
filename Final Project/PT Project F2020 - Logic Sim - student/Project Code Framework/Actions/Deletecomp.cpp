@@ -7,8 +7,8 @@ Deletecomp::Deletecomp(ApplicationManager* pApp) :Action(pApp)
 void Deletecomp::ReadActionParameters()
 {
 	//Get a Pointer to the Input / Output Interfaces
-	Output* pOut = pManager->GetOutput();
-	Input* pIn = pManager->GetInput();
+	/*Output* pOut = pManager->GetOutput();
+	Input* pIn = pManager->GetInput();*/
 
 	//Print Action Message
 	//pOut->PrintMsg("Click on the component you want to select");
@@ -24,7 +24,7 @@ void Deletecomp::ReadActionParameters()
 void Deletecomp::Execute()
 {
 	//Get Center point of the Gate
-	ReadActionParameters();
+	/*ReadActionParameters();*/
 	pManager->Delete();
 
 	/*int count = pManager->get_compcount();

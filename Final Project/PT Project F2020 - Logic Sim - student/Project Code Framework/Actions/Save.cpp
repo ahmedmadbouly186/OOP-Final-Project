@@ -34,7 +34,7 @@ void Save::Execute()
 	ofstream outputfile;
 	string name;
 	pOut->PrintMsg("Enter the name of file : ");
-	name = pIn->GetSrting(pOut);
+	name = pIn->Getfilename(pOut);
 	outputfile.open(name);
 	pManager->save(outputfile);
 	outputfile.close();
