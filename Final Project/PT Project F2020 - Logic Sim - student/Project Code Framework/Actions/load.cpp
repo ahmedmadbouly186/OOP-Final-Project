@@ -19,7 +19,7 @@
 #include <fstream>
 load::load(ApplicationManager* pApp) :Action(pApp)
 {
-	
+
 }
 void load::ReadActionParameters()
 {
@@ -67,157 +67,157 @@ void load::Execute()
 		//Component* comp;
 		int numcomp = first_word;
 		for (int i = 0; i < numcomp; i++)
+		{
+			inputfile >> type;
+			switch (type)
 			{
-				inputfile >> type;
-				switch (type)
-				{
-				case And2:
-					inputfile >> id >> label >> x >> y;
+			case And2:
+				inputfile >> id >> label >> x >> y;
+				GInfo.x1 = x;
+				GInfo.x2 = x + Len;
+				GInfo.y1 = y;
+				GInfo.y2 = y + Wdth;
+				AND2*and;
+				and ->set_label(label);
+				and = new AND2(GInfo, AND2_FANOUT, id);
+				pManager->AddComponent(and);
+				break;
+			case Buffer:
+				inputfile >> id >> label >> x >> y;
+				GInfo.x1 = x;
+				GInfo.x2 = x + Len;
+				GInfo.y1 = y;
+				GInfo.y2 = y + Wdth;
+				Buff* buff;
+				buff = new Buff(GInfo, AND2_FANOUT, id);
+				buff->set_label(label);
+				pManager->AddComponent(buff);
+				break;
+			case Inverter:
+				inputfile >> id >> label >> x >> y;
+				GInfo.x1 = x;
+				GInfo.x2 = x + Len;
+				GInfo.y1 = y;
+				GInfo.y2 = y + Wdth;
+				INV* inv;
+				inv = new INV(GInfo, AND2_FANOUT, id);
+				inv->set_label(label);
+				pManager->AddComponent(inv);
+				break;
+			case Led:
+				inputfile >> id >> label >> x >> y;
+				GInfo.x1 = x;
+				GInfo.x2 = x + Len;
+				GInfo.y1 = y;
+				GInfo.y2 = y + Wdth;
+				LED* led;
+				led = new LED(GInfo, id);
+				led->set_label(label);
+				pManager->AddComponent(led);
+				break;
+			case Nand2:
+				inputfile >> id >> label >> x >> y;
+				GInfo.x1 = x;
+				GInfo.x2 = x + Len;
+				GInfo.y1 = y;
+				GInfo.y2 = y + Wdth;
+				NAND2* nand2;
+				nand2 = new NAND2(GInfo, AND2_FANOUT, id);
+				nand2->set_label(label);
+				pManager->AddComponent(nand2);
+				break;
+			case Nor2:
+				inputfile >> id >> label >> x >> y;
+				GInfo.x1 = x;
+				GInfo.x2 = x + Len;
+				GInfo.y1 = y;
+				GInfo.y2 = y + Wdth;
+				NOR2* nor2;
+				nor2 = new NOR2(GInfo, AND2_FANOUT, id);
+				nor2->set_label(label);
+				pManager->AddComponent(nor2);
+				break;
+			case Nor3:
+				inputfile >> id >> label >> x >> y;
+				GInfo.x1 = x;
+				GInfo.x2 = x + Len;
+				GInfo.y1 = y;
+				GInfo.y2 = y + Wdth;
+				NOR3* nor3;
+				nor3 = new NOR3(GInfo, AND2_FANOUT, id);
+				nor3->set_label(label);
+				pManager->AddComponent(nor3);
+				break;
+			case Switch:
+				inputfile >> id >> label >> x >> y;
+				GInfo.x1 = x;
+				GInfo.x2 = x + Len;
+				GInfo.y1 = y;
+				GInfo.y2 = y + Wdth;
+				switch_key* switch_k;
+				switch_k = new switch_key(GInfo, AND2_FANOUT, id);
+				switch_k->set_label(label);
+				pManager->AddComponent(switch_k);
+				break;
+			case Xnor2:
+				inputfile >> id >> label >> x >> y;
+				GInfo.x1 = x;
+				GInfo.x2 = x + Len;
+				GInfo.y1 = y;
+				GInfo.y2 = y + Wdth;
+				XNOR2* xnor2;
+				xnor2 = new XNOR2(GInfo, AND2_FANOUT, id);
+				xnor2->set_label(label);
+				pManager->AddComponent(xnor2);
+				break;
+			case Xor2:
+				inputfile >> id >> label >> x >> y;
+				GInfo.x1 = x;
+				GInfo.x2 = x + Len;
+				GInfo.y1 = y;
+				GInfo.y2 = y + Wdth;
+				XOR2* xor2;
+				xor2 = new XOR2(GInfo, AND2_FANOUT, id);
+				xor2->set_label(label);
+				pManager->AddComponent(xor2);
+				break;
+			case Xor3:
+				inputfile >> id >> label >> x >> y;
+				GInfo.x1 = x;
+				GInfo.x2 = x + Len;
+				GInfo.y1 = y;
+				GInfo.y2 = y + Wdth;
+				XOR3* xor3;
+				xor3 = new XOR3(GInfo, AND2_FANOUT, id);
+				xor3->set_label(label);
+				pManager->AddComponent(xor3);
+				break;
+				/*case And3:
+				inputfile >> id >> label >> x >> y;
 					GInfo.x1 = x;
-					GInfo.x2 = x + Len;
-					GInfo.y1 = y;
-					GInfo.y2 = y + Wdth;
-					AND2*and;
-					and ->set_label(label);
-					and = new AND2(GInfo, AND2_FANOUT, id);
-					pManager->AddComponent(and);
+				GInfo.x2 = x + Len;
+				GInfo.y1 = y;
+				GInfo.y2 = y + Wdth;
+					AND3* and3;
+					and3 = new AND3(GInfo, AND2_FANOUT, id);
+					and3 ->set_label(label);
+				and3 ->set_id(id);
+					pManager->AddComponent(pa);
 					break;
-				case Buffer:
-					inputfile >> id >> label >> x >> y;
+				case Or2:
+				inputfile >> id >> label >> x >> y;
 					GInfo.x1 = x;
-					GInfo.x2 = x + Len;
-					GInfo.y1 = y;
-					GInfo.y2 = y + Wdth;
-					Buff* buff;
-					buff = new Buff(GInfo, AND2_FANOUT, id);
-					buff->set_label(label);
-					pManager->AddComponent(buff);
-					break;
-				case Inverter:
-					inputfile >> id >> label >> x >> y;
-					GInfo.x1 = x;
-					GInfo.x2 = x + Len;
-					GInfo.y1 = y;
-					GInfo.y2 = y + Wdth;
-					INV* inv;
-					inv = new INV(GInfo, AND2_FANOUT, id);
-					inv->set_label(label);
-					pManager->AddComponent(inv);
-					break;
-				case Led:
-					inputfile >> id >> label >> x >> y;
-					GInfo.x1 = x;
-					GInfo.x2 = x + Len;
-					GInfo.y1 = y;
-					GInfo.y2 = y + Wdth;
-					LED* led;
-					led = new LED(GInfo, id);
-					led->set_label(label);
-					pManager->AddComponent(led);
-					break;
-				case Nand2:
-					inputfile >> id >> label >> x >> y;
-					GInfo.x1 = x;
-					GInfo.x2 = x + Len;
-					GInfo.y1 = y;
-					GInfo.y2 = y + Wdth;
-					NAND2* nand2;
-					nand2 = new NAND2(GInfo, AND2_FANOUT, id);
-					nand2->set_label(label);
-					pManager->AddComponent(nand2);
-					break;
-				case Nor2:
-					inputfile >> id >> label >> x >> y;
-					GInfo.x1 = x;
-					GInfo.x2 = x + Len;
-					GInfo.y1 = y;
-					GInfo.y2 = y + Wdth;
-					NOR2* nor2;
-					nor2 = new NOR2(GInfo, AND2_FANOUT, id);
-					nor2->set_label(label);
-					pManager->AddComponent(nor2);
-					break;
-				case Nor3:
-					inputfile >> id >> label >> x >> y;
-					GInfo.x1 = x;
-					GInfo.x2 = x + Len;
-					GInfo.y1 = y;
-					GInfo.y2 = y + Wdth;
-					NOR3* nor3;
-					nor3 = new NOR3(GInfo, AND2_FANOUT, id);
-					nor3->set_label(label);
-					pManager->AddComponent(nor3);
-					break;
-				case Switch:
-					inputfile >> id >> label >> x >> y;
-					GInfo.x1 = x;
-					GInfo.x2 = x + Len;
-					GInfo.y1 = y;
-					GInfo.y2 = y + Wdth;
-					switch_key* switch_k;
-					switch_k = new switch_key(GInfo, AND2_FANOUT, id);
-					switch_k->set_label(label);
-					pManager->AddComponent(switch_k);
-					break;
-				case Xnor2:
-					inputfile >> id >> label >> x >> y;
-					GInfo.x1 = x;
-					GInfo.x2 = x + Len;
-					GInfo.y1 = y;
-					GInfo.y2 = y + Wdth;
-					XNOR2* xnor2;
-					xnor2 = new XNOR2(GInfo, AND2_FANOUT, id);
-					xnor2->set_label(label);
-					pManager->AddComponent(xnor2);
-					break;
-				case Xor2:
-					inputfile >> id >> label >> x >> y;
-					GInfo.x1 = x;
-					GInfo.x2 = x + Len;
-					GInfo.y1 = y;
-					GInfo.y2 = y + Wdth;
-					XOR2* xor2;
-					xor2 = new XOR2(GInfo, AND2_FANOUT, id);
-					xor2->set_label(label);
-					pManager->AddComponent(xor2);
-					break;
-				case Xor3:
-					inputfile >> id >> label >> x >> y;
-					GInfo.x1 = x;
-					GInfo.x2 = x + Len;
-					GInfo.y1 = y;
-					GInfo.y2 = y + Wdth;
-					XOR3* xor3;
-					xor3 = new XOR3(GInfo, AND2_FANOUT, id);
-					xor3->set_label(label);
-					pManager->AddComponent(xor3);
-					break;
-					/*case And3:
-					inputfile >> id >> label >> x >> y;
-						GInfo.x1 = x;
-					GInfo.x2 = x + Len;
-					GInfo.y1 = y;
-					GInfo.y2 = y + Wdth;
-						AND3* and3;
-						and3 = new AND3(GInfo, AND2_FANOUT, id);
-						and3 ->set_label(label);
-					and3 ->set_id(id);
-						pManager->AddComponent(pa);
-						break;
-					case Or2:
-					inputfile >> id >> label >> x >> y;
-						GInfo.x1 = x;
-					GInfo.x2 = x + Len;
-					GInfo.y1 = y;
-					GInfo.y2 = y + Wdth;
-						OR2* or2;
-						or2 = new OR2(GInfo, AND2_FANOUT, id);
-						or2 ->set_label(label);
-					or2 ->set_id(id);
-						pManager->AddComponent(pa);
-						break;*/
-				}
+				GInfo.x2 = x + Len;
+				GInfo.y1 = y;
+				GInfo.y2 = y + Wdth;
+					OR2* or2;
+					or2 = new OR2(GInfo, AND2_FANOUT, id);
+					or2 ->set_label(label);
+				or2 ->set_id(id);
+					pManager->AddComponent(pa);
+					break;*/
 			}
+		}
 	}
 	inputfile >> first_word;
 	if (first_word != -1 && first_word == connection)
@@ -293,7 +293,7 @@ void load::Execute()
 			GInfo3.x2 = GInfo2.x1;
 			GInfo3.y1 = GInfo1.y2 - UI.AND2_Width / 2;
 			Connection* connection;
-			connection = new Connection(GInfo3,out_pin, in_pin, id1,id2, num_inputpin);
+			connection = new Connection(GInfo3, out_pin, in_pin, id1, id2, num_inputpin);
 			pManager->AddComponent(connection);
 			inputfile >> id1 >> id2 >> num_inputpin;
 		}
