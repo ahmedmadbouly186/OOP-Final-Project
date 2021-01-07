@@ -11,6 +11,7 @@
 #include "../Components/XNOR2.h"
 #include "../Components/XOR2.h"
 #include "../Components/XOR3.h"
+#include "../Components/OR2.h"
 #include "..\ApplicationManager.h"
 #include "../Components/InputPin.h"
 #include "../Components/OutputPin.h"
@@ -78,9 +79,20 @@ void load::Execute()
 				GInfo.y1 = y;
 				GInfo.y2 = y + Wdth;
 				AND2*and;
-				and ->set_label(label);
 				and = new AND2(GInfo, AND2_FANOUT, id);
+				and ->set_label(label);
 				pManager->AddComponent(and);
+				break;
+			case Or2:
+				inputfile >> id >> label >> x >> y;
+				GInfo.x1 = x;
+				GInfo.x2 = x + Len;
+				GInfo.y1 = y;
+				GInfo.y2 = y + Wdth;
+				OR2* or;
+				or = new OR2(GInfo, AND2_FANOUT, id);
+				or ->set_label(label);
+				pManager->AddComponent(or);
 				break;
 			case Buffer:
 				inputfile >> id >> label >> x >> y;

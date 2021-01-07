@@ -44,10 +44,6 @@ ApplicationManager::ApplicationManager()
 void ApplicationManager::AddComponent(Component* pComp)
 {
 	CompList[CompCount++] = pComp;
-	for (int i = 0; i < CompCount; i++)
-	{
-		cout << CompList[i]->GetOutPinStatus() << endl;
-	}
 	counter++;
 }
 ////////////////////////////////////////////////////////////////////
@@ -383,9 +379,9 @@ Component* ApplicationManager::load_connection(int id1)
 		p = CompList[i];
 		if (p->get_ID() == id1)
 		{
-			break;
+			return p;
 		}
 
 	}
-	return p;
+	return NULL;
 }

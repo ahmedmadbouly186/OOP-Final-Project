@@ -14,11 +14,11 @@ void INV::Operate()
 	//caclulate the output status as the ANDing of the two input pins
 	if (GetInputPinStatus(1) == LOW)
 	{
-		m_OutputPin.setStatus(LOW) ;
+		m_OutputPin.setStatus(HIGH) ;
 	}
 	else
 	{
-		m_OutputPin.setStatus(HIGH);
+		m_OutputPin.setStatus(LOW);
 	}
 	//Add you code here
 }

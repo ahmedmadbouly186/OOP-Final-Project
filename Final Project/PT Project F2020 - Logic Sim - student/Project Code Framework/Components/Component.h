@@ -41,7 +41,7 @@ public:
 		return m_Label;
 	}
 	virtual void save(ofstream&) = 0;
-	int get_ID()
+	virtual int get_ID()
 	{
 		return ID;
 	}

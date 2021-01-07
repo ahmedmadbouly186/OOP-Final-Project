@@ -11,9 +11,6 @@ void Move::ReadActionParameters()
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
 
-	//Print Action Message
-	pOut->PrintMsg("Click on the component you want to move");
-
 	//Wait for User Input
 	pOut->PrintMsg("Click on place you want to move component to");
 
