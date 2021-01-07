@@ -119,7 +119,7 @@ ActionType Input::GetUserAction() const
 	if (UI.AppMode == DESIGN)	//application is in design mode
 	{
 		//[1] If user clicks on the Toolbar
-		if (y >= 0 && y < UI.ToolBarHeight&& b)
+		if (y >= 0 && y < UI.ToolBarHeight && b)
 		{
 			//Check whick Menu item was clicked
 			//==> This assumes that menu items are lined up horizontally <==
@@ -136,6 +136,13 @@ ActionType Input::GetUserAction() const
 			case ITM_REDO: return REDO;
 			case ITM_LOAD: return LOAD;
 			case ITM_SAVE: return SAVE;
+
+			case ITM_COPY: return COPY;
+			case ITM_CUT: return CUT;
+			case ITM_PASTE: return PASTE;
+			case ITM_MOVE: return MOVE;
+			case ITM_EDITLABLE: return EDIT_Label;
+
 			case ITM_Delet: return DEL;
 			case ITM_Connection: return ADD_CONNECTION;
 			case ITM_EXIT: return EXIT;
@@ -146,7 +153,7 @@ ActionType Input::GetUserAction() const
 
 		if (y >= 0 && y < UI.ToolBarHeight)
 		{
-			int ClickedItemOrder = (x / UI.ToolItemWidth) + 9;
+			int ClickedItemOrder = (x / UI.ToolItemWidth) + 14;
 
 
 			switch (ClickedItemOrder)

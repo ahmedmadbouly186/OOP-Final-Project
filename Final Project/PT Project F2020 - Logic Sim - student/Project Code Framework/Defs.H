@@ -30,6 +30,9 @@ enum ActionType
 	REDO,		//Redo the last Action canceled
 	LOAD,		//Load a Circuit from a file
 	SAVE,		//Save the whole Circuit to a file
+	COPY,
+	CUT,
+	PASTE,
 	DEL,		//Delete a Component, a Connection
 	ADD_CONNECTION, //Add Wire Connection
 	EXIT,		//Exit the application
@@ -103,6 +106,11 @@ enum DsgnMenuItem //The items of the design menu (you should add more items)
 	ITM_REDO,
 	ITM_LOAD,
 	ITM_SAVE,
+	ITM_COPY,
+	ITM_CUT,
+	ITM_PASTE,
+	ITM_MOVE,
+	ITM_EDITLABLE,
 	ITM_Delet,
 	ITM_Connection,
 	ITM_EXIT,		//Exit item
