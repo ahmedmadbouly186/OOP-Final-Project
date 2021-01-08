@@ -7,7 +7,7 @@ class AddConnection :public Action
 {
 
 private:
-	int x1, y1, x2, y2;	//Two corners of the rectangluar area
+	int x1, y1, x2, y2;	//Two points to determine component that user want to connect to
 public:
 	AddConnection(ApplicationManager* pApp);
 	virtual ~AddConnection(void);

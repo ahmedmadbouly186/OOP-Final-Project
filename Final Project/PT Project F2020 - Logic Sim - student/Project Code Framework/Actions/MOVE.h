@@ -5,7 +5,7 @@
 class Move :public Action
 {
 private:
-	int Cx, Cy;	//Center point of the gate
+	int Cx1, Cy1,Cx2,Cy2;	//Center point of the gate
 
 public:
 	Move(ApplicationManager* pApp);

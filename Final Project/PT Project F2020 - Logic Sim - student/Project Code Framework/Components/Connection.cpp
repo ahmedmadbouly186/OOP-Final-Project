@@ -50,6 +50,26 @@ void Connection::setInputPinStatus(int n, STATUS s)
 {
 	SrcPin->setStatus(s);
 }
+int Connection::get_ID1()
+{
+	return ID1;
+}
+int Connection::get_ID2()
+{
+	return ID2;
+}
+void Connection::set_Point1(int x1,int y1)
+{
+	m_GfxInfo.x1 = x1;
+	m_GfxInfo.y1 = y1;
+
+}
+void Connection::set_Point2(int x2, int y2)
+{
+	m_GfxInfo.x2 = x2;
+	m_GfxInfo.y2 = y2;
+
+}
 void Connection::save(ofstream& outputfile)
 {
 	outputfile << ID1<<" "<< ID2<<" "<<inputpin_no <<endl;

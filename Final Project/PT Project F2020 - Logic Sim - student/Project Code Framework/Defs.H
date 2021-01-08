@@ -4,7 +4,7 @@
 //This header file contains some defenitions to be used all over the application
 
 //All possible actions
-enum ComponentType
+enum ComponentType // componenet type for save and load operationss
 {
 	And2,
 	Buffer,
@@ -12,7 +12,7 @@ enum ComponentType
 	Led,
 	Nand2,
 	Nor2,
-	Nor3,
+	Nor3,        // ALL connections that would be saved
 	Switch,
 	Xnor2,
 	Xor2,
@@ -140,12 +140,12 @@ enum DsgnMenuItem //The items of the design menu (you should add more items)
 enum SimMenuItem //The items of the simulation menu (you should add more items)
 {
 	//Note: Items are ordered here as they appear in menu
-	ITM_SIM,	//Simulate menu item
-	ITM_TRUTH,	//Truth table menu item
-	ITM_SAVE_Simulate,
-	ITM_LOAD_Simulate,
-	ITM_SWITCH_DSN,
-	ITM_Change_Switch,
+	ITM_SIM,           	//Simulate circuit
+	ITM_SWITCH_DSN,   // Change to design mode
+	ITM_TRUTH,	       //Truth table menu item
+	ITM_SAVE_Simulate, // save circuit
+	ITM_LOAD_Simulate,  // load circuit
+	ITM_Change_Switch,    // chnage switch status
 	ITM_2EXIT,
 	//TODO:Add more items names here
 

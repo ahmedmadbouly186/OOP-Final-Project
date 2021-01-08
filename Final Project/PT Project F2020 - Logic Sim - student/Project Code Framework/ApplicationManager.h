@@ -6,6 +6,7 @@
 #include "GUI\Input.h"
 #include "Actions\Action.h"
 #include "Components\Component.h"
+#include"Components/Connection.h"
 
 
 //Main class that manages everything in the application.
@@ -35,6 +36,7 @@ public:
 	
 	//Creates an action and executes it
 	void ExecuteAction(ActionType);
+	// function to return component that user clicked on in output interface
 	Component* ComponentRegion(int ,int );
 	Component* componentreturin(int);
 
@@ -46,12 +48,15 @@ public:
 
 	//Adds a new component to the list of components
 	void AddComponent(Component* pComp);
+	// get unique counter to each created component 
 	int get_counter()
 	{
 		return counter;
 	}
+	// function save to save components (calls save function in each component)
 	void save(ofstream & outputfile);
 	
+	Connection* get_connections(int ,int&);
 	//destructor
 	~ApplicationManager();
 };

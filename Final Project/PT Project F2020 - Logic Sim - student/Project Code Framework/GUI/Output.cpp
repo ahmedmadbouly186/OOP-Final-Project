@@ -80,19 +80,26 @@ void Output::ClearStatusBar()const
 
 void Output::ClearDrawingArea() const
 {
-	pWind->SetPen(RED, 1);
+	pWind->SetPen(WHITE, 1);
 	pWind->SetBrush(WHITE);
-	pWind->DrawRectangle(UI.ToolItemWidth, UI.ToolBarHeight, UI.width, UI.height - UI.StatusBarHeight);
+	pWind->DrawRectangle(0, UI.ToolBarHeight+2, UI.width, UI.height - UI.StatusBarHeight-2);
 
 }
+/*
 void Output::DeleteDrawingArea() const
 {
 	pWind->SetPen(WHITE, 0);
 	pWind->SetBrush(WHITE);
 	pWind->DrawRectangle(0, UI.ToolBarHeight + 2, UI.width, (UI.height - UI.StatusBarHeight) - 2);
 
-}
+}*/
 
+void Output::ClearComponentArea(GraphicsInfo r_GfxInfo) const
+{
+	pWind->SetPen(WHITE, 1);
+	pWind->SetBrush(WHITE);
+	pWind->DrawRectangle(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x2, r_GfxInfo.y2);
+}
 // clears the Tool bar area
 void Output::CleartoolbarArea1()const
 {
@@ -222,10 +229,10 @@ void Output::CreateSimulationToolBar() const
 	string MenuItemImages2[ITM_SIM_CNT];
 
 	MenuItemImages2[ITM_SIM] = "images\\Menu\\Menu_Simulate.jpg";
+	MenuItemImages2[ITM_SWITCH_DSN] = "images\\Menu\\Menu_Design.jpg";
 	MenuItemImages2[ITM_TRUTH] = "images\\Menu\\Menu_Truth.jpg";
 	MenuItemImages2[ITM_SAVE_Simulate] = "images\\Menu\\Menu_SAVE.jpg";
 	MenuItemImages2[ITM_LOAD_Simulate] = "images\\Menu\\Menu_LOAD.jpg";
-	MenuItemImages2[ITM_SWITCH_DSN] = "images\\Menu\\Menu_Design.jpg";
 	MenuItemImages2[ITM_Change_Switch] = "images\\Menu\\Menu_Switch.jpg";
 	MenuItemImages2[ITM_2EXIT] = "images\\Menu\\Menu_Exit.jpg";
 

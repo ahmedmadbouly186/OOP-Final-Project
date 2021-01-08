@@ -299,7 +299,7 @@ void load::Execute()
 			else if (led != NULL)
 			{
 				in_pin = led->getinputpin();
-				GInfo3.y2 = GInfo2.y1 + (UI.AND2_Width / 2);
+				GInfo3.y2 = GInfo2.y2 - (UI.AND2_Width / 4);
 			}
 			GInfo3.x1 = GInfo1.x2;
 			GInfo3.x2 = GInfo2.x1;

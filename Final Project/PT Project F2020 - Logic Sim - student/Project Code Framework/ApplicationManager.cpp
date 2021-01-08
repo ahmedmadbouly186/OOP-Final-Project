@@ -2,7 +2,6 @@
 #include "Actions\AddANDgate2.h"
 #include "Actions\AddANDgate3.h"
 #include "Actions\AddORgate2.h"
-
 #include "Actions\ADD_XOR_GATE_3.h"
 #include "Actions\AddBuff.h"
 #include "Actions\AddNORgate3.h"
@@ -166,9 +165,9 @@ Component**& ApplicationManager::get_CompList()
 ////////////////////////////////////////////////////////////////////
 
 
-Component* ApplicationManager::ComponentRegion(int x,int y) {
-	for (int i = 0; i < CompCount; i++) {
-		Component* p = CompList[i]->ComponentRegion(x, y);
+Component* ApplicationManager::ComponentRegion(int x,int y) { // this function loop on complist
+	for (int i = 0; i < CompCount; i++) {                     // and return component that point (x,y)
+		Component* p = CompList[i]->ComponentRegion(x, y);    // included in its region or return NULL
 		if (p != NULL){
 			return p;
 		}
@@ -204,21 +203,21 @@ ApplicationManager::~ApplicationManager()
 	delete InputInterface;
 	
 }
-void ApplicationManager::save(ofstream& outputfile)
-{
+void ApplicationManager::save(ofstream& outputfile) // function Save in application manager
+{                                                // Loop on complist and calls function save in each component
 	int count = 0;
 	for (int i = 0; i < CompCount; i++)
 	{
 		Gate* gate = dynamic_cast<Gate*>(CompList[i]);
 		switch_key* Switch = dynamic_cast<switch_key*>(CompList[i]);
-		LED* led = dynamic_cast<LED*>(CompList[i]);
+		LED* led = dynamic_cast<LED*>(CompList[i]);      // 1st loop to determine no. of components Except connections
 		if (led != NULL|| gate!=NULL|| Switch!=NULL)
 		{
 			count++;
 		}
 	}
 	outputfile << count << endl;
-	for (int i = 0; i < CompCount; i++)
+	for (int i = 0; i < CompCount; i++) // 2nd loop to save gates ,leds and switchs first
 	{
 		Gate* gate = dynamic_cast<Gate*>(CompList[i]);
 		if (gate != NULL)
@@ -237,7 +236,7 @@ void ApplicationManager::save(ofstream& outputfile)
 		}
 	}
 	outputfile << connection << endl;
-	for (int i = 0; i < CompCount; i++)
+	for (int i = 0; i < CompCount; i++) // 3rd loop to save connections 
 	{
 		Connection* connection1 = dynamic_cast<Connection*>(CompList[i]);
 		if (connection1 != NULL)
@@ -366,7 +365,8 @@ void ApplicationManager::Delete()
 			count--;
 		}
 	}
-	OutputInterface->DeleteDrawingArea();
+	OutputInterface->ClearDrawingArea();
+	//OutputInterface->DeleteDrawingArea();
 	UpdateInterface();
 }
 ////////////////////////////////
@@ -382,6 +382,23 @@ Component* ApplicationManager::load_connection(int id1)
 			return p;
 		}
 
+	}
+	return NULL;
+}
+Connection* ApplicationManager::get_connections(int id1,int &n)
+{
+	for (int i = n; i < CompCount; i++)
+	{
+		Connection* connections = dynamic_cast<Connection*>(CompList[i]);
+		if (connections != NULL)
+		{
+
+			if (connections->get_ID1() == id1 || connections->get_ID2() == id1)
+			{
+				n = i+1;
+				return connections;
+			}
+		}
 	}
 	return NULL;
 }

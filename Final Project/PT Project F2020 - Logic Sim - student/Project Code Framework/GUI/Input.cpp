@@ -188,18 +188,18 @@ ActionType Input::GetUserAction() const
 	}
 	else	//Application is in Simulation mode
 	{
-		// copy paste 
+	
 		//[1] If user clicks on the Toolbar
 		if (y >= 0 && y < UI.ToolBarHeight)
 		{
 			int ClickedItemOrder = (x / UI.ToolItemWidth);
 			switch (ClickedItemOrder)
-			{
+			{                             // Items of Simulation tool bar
 			case ITM_SIM: return SIM_MODE;
+			case ITM_SWITCH_DSN: return DSN_MODE;
 			case ITM_TRUTH: return Create_TruthTable;
 			case ITM_SAVE_Simulate: return SAVE;
-			case ITM_LOAD_Simulate: return LOAD;
-			case ITM_SWITCH_DSN: return DSN_MODE;
+			case ITM_LOAD_Simulate: return LOAD;;
 			case ITM_Change_Switch:  return Change_Switch;
 			case ITM_2EXIT: return EXIT;
 

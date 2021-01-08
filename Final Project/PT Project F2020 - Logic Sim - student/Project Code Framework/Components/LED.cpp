@@ -3,6 +3,7 @@ LED::LED(const GraphicsInfo& r_GfxInfo,int id)
 {
 	set_selected(false);
 	ID = id;
+	isconnected = false;
 	m_GfxInfo.x1 = r_GfxInfo.x1;
 	m_GfxInfo.y1 = r_GfxInfo.y1;
 	m_GfxInfo.x2 = r_GfxInfo.x2;
@@ -45,6 +46,22 @@ int LED::GetOutPinStatus()
 }
 
 
+
+bool LED::Isconnectto()
+{
+	if (isconnected == false)
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
+void LED::set_connection(bool b)
+{
+	isconnected = b;
+}
 //returns status of Inputpin #n
 int LED::GetInputPinStatus(int n)
 {

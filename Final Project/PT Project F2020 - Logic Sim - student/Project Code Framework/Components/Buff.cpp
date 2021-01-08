@@ -12,7 +12,7 @@ Buff::Buff(const GraphicsInfo& r_GfxInfo, int r_FanOut,int id) :Gate(1, r_FanOut
 
 void Buff::Operate()
 {
-	//caclulate the output status as the ANDing of the three input pins
+	
 	if (GetInputPinStatus(1) == LOW )
 	{
 		m_OutputPin.setStatus( LOW);
@@ -21,8 +21,6 @@ void Buff::Operate()
 	{
 		m_OutputPin.setStatus(HIGH);
 	}
-
-	//Add you code here
 }
 
 
@@ -52,7 +50,7 @@ void Buff::setInputPinStatus(int n, STATUS s)
 {
 	m_InputPins[n - 1].setStatus(s);
 }
-
+// save function of buffer gate
 void Buff::save(ofstream& outputfile)
 {
 	outputfile << Buffer << " " <<ID << " " << get_label() << " " << m_GfxInfo.x1 << " " << m_GfxInfo.y1 << endl;
