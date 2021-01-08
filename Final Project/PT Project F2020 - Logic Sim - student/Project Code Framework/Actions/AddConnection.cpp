@@ -68,16 +68,16 @@ void AddConnection::Execute()
 					
 				}
 				else if (m == 2) {
-					if (y1 < m_GfxInfo1.y1 + UI.AND2_Height / 2) {
+					if (y1 < m_GfxInfo1.y1 + (UI.AND2_Height / 2)) {
 							inpin = g->getinputpin(m - 2);
 							n = m - 1;
-							M_GfxInfo.y2 = m_GfxInfo1.y2 - UI.AND2_Width / 3;
+							M_GfxInfo.y2 = m_GfxInfo1.y2 - (2* UI.AND2_Width / 3);
 						
 					}
 					else {
 							inpin = g->getinputpin(m - 1);
 							n = m;
-							M_GfxInfo.y2 = m_GfxInfo1.y2 - 2 * UI.AND2_Width / 3;
+							M_GfxInfo.y2 = m_GfxInfo1.y2 -   UI.AND2_Width / 3;
 						
 					}
 				}
@@ -97,11 +97,10 @@ void AddConnection::Execute()
 					}
 					else
 					{
-						if (g->Isconnectto(m)) {
-							n = m;
-							inpin = g->getinputpin(m - 1);
-							M_GfxInfo.y2 = m_GfxInfo1.y2 - UI.AND2_Width / 4;
-						}
+						
+						n = m;
+						inpin = g->getinputpin(m - 1);
+						M_GfxInfo.y2 = m_GfxInfo1.y2 - UI.AND2_Width / 4;
 					}
 				}
 			}
@@ -152,7 +151,7 @@ void AddConnection::Execute()
 					
 				}
 				else if (m == 2) {
-					if (y1 < m_GfxInfo1.y1 + UI.AND2_Height / 2) {
+					if (y2 < m_GfxInfo1.y1 + UI.AND2_Height / 2) {
 							inpin = g->getinputpin(m - 2);
 							n = m - 1;
 							M_GfxInfo.y2 = m_GfxInfo1.y2 - 2 * UI.AND2_Width / 3;
@@ -167,13 +166,13 @@ void AddConnection::Execute()
 				}
 				else
 				{
-					if (y1 < m_GfxInfo1.y1 + UI.AND2_Height / 3) {
+					if (y2 < m_GfxInfo1.y1 + UI.AND2_Height / 3) {
 							inpin = g->getinputpin(m - 3);
 							n = m - 2;
 							M_GfxInfo.y2 = m_GfxInfo1.y2 - 3 * UI.AND2_Width / 4;
 						
 					}
-					else if (y1 > m_GfxInfo1.y1 + UI.AND2_Height / 3 && y1 < m_GfxInfo1.y1 + 2 * UI.AND2_Height / 3) {
+					else if (y2 > m_GfxInfo1.y1 + UI.AND2_Height / 3 && y2 < m_GfxInfo1.y1 + 2 * UI.AND2_Height / 3) {
 							inpin = g->getinputpin(m - 2);
 							n = m - 1;
 							M_GfxInfo.y2 = m_GfxInfo1.y2 - UI.AND2_Width / 2;
