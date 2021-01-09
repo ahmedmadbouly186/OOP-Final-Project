@@ -42,10 +42,14 @@ void AddLEDgate::Execute()
 	GInfo.x2 = Cx + Len / 2;
 	GInfo.y1 = Cy - Wdth / 2;
 	GInfo.y2 = Cy + Wdth / 2;
-	LED* pA = new LED(GInfo,pManager->get_counter());
-	pManager->AddComponent(pA);
-	x = pIn->GetSrting(pOut, GInfo.x2, GInfo.y2);
-	pA->setlable(x);
+	if (GInfo.y1 > UI.ToolBarHeight && GInfo.y2 < UI.height - UI.StatusBarHeight && GInfo.x1 > 0 && GInfo.x2 < UI.width)
+	{
+		LED* pA = new LED(GInfo, pManager->get_counter());
+		pManager->AddComponent(pA);
+		x = pIn->GetSrting(pOut, GInfo.x2, GInfo.y2);
+		pA->setlable(x);
+
+	}
 }
 
 void AddLEDgate::Undo()

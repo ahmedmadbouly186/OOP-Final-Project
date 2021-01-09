@@ -54,5 +54,5 @@ void AND3::setInputPinStatus(int n, STATUS s)
 
 void AND3::save(ofstream& outputfile)
 {
-	outputfile << And3 << "\t" << ID << "\t" << get_label() << "\t" << m_GfxInfo.x1 << "\t" << m_GfxInfo.y1 << endl;
+	outputfile << And3 << " " << ID << " " << get_label() << " " << m_GfxInfo.x1 << " " << m_GfxInfo.y1 << endl;
 }

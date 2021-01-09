@@ -17,6 +17,7 @@
 #include "../Components/OutputPin.h"
 #include "../Components/Gate.h"
 #include "../Components/Connection.h"
+#include"Components/AND3.h"
 #include <fstream>
 load::load(ApplicationManager* pApp) :Action(pApp)
 {
@@ -204,30 +205,17 @@ void load::Execute()
 				xor3->set_label(label);
 				pManager->AddComponent(xor3);
 				break;
-				/*case And3:
-				inputfile >> id >> label >> x >> y;
+				case And3:
+					inputfile >> id >> label >> x >> y;
 					GInfo.x1 = x;
-				GInfo.x2 = x + Len;
-				GInfo.y1 = y;
-				GInfo.y2 = y + Wdth;
+					GInfo.x2 = x + Len;
+					GInfo.y1 = y;
+					GInfo.y2 = y + Wdth;
 					AND3* and3;
 					and3 = new AND3(GInfo, AND2_FANOUT, id);
 					and3 ->set_label(label);
-				and3 ->set_id(id);
-					pManager->AddComponent(pa);
+					pManager->AddComponent(and3);
 					break;
-				case Or2:
-				inputfile >> id >> label >> x >> y;
-					GInfo.x1 = x;
-				GInfo.x2 = x + Len;
-				GInfo.y1 = y;
-				GInfo.y2 = y + Wdth;
-					OR2* or2;
-					or2 = new OR2(GInfo, AND2_FANOUT, id);
-					or2 ->set_label(label);
-				or2 ->set_id(id);
-					pManager->AddComponent(pa);
-					break;*/
 			}
 		}
 	}

@@ -1,6 +1,8 @@
 #include "MOVE.h"
 #include "..\ApplicationManager.h"
 #include "..\Components\Connection.h"
+#include"Components/Gate.h"
+
 
 Move::Move(ApplicationManager* pApp) :Action(pApp)
 {
@@ -60,20 +62,60 @@ void Move::Execute()
 				}
 				else
 				{
-					int m = connection->get_PinNumber();
-					if (m == 1)
+					Gate* gate = dynamic_cast<Gate*>(component);
+					if (gate != NULL)
 					{
-						x2 = x_info.x1;
-						y2 = x_info.y2 - UI.AND2_Width / 2;
-						connection->set_Point2(x2, y2);
+						int number_of_inputs = gate->no_inputs();
+						int m = connection->get_PinNumber();
+						if (number_of_inputs == 1)
+						{
+							x2 = x_info.x1;
+							y2 = x_info.y2 - UI.AND2_Width / 2;
+							connection->set_Point2(x2, y2);
+						}
+						else if (number_of_inputs==2)
+						{
+							if (m == 1)
+							{
+								x2 = x_info.x1;
+								y2 = x_info.y2 - 2*UI.AND2_Width / 3;
+								connection->set_Point2(x2, y2);
+							}
+							else
+							{
+								x2 = x_info.x1;
+								y2 = x_info.y2 - UI.AND2_Width / 3;
+								connection->set_Point2(x2, y2);
+							}
+						}
+						else
+						{
+							if (m == 1)
+							{
+								x2 = x_info.x1;
+								y2 = x_info.y1 +  UI.AND2_Width / 4;
+								connection->set_Point2(x2, y2);
+							}
+							else if(m==2)
+							{
+								x2 = x_info.x1;
+								y2 = x_info.y1 + UI.AND2_Width / 2;
+								connection->set_Point2(x2, y2);
+							}
+							else
+							{
+								x2 = x_info.x1;
+								y2 = x_info.y1 + 3*UI.AND3_Width / 4;
+								connection->set_Point2(x2, y2);
+							}
+						}
 					}
 					else
 					{
 						x2 = x_info.x1;
 						y2 = x_info.y2 - UI.AND2_Width / 3;
-						connection->set_Point2(x2, y2);
+						connection->set_Point2(x2, y2);			
 					}
-					//connection->set_Point2(x2, y2);
 				}
 			}
 		}
