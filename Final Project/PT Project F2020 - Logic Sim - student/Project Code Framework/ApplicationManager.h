@@ -27,7 +27,9 @@ public:
 	int get_compcount();
 	Component**& get_CompList();
 	Component* load_connection(int id1);
-	void Delete();
+	Component* Check(int i);
+	void Delete(int i);
+	Connection* Check_conn(int i);
 public:	
 	ApplicationManager(); //constructor
 

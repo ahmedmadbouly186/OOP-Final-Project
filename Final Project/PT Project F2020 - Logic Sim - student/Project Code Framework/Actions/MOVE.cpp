@@ -1,7 +1,8 @@
 #include "MOVE.h"
 #include "..\ApplicationManager.h"
 #include "..\Components\Connection.h"
-#include"Components/Gate.h"
+//#include"Components/Gate.h"
+#include "../Components/Gate.h"
 
 
 Move::Move(ApplicationManager* pApp) :Action(pApp)

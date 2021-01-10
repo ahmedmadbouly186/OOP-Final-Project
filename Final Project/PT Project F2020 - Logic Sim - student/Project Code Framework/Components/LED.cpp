@@ -1,6 +1,7 @@
 #include "LED.h"
 LED::LED(const GraphicsInfo& r_GfxInfo,int id) 
 {
+	m_InputPins.setComponent(this);
 	set_selected(false);
 	ID = id;
 	isconnected = false;
