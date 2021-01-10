@@ -17,7 +17,7 @@
 #include "../Components/OutputPin.h"
 #include "../Components/Gate.h"
 #include "../Components/Connection.h"
-#include"Components/AND3.h"
+#include "../Components/AND3.h"
 #include <fstream>
 load::load(ApplicationManager* pApp) :Action(pApp)
 {

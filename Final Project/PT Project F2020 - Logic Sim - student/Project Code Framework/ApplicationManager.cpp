@@ -171,6 +171,41 @@ Component* ApplicationManager::ComponentRegion(int x,int y) { // this function l
 		if (p != NULL){
 			return p;
 		}
+		Component* com = CompList[i];    // included in its region or return NULL
+		Connection* conn = dynamic_cast<Connection*>(com);
+		if (conn != NULL)
+		{
+			GraphicsInfo g_conn = conn->get_GraphicsInfo();
+			if ((x > g_conn.x1 && x < ((g_conn.x1 + g_conn.x2) / 2)) && ((y < g_conn.y1 + 2) && (y > g_conn.y1 - 2)))
+			{
+				return conn;
+			}
+			else if ((x < g_conn.x2 && x >((g_conn.x1 + g_conn.x2) / 2)) && ((y < g_conn.y2 + 2) && (y > g_conn.y2 - 2)))
+			{
+				return conn;
+			}
+			if (g_conn.y1 > g_conn.y2)
+			{
+				if (((x < ((g_conn.x1 + g_conn.x2) / 2) + 2) && (x > ((g_conn.x1 + g_conn.x2) / 2) - 2)) && (y < g_conn.y1 && y > g_conn.y2))
+				{
+					return conn;
+				}
+			}
+			else if (g_conn.y1 < g_conn.y2)
+			{
+				if (((x < ((g_conn.x1 + g_conn.x2) / 2) + 2) && (x > ((g_conn.x1 + g_conn.x2) / 2) - 2)) && (y > g_conn.y1 && y < g_conn.y2))
+				{
+					return conn;
+				}
+			}
+			else if (g_conn.y1 == g_conn.y2)
+			{
+				if ((x < g_conn.x2 && x > g_conn.x1) && ((y < g_conn.y2 + 2) && (y > g_conn.y2 - 2)))
+				{
+					return conn;
+				}
+			}
+		}
 	}
 	return NULL;
 	}
@@ -249,125 +284,40 @@ void ApplicationManager::save(ofstream& outputfile) // function Save in applicat
 /////////////////////////////
 /////////////////////////////
 //Delete
-void ApplicationManager::Delete()
+Component* ApplicationManager::Check(int i)
 {
-	int count = 0;
-	for (int i = 0; i < CompCount; i++)
+	if (CompList[i]->get_selected() == true)
 	{
-		Component* p = CompList[i];
-		if (p->get_selected() == true)
-		{
-			count++;
-		}
+		return CompList[i];
 	}
-	for (int i = 0; (i < CompCount || count != 0); i++)
+	else
 	{
-		if (i >= CompCount)
-		{
-			i = 0;
-		}
-		Component* p = CompList[i];
-		if (p->get_selected() == true)
-		{
-			CompList[i] = CompList[CompCount - 1];
-			CompList[CompCount - 1] = p;
-			CompList[CompCount - 1] = NULL;
-			Gate* gate = dynamic_cast<Gate*>(p);
-			switch_key* key = dynamic_cast<switch_key*>(p);
-			LED* led = dynamic_cast<LED*>(p);
-			if (gate != NULL)
-			{
-				OutputPin* outputpin_gate = gate->getoutputpin();
-				for (int i = 0; i < CompCount; i++)
-				{
-					Connection* conn = dynamic_cast<Connection*>(CompList[i]);
-					if (conn != NULL)
-					{
-						InputPin* inputpin_conn = conn->getDestPin();
-						OutputPin* outputpin_conn = conn->getSourcePin();
-						if (outputpin_gate == outputpin_conn)
-						{
-							conn->set_selected(true);
-							count++;
-
-						}
-						int num_in = gate->no_inputs();
-						for (int i = 0; i < num_in; i++)
-						{
-							InputPin* inputpin_gate = gate->getinputpin(i);
-							if (inputpin_conn == inputpin_gate)
-							{
-								conn->set_selected(true);
-								count++;
-							}
-
-						}
-					}
-				}
-				/*OutputPin* out = gate->getoutputpin();
-				int num_conn = out->get_m_Conn();
-				Connection** m_Connections = out->get_m_Connections();
-				for (int i = 0; i < num_conn; i++)
-				{
-					m_Connections[i]->set_selected(true);
-				}
-				num_conn = 0;*/
-
-
-			}
-			else if (key != NULL)
-			{
-				/*OutputPin* out = key->getoutputpin();
-				int num_conn =  out->get_m_Conn();
-				Connection** m_Connections = out->get_m_Connections();
-				for (int i = 0; i < num_conn; i++)
-				{
-					m_Connections[i]->set_selected(true);
-				}
-				num_conn = 0;*/
-				OutputPin* outputpin_key = key->getoutputpin();
-				for (int i = 0; i < CompCount; i++)
-				{
-					Connection* conn = dynamic_cast<Connection*>(CompList[i]);
-					if (conn != NULL)
-					{
-						InputPin* inputpin_conn = conn->getDestPin();
-						OutputPin* outputpin_conn = conn->getSourcePin();
-						if (outputpin_key == outputpin_conn)
-						{
-							conn->set_selected(true);
-							count++;
-						}
-					}
-				}
-
-			}
-			else if (led != NULL)
-			{
-				InputPin* inputpin_led = led->getinputpin();
-				for (int i = 0; i < CompCount; i++)
-				{
-					Connection* conn = dynamic_cast<Connection*>(CompList[i]);
-					if (conn != NULL)
-					{
-						InputPin* inputpin_conn = conn->getDestPin();
-						if (inputpin_conn == inputpin_led)
-						{
-							conn->set_selected(true);
-							count++;
-						}
-					}
-				}
-			}
-			delete p;
-			i--;
-			CompCount--;
-			count--;
-		}
+		return NULL;
 	}
+}
+void ApplicationManager::Delete(int i)
+{
+	Component* comp = CompList[i];
+	CompList[i] = CompList[CompCount - 1];
+	CompList[CompCount - 1] = comp;
+	CompList[CompCount - 1] = NULL;
+	delete comp;
+	CompCount--;
 	OutputInterface->ClearDrawingArea();
-	//OutputInterface->DeleteDrawingArea();
 	UpdateInterface();
+
+}
+Connection* ApplicationManager::Check_conn(int i)
+{
+	Connection* conn = dynamic_cast<Connection*>(CompList[i]);
+	if (conn != NULL)
+	{
+		return conn;
+	}
+	else
+	{
+		return NULL;
+	}
 }
 ////////////////////////////////
 //load connection

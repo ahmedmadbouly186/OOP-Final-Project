@@ -131,7 +131,31 @@ void SIMMODE::Execute()
 	{
 		inputpin_list[i] = NULL;
 	}
-
+	// first step in the simulate is chek if any inputpin in the led  is connected or not
+		//if isnot connected --> set its status to LOW
+		// if connected --> donot do any thing and let the simulate algorithm carry on
+		//we repet this step also for gates but for every pin in the gate
+	for (int i = 0; i < led_count; i++)
+	{
+		//LED *l = ledlist[i];
+		//bool b=ledlist[i]->Isconnectto();
+		if (ledlist[i]->Isconnectto() == false)
+		{
+			ledlist[i]->setInputPinStatus(1, LOW);
+		}
+		//l = ledlist[i];
+	}
+	for (int i = 0; i < gate_count; i++)
+	{
+		int m = gatelist[i]->no_inputs();
+		for (int j = 1; j <= m; j++)
+		{
+			if (gatelist[i]->Isconnectto(j) == false)
+			{
+				ledlist[i]->setInputPinStatus(j, LOW);
+			}
+		}
+	}
 
 
 	for (int i = 0; i < switch_count; i++)
