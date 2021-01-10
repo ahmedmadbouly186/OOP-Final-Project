@@ -59,3 +59,13 @@ void Component::setlable(string x)
 {
 	m_Label = x;
 }
+
+void Component::setcopy(bool x) {
+	copy = x;
+}
+bool Component::getcopy() {
+	return copy;
+}
+void Component::drawlable(Output* p, string s, int x, int y) {
+	p->Drawlable(s, x, y);
+}

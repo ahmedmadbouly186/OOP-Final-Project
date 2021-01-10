@@ -14,6 +14,8 @@ protected:
 	GraphicsInfo m_GfxInfo;	//The parameters required to draw a component
 	bool selected; // data member used to know if component is selected or not
 	int ID; // data member ID to make each component has its owned ID to simplfiy save & load Operation
+	bool copy;
+
 public:
 	Component(const GraphicsInfo &r_GfxInfo);
 	virtual void Operate() = 0;	//Calculates the output according to the inputs
@@ -48,6 +50,11 @@ public:
 	void setlable(string x);
 	//Destructor must be virtual
 	virtual ~Component();
+
+	void setcopy(bool x);
+	bool getcopy();
+	void drawlable(Output* p, string s, int x, int y);
+
 };
 
 #endif
