@@ -46,8 +46,9 @@ void AddLEDgate::Execute()
 	{
 		LED* pA = new LED(GInfo, pManager->get_counter());
 		pManager->AddComponent(pA);
-		x = pIn->GetSrting(pOut, GInfo.x2, GInfo.y2);
+		x = pIn->GetSrting(pOut);
 		pA->setlable(x);
+		pA->drawlable(pOut, x, GInfo.x2, GInfo.y2);
 
 	}
 }

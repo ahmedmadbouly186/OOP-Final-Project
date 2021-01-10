@@ -48,8 +48,9 @@ void ADDXORGATE3::Execute()
 
 		XOR3* pA = new XOR3(GInfo, AND2_FANOUT, pManager->get_counter());
 		pManager->AddComponent(pA);
-		x = pIn->GetSrting(pOut, GInfo.x2, GInfo.y2);
+		x = pIn->GetSrting(pOut);
 		pA->setlable(x);
+		pA->drawlable(pOut, x, GInfo.x2, GInfo.y2);
 	}
 	//XOR3* pA = new XOR3(GInfo, AND2_FANOUT);
 	//pManager->AddComponent(pA);

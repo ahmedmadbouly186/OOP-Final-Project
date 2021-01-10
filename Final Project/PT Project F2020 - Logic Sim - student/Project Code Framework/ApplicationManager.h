@@ -59,6 +59,7 @@ public:
 	void save(ofstream & outputfile);
 	
 	Connection* get_connections(int ,int&);
+	void operations();
 	//destructor
 	~ApplicationManager();
 };

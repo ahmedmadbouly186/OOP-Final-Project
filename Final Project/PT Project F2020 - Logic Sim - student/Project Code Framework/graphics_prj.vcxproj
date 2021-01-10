@@ -144,11 +144,13 @@
     <ClCompile Include="Actions\ADD_XOR_GATE_3.cpp" />
     <ClCompile Include="Actions\change_switch.cpp" />
     <ClCompile Include="Actions\Close.cpp" />
+    <ClCompile Include="Actions\Copy.cpp" />
     <ClCompile Include="Actions\Deletecomp.cpp" />
     <ClCompile Include="Actions\DSGMode.cpp" />
     <ClCompile Include="Actions\EDITLABLE.cpp" />
     <ClCompile Include="Actions\load.cpp" />
     <ClCompile Include="Actions\MOVE.cpp" />
+    <ClCompile Include="Actions\Paste.cpp" />
     <ClCompile Include="Actions\Save.cpp" />
     <ClCompile Include="Actions\select_c.cpp" />
     <ClCompile Include="Actions\SIMMODE.cpp" />
@@ -230,11 +232,13 @@
     <ClInclude Include="Actions\ADD_XOR_GATE_3.h" />
     <ClInclude Include="Actions\change_switch.h" />
     <ClInclude Include="Actions\Close.h" />
+    <ClInclude Include="Actions\Copy.h" />
     <ClInclude Include="Actions\Deletecomp.h" />
     <ClInclude Include="Actions\DSGMode.h" />
     <ClInclude Include="Actions\EDITLABLE.h" />
     <ClInclude Include="Actions\load.h" />
     <ClInclude Include="Actions\MOVE.h" />
+    <ClInclude Include="Actions\Paste.h" />
     <ClInclude Include="Actions\Save.h" />
     <ClInclude Include="Actions\select_c.h" />
     <ClInclude Include="Actions\SIMMODE.h" />
