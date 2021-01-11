@@ -23,6 +23,9 @@
 #include "Actions/Save.h"
 #include "Actions/Deletecomp.h"
 #include "Actions/load.h"
+#include "Actions/SIM_TOOL.h"
+#include "Actions/DSG_TOOL.h"
+#include "Actions/Exit.h"
 #include<iostream>
 using namespace std;
 
@@ -132,6 +135,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 		case SAVE:
 			pAct = new Save(this);
+			break;
+		case SIM_TOOL:
+			pAct = new SIM_Tool(this);
 			break;
 		case EXIT:
 			///TODO: create ExitAction here

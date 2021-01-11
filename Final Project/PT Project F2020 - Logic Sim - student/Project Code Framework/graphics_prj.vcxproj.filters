@@ -178,6 +178,9 @@
     <ClCompile Include="Actions\AddORgate2.cpp" />
     <ClCompile Include="Actions\Copy.cpp" />
     <ClCompile Include="Actions\Paste.cpp" />
+    <ClCompile Include="Actions\DSG_TOOL.cpp" />
+    <ClCompile Include="Actions\Exit.cpp" />
+    <ClCompile Include="Actions\SIM_TOOL.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Defs.H" />
@@ -318,6 +321,9 @@
     <ClInclude Include="Actions\AddORgate2.h" />
     <ClInclude Include="Actions\Copy.h" />
     <ClInclude Include="Actions\Paste.h" />
+    <ClInclude Include="Actions\DSG_TOOL.h" />
+    <ClInclude Include="Actions\Exit.h" />
+    <ClInclude Include="Actions\SIM_TOOL.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
