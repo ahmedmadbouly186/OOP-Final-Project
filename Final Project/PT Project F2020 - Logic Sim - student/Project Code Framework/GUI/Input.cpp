@@ -12,12 +12,20 @@ void Input::GetPointClicked(int& x, int& y)
 }
 
 
-string Input::GetSrting(Output* pOut, int x, int y)
+string Input::GetSrting(Output* pOut, bool s)
 {
+	if (s)
+	{
+
+	}
+	else
+	{
+		pOut->ClearStatusBar();
+		char d[] = "Enter the name of label: ";
+		pOut->PrintMsg(d);
+	}
 	char c[20];
-	pOut->ClearStatusBar();
-	char d[] = "Enter the name of label: ";
-	pOut->PrintMsg(d);
+
 	for (int i = 0; i < 19; i++)
 	{
 		pWind->WaitKeyPress(c[i]);
@@ -45,13 +53,13 @@ string Input::GetSrting(Output* pOut, int x, int y)
 		pOut->PrintMsg(c);
 	}
 	pOut->ClearStatusBar();
-	int MsgX = x;
+	/*int MsgX = x;
 	int MsgY = y;
 
 	// Print the Message
 	pWind->SetFont(20, BOLD | ITALICIZED, BY_NAME, "Arial");
 	pWind->SetPen(UI.MsgColor);
-	pWind->DrawString(MsgX, MsgY, c);
+	pWind->DrawString(MsgX, MsgY, c);*/
 	return c;
 	///TODO: Implement this Function
 	//Read a complete string from the user until the user presses "ENTER".

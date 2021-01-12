@@ -15,7 +15,6 @@ public:
 	void CreateDesignToolBar2()const;
 	void CreateSimulationToolBar() const;//Tool bar of the simulation mode
 	void CreateStatusBar() const;	//Create Status bar
-	void DeleteDrawingArea() const;
 	void ClearStatusBar() const;		//Clears the status bar
 	void ClearDrawingArea() const;	//Clears the drawing area
 	void CleartoolbarArea1() const;	//Clears the first tool bar area
@@ -47,7 +46,7 @@ public:
 	
 	// Draws Connection
 	void DrawConnection(GraphicsInfo r_GfxInfo, bool selected = false) const;
-
+	void Drawlable(string c, int x, int y);
 	void PrintMsg(string msg) const;	//Print a message on Status bar
 
 

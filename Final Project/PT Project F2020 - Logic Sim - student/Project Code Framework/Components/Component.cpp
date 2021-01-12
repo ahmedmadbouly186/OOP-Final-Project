@@ -2,7 +2,7 @@
 
 Component::Component(const GraphicsInfo &r_GfxInfo)
 {
-	
+	copy = false;
 	m_GfxInfo = r_GfxInfo;	
 }
 

@@ -43,11 +43,14 @@ void AddANDgate2::Execute()
 	GInfo.x2 = Cx + Len/2;
 	GInfo.y1 = Cy - Wdth/2;
 	GInfo.y2 = Cy + Wdth/2;
-	AND2 *pA=new AND2(GInfo, AND2_FANOUT, pManager->get_counter());
-	pManager->AddComponent(pA);
-	x = pIn->GetSrting(pOut);
-	pA->setlable(x);
-	pA->drawlable(pOut, x, GInfo.x2, GInfo.y2);
+	if (GInfo.y1 > UI.ToolBarHeight && GInfo.y2 < UI.height - UI.StatusBarHeight && GInfo.x1 > 0 && GInfo.x2 < UI.width)
+	{
+		AND2* pA = new AND2(GInfo, AND2_FANOUT, pManager->get_counter());
+		pManager->AddComponent(pA);
+		x = pIn->GetSrting(pOut);
+		pA->setlable(x);
+		pA->drawlable(pOut, x, GInfo.x2, GInfo.y2);
+	}
 }
 
 void AddANDgate2::Undo()

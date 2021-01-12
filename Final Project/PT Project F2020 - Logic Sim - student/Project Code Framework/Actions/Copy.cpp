@@ -23,9 +23,9 @@ void Copy::Execute()
 {
 	//Get Center point of the Gate
 	ReadActionParameters();
-	int count = pManager->get_compcount();
+	/*int count = pManager->get_compcount();
 	Component** x = pManager->get_CompList();
-	
+
 	for (int i = 0; i < count; i++)
 	{
 		Component* y = x[i];
@@ -34,6 +34,14 @@ void Copy::Execute()
 			y->setcopy(1);
 			break;
 		}
+	}
+}*/
+	Output* pOut = pManager->GetOutput();
+	Component* x = pManager->get_selected();
+	if (x != NULL) {
+		pManager->setcut_component(NULL);
+		x->setcopy(1);
+		pOut->PrintMsg("componnent copied");
 	}
 }
 

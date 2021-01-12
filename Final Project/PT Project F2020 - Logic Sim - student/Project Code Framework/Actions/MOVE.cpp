@@ -33,7 +33,7 @@ void Move::Execute()
 	//Get Center point of the Gate
 	ReadActionParameters();
 	Output* pOut = pManager->GetOutput();
-	int count = pManager->get_compcount();
+	//int count = pManager->get_compcount();
 	Component* component = pManager->ComponentRegion(Cx1,Cy1);
 	if (component != NULL)
 	{

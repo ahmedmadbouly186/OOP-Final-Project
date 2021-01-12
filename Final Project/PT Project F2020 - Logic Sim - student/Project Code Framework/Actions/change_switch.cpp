@@ -24,23 +24,13 @@ void change_switch::Execute()
 	//Get Center point of the Gate
 	ReadActionParameters();
 	///////////////////////////////////
-	int count = pManager->get_compcount();
-	Component** x = pManager->get_CompList();
-	for (int i = 0; i < count; i++)
+	Component* comp = pManager->ComponentRegion(Cx, Cy);
+	switch_key* key = dynamic_cast<switch_key*>(comp);
+	if (key != NULL)
 	{
-		Component* y = x[i];
-		GraphicsInfo t = y->get_GraphicsInfo();
-		if ((Cx > t.x1 && Cx < t.x2) && (Cy > t.y1 && Cy < t.y2))
-		{
-			switch_key* key = dynamic_cast<switch_key*>(y);
-			if (key != NULL)
-			{
-				bool c = key->get_close();
-				c = (c == false) ? true : false;
-				key->set_close(c);
-			}
-			break;
-		}
+		bool c = key->get_close();
+		c = (c == false) ? true : false;
+		key->set_close(c);
 	}
 }
 void change_switch::Undo()

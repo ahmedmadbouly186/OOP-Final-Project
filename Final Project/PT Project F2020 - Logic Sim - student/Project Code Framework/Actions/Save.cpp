@@ -38,7 +38,7 @@ void Save::Execute()
 	outputfile.open(name);
 	pManager->save(outputfile);
 	outputfile.close();
-	pManager->GetOutput()->PrintMsg("Circuit is saved :'circuit.txt'");
+	pManager->GetOutput()->PrintMsg("Circuit is saved : " + name);
 	/*
 	int ID = 1;
 

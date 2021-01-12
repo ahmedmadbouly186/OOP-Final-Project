@@ -1,6 +1,6 @@
 #include "SIM_TOOL.h"
 #include"Action.h"
-#include"ApplicationManager.h"
+#include"..\ApplicationManager.h"
 
 SIM_Tool::SIM_Tool(ApplicationManager* pApp) :Action(pApp)
 {
