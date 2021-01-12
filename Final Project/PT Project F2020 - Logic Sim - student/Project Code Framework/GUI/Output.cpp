@@ -23,6 +23,22 @@ Output::Output()
 
 }
 
+
+void Output::Drawlable(string c, int x, int y) {
+	//window* pWind;
+	//Output* pOut;
+	//pOut->ClearStatusBar();
+	int MsgX = x;
+	int MsgY = y;
+
+	// Print the Message
+	pWind->SetFont(20, BOLD | ITALICIZED, BY_NAME, "Arial");
+	pWind->SetPen(UI.MsgColor);
+	pWind->DrawString(MsgX, MsgY, c);
+
+}
+
+
 Input* Output::CreateInput() const
 {
 	//Create an Input Object & assign it to the Same Window

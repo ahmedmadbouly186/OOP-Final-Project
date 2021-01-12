@@ -11,7 +11,7 @@ private:
 public:
 	Input(window*);
 	void GetPointClicked(int &, int &);	//Get coordinate where user clicks
-	string GetSrting(Output*, int x, int y);		//Returns a string entered by the user
+	string GetSrting(Output*, bool s = false);		//Returns a string entered by the user
 
 	ActionType GetUserAction() const; //Reads the user click and maps it to an action
 	string Getfilename(Output* pOut);

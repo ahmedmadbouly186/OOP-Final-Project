@@ -2,17 +2,14 @@
 
 #include "action.h"
 
-
-
-class dsntool :public Action
+class statusbar :public Action
 {
 
 private:
 	//Parameters for rectangular area to be occupied by the gate
-	
 public:
-	dsntool(ApplicationManager* pApp);
-	virtual ~dsntool(void);
+	statusbar(ApplicationManager* pApp);
+	virtual ~statusbar(void);
 
 	//Reads parameters required for action to execute
 	virtual void ReadActionParameters();

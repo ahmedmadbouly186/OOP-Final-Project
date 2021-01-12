@@ -35,7 +35,7 @@ void SIMMODE::Execute()
 	pout->CreateSimulationToolBar();
 
 	// the actually code that make the circut behave correctly
-
+	pManager->operations();
 	//Gate** gatelist;
 	//Connection** connectionlist1;
 	//LED** ledlist;

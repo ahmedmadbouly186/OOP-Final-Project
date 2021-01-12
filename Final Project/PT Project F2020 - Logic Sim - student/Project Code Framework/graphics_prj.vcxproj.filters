@@ -181,6 +181,8 @@
     <ClCompile Include="Actions\DSG_TOOL.cpp" />
     <ClCompile Include="Actions\Exit.cpp" />
     <ClCompile Include="Actions\SIM_TOOL.cpp" />
+    <ClCompile Include="Actions\Statusbar.cpp" />
+    <ClCompile Include="Actions\cut.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Defs.H" />
@@ -324,6 +326,8 @@
     <ClInclude Include="Actions\DSG_TOOL.h" />
     <ClInclude Include="Actions\Exit.h" />
     <ClInclude Include="Actions\SIM_TOOL.h" />
+    <ClInclude Include="Actions\Statusbar.h" />
+    <ClInclude Include="Actions\cut.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

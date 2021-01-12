@@ -251,21 +251,24 @@ void load::Execute()
 			}
 			if (gate2 != NULL)
 			{
-				in_pin = gate2->getinputpin(num_inputpin);
+				in_pin = gate2->getinputpin(num_inputpin - 1);
 				int num_pins = gate2->no_inputs();
 				if (num_pins == 1)
 				{
 					GInfo3.y2 = GInfo2.y1 + (UI.AND2_Width / 2);
+					gate2->set_connection(true, 0);
 				}
 				else if (num_pins == 2)
 				{
 					if (num_inputpin == 1)
 					{
 						GInfo3.y2 = GInfo2.y1 + (UI.AND2_Width / 3);
+						gate2->set_connection(true, 0);
 					}
 					else
 					{
 						GInfo3.y2 = GInfo2.y1 + (2 * UI.AND2_Width / 3);
+						gate2->set_connection(true, 1);
 					}
 				}
 				else
@@ -273,14 +276,17 @@ void load::Execute()
 					if (num_inputpin == 1)
 					{
 						GInfo3.y2 = GInfo2.y1 + (UI.AND2_Width / 4);
+						gate2->set_connection(true, 0);
 					}
 					else if (num_inputpin == 2)
 					{
 						GInfo3.y2 = GInfo2.y1 + (UI.AND2_Width / 2);
+						gate2->set_connection(true, 1);
 					}
 					else
 					{
 						GInfo3.y2 = GInfo2.y1 + (3 * UI.AND2_Width / 4);
+						gate2->set_connection(true, 2);
 					}
 				}
 			}
@@ -288,6 +294,7 @@ void load::Execute()
 			{
 				in_pin = led->getinputpin();
 				GInfo3.y2 = GInfo2.y2 - (UI.AND2_Width / 4);
+				led->set_connection(true);
 			}
 			GInfo3.x1 = GInfo1.x2;
 			GInfo3.x2 = GInfo2.x1;

@@ -7,6 +7,7 @@
 #include "Actions\Action.h"
 #include "Components\Component.h"
 #include"Components/Connection.h"
+#include"Components/Gate.h"
 
 
 //Main class that manages everything in the application.
@@ -22,14 +23,11 @@ private:
 	Output* OutputInterface; //pointer to the Output Clase Interface
 	Input* InputInterface; //pointer to the Input Clase Interface
 	int counter;
-
+	Component* cut_component;
 public:
-	int get_compcount();
-	Component**& get_CompList();
 	Component* load_connection(int id1);
-	Component* Check(int i);
-	void Delete(int i);
-	Connection* Check_conn(int i);
+	void Delete();
+	
 public:	
 	ApplicationManager(); //constructor
 
@@ -40,14 +38,18 @@ public:
 	void ExecuteAction(ActionType);
 	// function to return component that user clicked on in output interface
 	Component* ComponentRegion(int ,int );
-	Component* componentreturin(int);
+	//Component* componentreturin(int);
 
 	void UpdateInterface();	//Redraws all the drawing window
 
 	//Gets a pointer to Input / Output Object
 	Output* GetOutput();
 	Input* GetInput();
-
+	Component* get_selected();
+	Gate* get_gate();
+	Connection* get_connection();
+	Component* getcut_component();
+	void setcut_component(Component*);
 	//Adds a new component to the list of components
 	void AddComponent(Component* pComp);
 	// get unique counter to each created component 

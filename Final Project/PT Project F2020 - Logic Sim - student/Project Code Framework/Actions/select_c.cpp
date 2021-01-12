@@ -2,7 +2,7 @@
 #include "..\ApplicationManager.h"
 select_c::select_c(ApplicationManager* pApp) :Action(pApp)
 {
-	
+
 }
 void select_c::ReadActionParameters()
 {
@@ -25,8 +25,6 @@ void select_c::Execute()
 {
 	//Get Center point of the Gate
 	ReadActionParameters();
-	
-	int count = pManager->get_compcount();
 	Component* y = pManager->ComponentRegion(Cx, Cy);
 	if (y != NULL)
 	{
@@ -35,20 +33,6 @@ void select_c::Execute()
 		y->set_selected(c);
 
 	}
-	/*int count = pManager->get_compcount();
-	Component** x = pManager->get_CompList();
-	for (int i = 0; i < count; i++)
-	{
-		Component* y = x[i];
-		GraphicsInfo t = y->get_GraphicsInfo();
-		if ((Cx > t.x1 && Cx < t.x2) && (Cy > t.y1 && Cy < t.y2))
-		{
-			bool c = y->get_selected();
-			c = (c == false) ? true: false;
-			y->set_selected(c);
-			break;
-		}
-	}*/
 }
 
 void select_c::Undo()
