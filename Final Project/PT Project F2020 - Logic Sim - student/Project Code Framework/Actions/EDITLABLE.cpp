@@ -115,14 +115,14 @@ void EDITLABLE::Execute()
 	{
 		//for (int i = 0; i < pManager->get_compcount(); i++)
 		{
-			OutputPin* surcPin;
+			//OutputPin* surcPin;
 			Connection* p;
 			//if (z[i]->get_selected() == true)
 			{
 				p = pManager->get_connection();
 				if (p != NULL)
 				{
-
+					
 
 					LED* l;
 					y = pManager->get_selected();
@@ -189,9 +189,17 @@ void EDITLABLE::Execute()
 					dest_comp = p->getDestPin()->getComponent();
 					L = dynamic_cast<LED*>(dest_comp);
 					g = dynamic_cast<Gate*>(dest_comp);
-					if (g != NULL)
+					if (s != NULL)
 					{
-						g->set_connection(0, p->get_PinNumber());
+						//p->getDestPin()->getComponent()->setcset_connection(0, p->get_PinNumber()-1);
+						if (g != NULL)
+						{
+							g->set_connection(0, p->get_PinNumber() - 1);
+						}
+						else if (L != NULL)
+						{
+							L->set_connection(0);
+						}
 						string ninput;
 						pOut->PrintMsg("enter the number of input pin");
 						ninput = pIn->GetSrting(pOut, 1);
@@ -211,9 +219,16 @@ void EDITLABLE::Execute()
 							pOut->PrintMsg("edit done 3");
 						}
 					}
-					else if (L != NULL)
+					else if (l != NULL)
 					{
-						L->set_connection(0);
+						if (g != NULL)
+						{
+							g->set_connection(0, p->get_PinNumber() - 1);
+						}
+						else if (L != NULL)
+						{
+							L->set_connection(0);
+						}
 						p->setDestPin(l->getinputpin());
 						m = l->get_GraphicsInfo();
 						x2 = m.x1;

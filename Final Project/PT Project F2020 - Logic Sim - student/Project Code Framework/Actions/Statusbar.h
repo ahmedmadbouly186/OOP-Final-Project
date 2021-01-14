@@ -6,7 +6,7 @@ class statusbar :public Action
 {
 
 private:
-	//Parameters for rectangular area to be occupied by the gate
+
 public:
 	statusbar(ApplicationManager* pApp);
 	virtual ~statusbar(void);

@@ -11,7 +11,7 @@ INV::INV(const GraphicsInfo& r_GfxInfo, int r_FanOut, int id) :Gate(1, r_FanOut,
 
 void INV::Operate()
 {
-	//caclulate the output status as the ANDing of the two input pins
+	//caclulate the output status as the ANDing of the one input pin
 	if (GetInputPinStatus(1) == LOW)
 	{
 		m_OutputPin.setStatus(HIGH) ;
@@ -25,7 +25,7 @@ void INV::Operate()
 
 
 // Function Draw
-// Draws 2-input AND gate
+// Draws 1-input INV gate
 void INV::Draw(Output* pOut)
 {
 	//Call output class and pass gate drawing info to it.

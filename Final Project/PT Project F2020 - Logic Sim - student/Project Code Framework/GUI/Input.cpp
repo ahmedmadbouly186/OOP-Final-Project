@@ -25,7 +25,7 @@ string Input::GetSrting(Output* pOut, bool s)
 		pOut->PrintMsg(d);
 	}
 	char c[20];
-
+	pWind->FlushKeyQueue();
 	for (int i = 0; i < 19; i++)
 	{
 		pWind->WaitKeyPress(c[i]);
@@ -140,8 +140,6 @@ ActionType Input::GetUserAction() const
 
 			case ITM_ADD: b = false; return ADD_Gate;
 			case ITM_Simulate: return SIM_MODE;
-			case ITM_UNDO: return UNDO;
-			case ITM_REDO: return REDO;
 			case ITM_LOAD: return LOAD;
 			case ITM_SAVE: return SAVE;
 
@@ -161,7 +159,7 @@ ActionType Input::GetUserAction() const
 
 		if (y >= 0 && y < UI.ToolBarHeight)
 		{
-			int ClickedItemOrder = (x / UI.ToolItemWidth) + 14;
+			int ClickedItemOrder = (x / UI.ToolItemWidth) + 12;
 
 
 			switch (ClickedItemOrder)
@@ -196,7 +194,7 @@ ActionType Input::GetUserAction() const
 	}
 	else	//Application is in Simulation mode
 	{
-	
+
 		//[1] If user clicks on the Toolbar
 		if (y >= 0 && y < UI.ToolBarHeight)
 		{
@@ -205,7 +203,6 @@ ActionType Input::GetUserAction() const
 			{                             // Items of Simulation tool bar
 			case ITM_SIM: return SIM_MODE;
 			case ITM_SWITCH_DSN: return DSN_MODE;
-			case ITM_TRUTH: return Create_TruthTable;
 			case ITM_SAVE_Simulate: return SAVE;
 			case ITM_LOAD_Simulate: return LOAD;;
 			case ITM_Change_Switch:  return Change_Switch;

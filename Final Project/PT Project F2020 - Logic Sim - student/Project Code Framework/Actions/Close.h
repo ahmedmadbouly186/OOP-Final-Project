@@ -6,10 +6,7 @@
 class Close : public Action
 {
 private:
-	//pointer to output class
-	//to control clear the tool bar
-	//and return to  the menu bar
-	//Output* pout;
+
 public:
 	Close(ApplicationManager* pApp);
 	virtual ~Close(void);

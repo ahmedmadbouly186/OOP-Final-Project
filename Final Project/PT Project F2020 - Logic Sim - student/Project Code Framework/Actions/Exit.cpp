@@ -20,7 +20,6 @@ void exist::ReadActionParameters()
 	string check;
 	//Print Action Message
 	pOut->PrintMsg("click on the Exist, if you want to save befor closing enter 1 ,else enter 2 ");
-	//pOut->
 	do {
 		check = pIn->GetSrting(pOut,true);
 		if (check == "1")
@@ -38,7 +37,7 @@ void exist::ReadActionParameters()
 	} while ((check != "1") &&( check != "2"));
 
 
-	//Wait for User Input
+	
 	//Clear Status Bar
 	pOut->ClearStatusBar();
 
@@ -46,7 +45,6 @@ void exist::ReadActionParameters()
 
 void exist::Execute()
 {
-	//Get Center point of the Gate
 	ReadActionParameters();
 	if (b == true)
 	{

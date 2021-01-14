@@ -137,39 +137,37 @@ void Output::CreateDesignToolBar() const
 	MenuItemImages[ITM_ADD] = "images\\Menu\\Menu_ADD.jpg"; //1 index 0
 	MenuItemImages[ITM_Simulate] = "images\\Menu\\Menu_Simulate.jpg"; //2 index 1
 	MenuItemImages[ITM_LOAD] = "images\\Menu\\Menu_LOAD.jpg";//3 index 2
-	MenuItemImages[ITM_UNDO] = "images\\Menu\\Menu_UNDO.jpg";//4 index 3
-	MenuItemImages[ITM_REDO] = "images\\Menu\\Menu_REDO.jpg";//5 index 4
-	MenuItemImages[ITM_SAVE] = "images\\Menu\\Menu_SAVE.jpg";//6 index 5
-	MenuItemImages[ITM_COPY] = "images\\Menu\\Menu_COPY.jpg";//7 index 6
-	MenuItemImages[ITM_CUT] = "images\\Menu\\Menu_CUT.jpg";//8 index 7
-	MenuItemImages[ITM_PASTE] = "images\\Menu\\Menu_PASTE.jpg";//9 index 8
-	MenuItemImages[ITM_MOVE] = "images\\Menu\\Menu_MOVE.jpg";//10 index 9
-	MenuItemImages[ITM_EDITLABLE] = "images\\Menu\\Menu_EDITLABLE.jpg";//11 index 10
-	MenuItemImages[ITM_Delet] = "images\\Menu\\Menu_del.jpg";//12 index 11
-	MenuItemImages[ITM_Connection] = "images\\Menu\\Menu_Connection.jpg";//13 index 12
-	MenuItemImages[ITM_EXIT] = "images\\Menu\\Menu_Exit.jpg";//14 index 13
+	MenuItemImages[ITM_SAVE] = "images\\Menu\\Menu_SAVE.jpg";//4 index 3
+	MenuItemImages[ITM_COPY] = "images\\Menu\\Menu_COPY.jpg";//5 index 4
+	MenuItemImages[ITM_CUT] = "images\\Menu\\Menu_CUT.jpg";//6 index 5
+	MenuItemImages[ITM_PASTE] = "images\\Menu\\Menu_PASTE.jpg";//7 index 6
+	MenuItemImages[ITM_MOVE] = "images\\Menu\\Menu_MOVE.jpg";//8 index 7
+	MenuItemImages[ITM_EDITLABLE] = "images\\Menu\\Menu_EDITLABLE.jpg";//9 index 8
+	MenuItemImages[ITM_Delet] = "images\\Menu\\Menu_del.jpg";//10 index 9
+	MenuItemImages[ITM_Connection] = "images\\Menu\\Menu_Connection.jpg";//11 index 10
+	MenuItemImages[ITM_EXIT] = "images\\Menu\\Menu_Exit.jpg";//12 index 11
 
 
-	MenuItemImages[ITM_Buff] = "images\\Menu\\Menu_Buff.jpg";//15 index 14
-	MenuItemImages[ITM_INV] = "images\\Menu\\Menu_INV.jpg";//16 index 15
-	MenuItemImages[ITM_AND2] = "images\\Menu\\Menu_AND2.jpg";//17 index 16
-	MenuItemImages[ITM_OR2] = "images\\Menu\\Menu_OR2.jpg";//18 index 17
-	MenuItemImages[ITM_NAND2] = "images\\Menu\\Menu_NAND2.jpg";//19 index 18
-	MenuItemImages[ITM_NOR2] = "images\\Menu\\Menu_NOR2.jpg";//20 index 19
-	MenuItemImages[ITM_XOR2] = "images\\Menu\\Menu_XOR2.jpg";//21 index 20
-	MenuItemImages[ITM_XNOR2] = "images\\Menu\\Menu_XNOR2.jpg";//22 index 21
-	MenuItemImages[ITM_AND3] = "images\\Menu\\Menu_AND3.jpg";//23 index 22
-	MenuItemImages[ITM_NOR3] = "images\\Menu\\Menu_NOR3.jpg";//24 index 23
-	MenuItemImages[ITM_XOR3] = "images\\Menu\\Menu_XOR3.jpg";//25 index 24
-	MenuItemImages[ITM_LED] = "images\\Menu\\Menu_LED.jpg";//26 index 25
-	MenuItemImages[ITM_Switch] = "images\\Menu\\Menu_Switch.jpg";//27 index 26
-	MenuItemImages[ITM_Close] = "images\\Menu\\Menu_Close.jpg";//28 index 27
+	MenuItemImages[ITM_Buff] = "images\\Menu\\Menu_Buff.jpg";//13 index 12
+	MenuItemImages[ITM_INV] = "images\\Menu\\Menu_INV.jpg";//14 index 13
+	MenuItemImages[ITM_AND2] = "images\\Menu\\Menu_AND2.jpg";//15 index 14
+	MenuItemImages[ITM_OR2] = "images\\Menu\\Menu_OR2.jpg";//16 index 15
+	MenuItemImages[ITM_NAND2] = "images\\Menu\\Menu_NAND2.jpg";//17 index 16
+	MenuItemImages[ITM_NOR2] = "images\\Menu\\Menu_NOR2.jpg";//18 index 17
+	MenuItemImages[ITM_XOR2] = "images\\Menu\\Menu_XOR2.jpg";//19 index 18
+	MenuItemImages[ITM_XNOR2] = "images\\Menu\\Menu_XNOR2.jpg";//20 index 19
+	MenuItemImages[ITM_AND3] = "images\\Menu\\Menu_AND3.jpg";//21 index 20
+	MenuItemImages[ITM_NOR3] = "images\\Menu\\Menu_NOR3.jpg";//22 index 21
+	MenuItemImages[ITM_XOR3] = "images\\Menu\\Menu_XOR3.jpg";//23 index 22
+	MenuItemImages[ITM_LED] = "images\\Menu\\Menu_LED.jpg";//24 index 23
+	MenuItemImages[ITM_Switch] = "images\\Menu\\Menu_Switch.jpg";//25 index 24
+	MenuItemImages[ITM_Close] = "images\\Menu\\Menu_Close.jpg";//26 index 25
 
 	//TODO: Prepare image for each menu item and add it to the list
 
 	//Draw menu item one image at a time
 
-	for (int i = 0; i < 14; i++)
+	for (int i = 0; i < 12; i++)
 	{
 		pWind->DrawImage(MenuItemImages[i], i * UI.ToolItemWidth, 0, UI.ToolItemWidth, UI.ToolBarHeight);
 	}
@@ -190,39 +188,37 @@ void Output::CreateDesignToolBar2() const
 	MenuItemImages[ITM_ADD] = "images\\Menu\\Menu_ADD.jpg"; //1 index 0
 	MenuItemImages[ITM_Simulate] = "images\\Menu\\Menu_Simulate.jpg"; //2 index 1
 	MenuItemImages[ITM_LOAD] = "images\\Menu\\Menu_LOAD.jpg";//3 index 2
-	MenuItemImages[ITM_UNDO] = "images\\Menu\\Menu_UNDO.jpg";//4 index 3
-	MenuItemImages[ITM_REDO] = "images\\Menu\\Menu_REDO.jpg";//5 index 4
-	MenuItemImages[ITM_SAVE] = "images\\Menu\\Menu_SAVE.jpg";//6 index 5
-	MenuItemImages[ITM_COPY] = "images\\Menu\\Menu_COPY.jpg";//7 index 6
-	MenuItemImages[ITM_CUT] = "images\\Menu\\Menu_CUT.jpg";//8 index 7
-	MenuItemImages[ITM_PASTE] = "images\\Menu\\Menu_PASTE.jpg";//9 index 8
-	MenuItemImages[ITM_MOVE] = "images\\Menu\\Menu_MOVE.jpg";//10 index 9
-	MenuItemImages[ITM_EDITLABLE] = "images\\Menu\\Menu_EDITLABLE.jpg";//11 index 10
-	MenuItemImages[ITM_Delet] = "images\\Menu\\images.jpg";//12 index 11
-	MenuItemImages[ITM_Connection] = "images\\Menu\\Menu_Connection.jpg";//13 index 12
-	MenuItemImages[ITM_EXIT] = "images\\Menu\\Menu_Exit.jpg";//14 index 13
+	MenuItemImages[ITM_SAVE] = "images\\Menu\\Menu_SAVE.jpg";//4 index 3
+	MenuItemImages[ITM_COPY] = "images\\Menu\\Menu_COPY.jpg";//5 index 4
+	MenuItemImages[ITM_CUT] = "images\\Menu\\Menu_CUT.jpg";//6 index 5
+	MenuItemImages[ITM_PASTE] = "images\\Menu\\Menu_PASTE.jpg";//7 index 6
+	MenuItemImages[ITM_MOVE] = "images\\Menu\\Menu_MOVE.jpg";//8 index 7
+	MenuItemImages[ITM_EDITLABLE] = "images\\Menu\\Menu_EDITLABLE.jpg";//9 index 8
+	MenuItemImages[ITM_Delet] = "images\\Menu\\Menu_del.jpg";//10 index 9
+	MenuItemImages[ITM_Connection] = "images\\Menu\\Menu_Connection.jpg";//11 index 10
+	MenuItemImages[ITM_EXIT] = "images\\Menu\\Menu_Exit.jpg";//12 index 11
 
 
-	MenuItemImages[ITM_Buff] = "images\\Menu\\Menu_Buff.jpg";//15 index 14
-	MenuItemImages[ITM_INV] = "images\\Menu\\Menu_INV.jpg";//16 index 15
-	MenuItemImages[ITM_AND2] = "images\\Menu\\Menu_AND2.jpg";//17 index 16
-	MenuItemImages[ITM_OR2] = "images\\Menu\\Menu_OR2.jpg";//18 index 17
-	MenuItemImages[ITM_NAND2] = "images\\Menu\\Menu_NAND2.jpg";//19 index 18
-	MenuItemImages[ITM_NOR2] = "images\\Menu\\Menu_NOR2.jpg";//20 index 19
-	MenuItemImages[ITM_XOR2] = "images\\Menu\\Menu_XOR2.jpg";//21 index 20
-	MenuItemImages[ITM_XNOR2] = "images\\Menu\\Menu_XNOR2.jpg";//22 index 21
-	MenuItemImages[ITM_AND3] = "images\\Menu\\Menu_AND3.jpg";//23 index 22
-	MenuItemImages[ITM_NOR3] = "images\\Menu\\Menu_NOR3.jpg";//24 index 23
-	MenuItemImages[ITM_XOR3] = "images\\Menu\\Menu_XOR3.jpg";//25 index 24
-	MenuItemImages[ITM_LED] = "images\\Menu\\Menu_LED.jpg";//26 index 25
-	MenuItemImages[ITM_Switch] = "images\\Menu\\Menu_Switch.jpg";//27 index 26
-	MenuItemImages[ITM_Close] = "images\\Menu\\Menu_Close.jpg";//28 index 27
+	MenuItemImages[ITM_Buff] = "images\\Menu\\Menu_Buff.jpg";//13 index 12
+	MenuItemImages[ITM_INV] = "images\\Menu\\Menu_INV.jpg";//14 index 13
+	MenuItemImages[ITM_AND2] = "images\\Menu\\Menu_AND2.jpg";//15 index 14
+	MenuItemImages[ITM_OR2] = "images\\Menu\\Menu_OR2.jpg";//16 index 15
+	MenuItemImages[ITM_NAND2] = "images\\Menu\\Menu_NAND2.jpg";//17 index 16
+	MenuItemImages[ITM_NOR2] = "images\\Menu\\Menu_NOR2.jpg";//18 index 17
+	MenuItemImages[ITM_XOR2] = "images\\Menu\\Menu_XOR2.jpg";//19 index 18
+	MenuItemImages[ITM_XNOR2] = "images\\Menu\\Menu_XNOR2.jpg";//20 index 19
+	MenuItemImages[ITM_AND3] = "images\\Menu\\Menu_AND3.jpg";//21 index 20
+	MenuItemImages[ITM_NOR3] = "images\\Menu\\Menu_NOR3.jpg";//22 index 21
+	MenuItemImages[ITM_XOR3] = "images\\Menu\\Menu_XOR3.jpg";//23 index 22
+	MenuItemImages[ITM_LED] = "images\\Menu\\Menu_LED.jpg";//24 index 23
+	MenuItemImages[ITM_Switch] = "images\\Menu\\Menu_Switch.jpg";//25 index 24
+	MenuItemImages[ITM_Close] = "images\\Menu\\Menu_Close.jpg";//26 index 25
 
 
 
-	for (int i = 14; i < 28; i++)
+	for (int i = 12; i < 26; i++)
 	{
-		pWind->DrawImage(MenuItemImages[i], i * UI.ToolItemWidth - 14 * UI.ToolItemWidth, 0, UI.ToolItemWidth, UI.ToolBarHeight);
+		pWind->DrawImage(MenuItemImages[i], i * UI.ToolItemWidth - 12 * UI.ToolItemWidth, 0, UI.ToolItemWidth, UI.ToolBarHeight);
 	}
 
 
@@ -246,7 +242,6 @@ void Output::CreateSimulationToolBar() const
 
 	MenuItemImages2[ITM_SIM] = "images\\Menu\\Menu_Simulate.jpg";
 	MenuItemImages2[ITM_SWITCH_DSN] = "images\\Menu\\Menu_Design.jpg";
-	MenuItemImages2[ITM_TRUTH] = "images\\Menu\\Menu_Truth.jpg";
 	MenuItemImages2[ITM_SAVE_Simulate] = "images\\Menu\\Menu_SAVE.jpg";
 	MenuItemImages2[ITM_LOAD_Simulate] = "images\\Menu\\Menu_LOAD.jpg";
 	MenuItemImages2[ITM_Change_Switch] = "images\\Menu\\Menu_Switch.jpg";

@@ -27,7 +27,7 @@ void NOR2::Operate()
 
 
 // Function Draw
-// Draws 2-input AND gate
+// Draws 2-input NOR gate
 void NOR2::Draw(Output* pOut)
 {
 	//Call output class and pass gate drawing info to it.

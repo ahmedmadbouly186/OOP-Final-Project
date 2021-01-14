@@ -10,9 +10,6 @@ Close::~Close(void)
 
 void Close::ReadActionParameters()
 {
-	//Get a Pointer to the Output Interfaces
-	//pout = pManager->GetOutput();
-
 
 }
 

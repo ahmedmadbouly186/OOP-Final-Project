@@ -8,8 +8,7 @@ class dsntool :public Action
 {
 
 private:
-	//Parameters for rectangular area to be occupied by the gate
-	
+
 public:
 	dsntool(ApplicationManager* pApp);
 	virtual ~dsntool(void);

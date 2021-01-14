@@ -37,7 +37,7 @@ void Addswitch::Execute()
 	int Len = UI.AND2_Width;
 	int Wdth = UI.AND2_Height;
 
-	GraphicsInfo GInfo; //Gfx info to be used to construct the AND2 gate
+	GraphicsInfo GInfo; //Gfx info to be used to construct the switch
 
 	GInfo.x1 = Cx - Len / 2;
 	GInfo.x2 = Cx + Len / 2;

@@ -31,12 +31,10 @@ void dsntool::ReadActionParameters()
 
 void dsntool::Execute()
 {
-	//Get Center point of the Gate
 	ReadActionParameters();
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
 	string x;
-	//Calculate the rectangle Corners
 	
 
 	

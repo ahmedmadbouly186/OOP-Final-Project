@@ -13,12 +13,7 @@
 class SIMMODE : public Action
 {
 private:
-	//pointer to output class
-	//to control clear the tool bar
-	//and return to  the menu bar
-	//Output* pout;
-	//int x1, x2, y1, y2;
-
+	
 public:
 	SIMMODE(ApplicationManager* pApp);
 	virtual ~SIMMODE(void);

@@ -12,22 +12,20 @@ enum ComponentType // componenet type for save and load operationss
 	Led,
 	Nand2,
 	Nor2,
-	Nor3,        // ALL connections that would be saved
+	Nor3,
 	Switch,
 	Xnor2,
 	Xor2,
 	Xor3,
 	And3,
 	Or2,
-	connection
+	connection // ALL connections that would be saved
 
 };
 
 enum ActionType
 {
 	ADD_Gate,
-	UNDO,		//Undo the last Action preformed
-	REDO,		//Redo the last Action canceled
 	LOAD,		//Load a Circuit from a file
 	SAVE,		//Save the whole Circuit to a file
 	COPY,
@@ -57,8 +55,6 @@ enum ActionType
 
 	ADD_Label,			//Add Label to a Component, a Connection
 	EDIT_Label,			//Edit Label of a Component, a Connection
-
-	Create_TruthTable,	//Create Truth Table of the Circuit
 
 	Change_Switch,		//Change Switch Status in Simulation Mode
 
@@ -101,9 +97,7 @@ enum DsgnMenuItem //The items of the design menu (you should add more items)
 
 	ITM_ADD,
 	ITM_Simulate,
-	ITM_UNDO,
 
-	ITM_REDO,
 	ITM_LOAD,
 	ITM_SAVE,
 	ITM_COPY,
@@ -142,7 +136,6 @@ enum SimMenuItem //The items of the simulation menu (you should add more items)
 	//Note: Items are ordered here as they appear in menu
 	ITM_SIM,           	//Simulate circuit
 	ITM_SWITCH_DSN,   // Change to design mode
-	ITM_TRUTH,	       //Truth table menu item
 	ITM_SAVE_Simulate, // save circuit
 	ITM_LOAD_Simulate,  // load circuit
 	ITM_Change_Switch,    // chnage switch status

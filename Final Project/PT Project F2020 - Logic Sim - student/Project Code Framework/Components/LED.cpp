@@ -27,7 +27,7 @@ void LED::Operate()
 
 
 // Function Draw
-// Draws 2-input AND gate
+// Draws LED 
 void LED::Draw(Output* pOut)
 {
 	if (x == 1) {

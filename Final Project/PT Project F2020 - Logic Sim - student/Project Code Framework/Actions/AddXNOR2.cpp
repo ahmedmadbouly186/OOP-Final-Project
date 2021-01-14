@@ -37,7 +37,7 @@ void AddXNOR2::Execute()
 	int Len = UI.XNOR2_Width;
 	int Wdth = UI.XNOR2_Height;
 
-	GraphicsInfo GInfo; //Gfx info to be used to construct the XOR2 gate
+	GraphicsInfo GInfo; //Gfx info to be used to construct the XNOR2 gate
 
 	GInfo.x1 = Cx - Len / 2;
 	GInfo.x2 = Cx + Len / 2;

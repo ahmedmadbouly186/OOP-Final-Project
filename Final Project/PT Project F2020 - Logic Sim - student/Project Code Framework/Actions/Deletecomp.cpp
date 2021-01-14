@@ -14,6 +14,7 @@ void Deletecomp::ReadActionParameters()
 
 void Deletecomp::Execute()
 {
+	//////// call the delete func in the application manager 
 	pManager->Delete();
 }
 void Deletecomp::Undo()

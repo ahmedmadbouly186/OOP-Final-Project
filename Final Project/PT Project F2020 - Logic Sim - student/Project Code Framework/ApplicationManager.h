@@ -38,7 +38,6 @@ public:
 	void ExecuteAction(ActionType);
 	// function to return component that user clicked on in output interface
 	Component* ComponentRegion(int ,int );
-	//Component* componentreturin(int);
 
 	void UpdateInterface();	//Redraws all the drawing window
 

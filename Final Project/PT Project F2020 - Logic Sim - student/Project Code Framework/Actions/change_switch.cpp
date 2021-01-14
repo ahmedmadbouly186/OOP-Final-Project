@@ -21,7 +21,6 @@ void change_switch::ReadActionParameters()
 }
 void change_switch::Execute()
 {
-	//Get Center point of the Gate
 	ReadActionParameters();
 	///////////////////////////////////
 	Component* comp = pManager->ComponentRegion(Cx, Cy);

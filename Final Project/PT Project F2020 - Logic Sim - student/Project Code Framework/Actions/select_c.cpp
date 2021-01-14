@@ -23,8 +23,8 @@ void select_c::ReadActionParameters()
 
 void select_c::Execute()
 {
-	//Get Center point of the Gate
 	ReadActionParameters();
+	//Get Center point of the Gate
 	Component* y = pManager->ComponentRegion(Cx, Cy);
 	if (y != NULL)
 	{

@@ -236,12 +236,6 @@ Component* ApplicationManager::ComponentRegion(int x, int y) { // this function 
 }
 
 ////////////////////////////////////////////////////////////////////
-
-//Component* ApplicationManager::componentreturin(int i) {
-//	return 	CompList[i];
-//
-//}
-/////////////////////////
 Input* ApplicationManager::GetInput()
 {
 	return InputInterface;
@@ -308,6 +302,7 @@ void ApplicationManager::save(ofstream& outputfile) // function Save in applicat
 }
 /////////////////////////////
 /////////////////////////////
+//////////////// multiple delete for the selected components
 void ApplicationManager::Delete()
 {
 	for (int i = 0; i < CompCount; i++)
@@ -435,10 +430,9 @@ void ApplicationManager::Delete()
 	OutputInterface->ClearDrawingArea();
 	UpdateInterface();
 }
-/////////////////////////////
-//Delete
 ////////////////////////////////
 //load connection
+///////// return the component by its id
 Component* ApplicationManager::load_connection(int id1)
 {
 	Component* p;
@@ -481,27 +475,19 @@ void ApplicationManager::setcut_component(Component* ptr_new_component)
 /////////////// func operation that we used for simulation //////////////////
 void ApplicationManager::operations()
 {
-	/*for (int i = 0; i < CompCount; i++)
-	{
-		for (int j = 0; j < CompCount; j++)
-		{
-			CompList[i]->Operate();
-		}
-	}*/
-
-
 	Gate** gatelist;
 	Connection** connectionlist1;
 	LED** ledlist;
 	switch_key** switchlist;
 	InputPin** inputpin_list;
-
+	int* valid_gate;
 	int gate_count = 0;
 	int connect_count = 0;
 	int led_count = 0;
 	int switch_count = 0;
 	int inpins_count = 0;
 	int counter = 0;
+	int num_outputpin_gate = 0;
 	for (int i = 0; i < CompCount; i++)
 	{
 		Gate* g1 = dynamic_cast<Gate*>(CompList[i]);
@@ -526,6 +512,7 @@ void ApplicationManager::operations()
 		}
 	}
 	gatelist = new Gate * [gate_count];
+	valid_gate = new int[gate_count];
 	connectionlist1 = new Connection * [connect_count];
 	ledlist = new LED * [led_count];
 	switchlist = new switch_key * [switch_count];
@@ -557,6 +544,10 @@ void ApplicationManager::operations()
 				switchlist[cont4] = sk;
 				cont4++;
 			}
+		}
+		for (int i = 0; i < gate_count; i++)
+		{
+			valid_gate[i] = 1;
 		}
 	}
 	for (int i = 0; i < CompCount; i++)
@@ -595,52 +586,131 @@ void ApplicationManager::operations()
 			{
 				connectionlist1[i]->Operate();
 				InputPin* ss = (connectionlist1[i]->getDestPin());
-				if (dynamic_cast<Gate*>( ss->getComponent()))
+				if (dynamic_cast<Gate*>(ss->getComponent()))
 				{
 					inputpin_list[counter++] = ss;
+					//	num_outputpin_gate++;
 				}
 			}
 		}
 	}
-	////////////////////////////////////////////////////
-	while (counter <= inpins_count) {
+	//////////firstly check if all input pin of this gate is correctly connect
+	for (int i = 0; i < gate_count; i++)
+	{
+		int num_inputs = gatelist[i]->no_inputs();
+		bool is_problem = false;
+		for (int j = 0; j < num_inputs; j++)
+		{
+			if (gatelist[i]->Isconnectto(j + 1) == false)
+			{
+				is_problem = true;
+			}
+		}
+		if (is_problem == true)
+		{
+			valid_gate[i] = 0;
+		}
+	}
+
+
+
+	for (int i = 0; i < gate_count; i++)
+	{
+		for (int i = 0; i < gate_count; i++)
+		{
+			if (valid_gate[i] == 1)
+			{
+				int num_inputs = gatelist[i]->no_inputs();
+				bool is_problem = false;
+				for (int j = 0; j < num_inputs; j++)
+				{
+					Connection* coon = NULL;
+					for (int k = 0; k < connect_count; k++)
+					{
+						InputPin* op2 = connectionlist1[k]->getDestPin();
+						if (gatelist[i]->getinputpin(j) == op2)
+						{
+							coon = connectionlist1[k];
+							
+							break;
+						}
+					}
+					for (int k = 0; k < gate_count; k++)
+					{
+						if (coon->getSourcePin() == gatelist[k]->getoutputpin())
+						{
+							if (valid_gate[k] == 0)
+							{
+								valid_gate[i] = 0;
+							}
+						}
+					}
+
+				}
+			}
+		}
+	}
+
+
+
+	for (int i = 0; i < gate_count; i++)
+	{
+		if (valid_gate[i] == 0)
+		{
+			gatelist[i] = NULL;
+			num_outputpin_gate++;
+		}
+	}
+
+
+
+
+	while (num_outputpin_gate < gate_count)
+	{
 		if (connect_count == 0) { break; }
 		for (int I1 = 0; I1 < gate_count; I1++)
 		{
-			int c = gatelist[I1]->no_inputs();
-			int c1 = 0;
-			for (int I2 = 0; I2 < c; I2++)
+			if (gatelist[I1] != NULL)
 			{
-				InputPin* ip = (gatelist[I1]->getinputpin(I2));
-				for (int I3 = 0; I3 < counter; I3++)
+				int num_inputs = gatelist[I1]->no_inputs();
+				int c1 = 0;
+				for (int I2 = 0; I2 < num_inputs; I2++)
 				{
-					if (inputpin_list[I3] == ip)
+					InputPin* ip = (gatelist[I1]->getinputpin(I2));
+					for (int I3 = 0; I3 < counter; I3++)
 					{
-						c1++;
+						if (inputpin_list[I3] == ip)
+						{
+							c1++;
+						}
 					}
 				}
-			}
-			if (c1 == c)
-			{
-				gatelist[I1]->Operate();
-
-				OutputPin* op = (gatelist[I1]->getoutputpin());
-				for (int I2 = 0; I2 < connect_count; I2++)
+				if (c1 == num_inputs)
 				{
-					OutputPin* op2 = connectionlist1[I2]->getSourcePin();
-					if (op == op2)
+					gatelist[I1]->Operate();
+					num_outputpin_gate++;
+					OutputPin* op = (gatelist[I1]->getoutputpin());
+					gatelist[I1] = NULL;
+					InputPin* ss = NULL;
+					int num_outputs = 0;
+					for (int I2 = 0; I2 < connect_count; I2++)
 					{
-						connectionlist1[I2]->Operate();
-						InputPin* ss = (connectionlist1[I2]->getDestPin());
-						if (dynamic_cast<Gate*>(ss->getComponent()))
+						OutputPin* op2 = connectionlist1[I2]->getSourcePin();
+
+						if (op == op2)
 						{
-							inputpin_list[counter++] = ss;
+							num_outputs++;
+							ss = connectionlist1[I2]->getDestPin();
+							connectionlist1[I2]->Operate();
+							if (dynamic_cast<Gate*>(ss->getComponent()))
+							{
+								inputpin_list[counter++] = ss;
+							}
 						}
 					}
 				}
 			}
 		}
-		if (counter == inpins_count) { counter++; }
 	}
 	//////////// the last  step is working on all leds  ///////////////////
 	for (int i = 0; i < led_count; i++)
@@ -649,15 +719,32 @@ void ApplicationManager::operations()
 	}
 
 	////////////finally clean all dynamic allocation we done in the code  ///////////////////
+	for (int i = 0; i < switch_count; i++)
+	{
+		switchlist[i] = NULL;
+	}
+	for (int i = 0; i < gate_count; i++)
+	{
+		gatelist[i] = NULL;
+	}
+	for (int i = 0; i < connect_count; i++)
+	{
+		connectionlist1[i] = NULL;
+	}
+	for (int i = 0; i < led_count; i++)
+	{
+		ledlist[i] = NULL;
+	}
 	for (int i = 0; i < inpins_count; i++)
 	{
 		inputpin_list[i] = NULL;
 	}
 	delete[] gatelist;
+	delete[] valid_gate;
 	delete[]connectionlist1;
 	delete[]ledlist;
 	delete[]switchlist;
-	//delete[]inputpin_list;
+	delete[]inputpin_list;
 }
 Component* ApplicationManager::get_selected()
 {

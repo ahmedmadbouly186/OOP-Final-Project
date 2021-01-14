@@ -25,6 +25,10 @@ int& OutputPin::get_m_Conn()
 {
 	return m_Conn;
 }
+int OutputPin::num_conenction()
+{
+	return m_Conn;
+}
 Connection** OutputPin::get_m_Connections()
 {
 	return m_Connections;

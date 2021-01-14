@@ -6,7 +6,6 @@ class exist :public Action
 {
 
 private:
-	//Parameters for rectangular area to be occupied by the gate
 	bool b;	
 public:
 	exist(ApplicationManager* pApp);

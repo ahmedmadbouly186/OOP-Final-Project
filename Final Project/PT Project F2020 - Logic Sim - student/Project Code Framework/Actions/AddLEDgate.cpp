@@ -15,7 +15,7 @@ void AddLEDgate::ReadActionParameters()
 	Input* pIn = pManager->GetInput();
 
 	//Print Action Message
-	pOut->PrintMsg("LED Gate: Click to add the gate");
+	pOut->PrintMsg("LED Gate: Click to add the LED");
 
 	//Wait for User Input
 	pIn->GetPointClicked(Cx, Cy);
@@ -36,8 +36,7 @@ void AddLEDgate::Execute()
 	int Len = UI.AND2_Width;
 	int Wdth = UI.AND2_Height;
 
-	GraphicsInfo GInfo; //Gfx info to be used to construct the AND2 gate
-
+	GraphicsInfo GInfo; //Gfx info to be used to construct the LED
 	GInfo.x1 = Cx - Len / 2;
 	GInfo.x2 = Cx + Len / 2;
 	GInfo.y1 = Cy - Wdth / 2;
